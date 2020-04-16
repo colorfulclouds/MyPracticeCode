@@ -4,9 +4,8 @@ public class HeapSort {
 
     /**
      * 堆顶的小元素往下沉
-     *
      * @param arr
-     * @param i
+     * @param index
      * @param heapsize
      */
     private static void heapify(int[] arr, int index, int heapsize) {

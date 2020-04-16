@@ -10,14 +10,17 @@ import java.util.Scanner;
  */
 public class TapWith0 {
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 //        int num = Integer.parseInt(sc.nextLine());
-//        for (int i = 0; i < num; i++) {
-//            str[i] = new String(sc.nextLine());
-//        }
+        String[] str = new String[2];
+        for (int i = 0; i < 2; i++) {
+            str[i] = sc.nextLine();
+        }
 
-        String[] str = {"12345678","dwdwd"};
         Cut(str);
+
+//        String[] str = {"12345678","dwdwd"};
+//        Cut(str);
     }
 
     public static void Cut(String[] str) {
@@ -31,6 +34,7 @@ public class TapWith0 {
                 s = s.substring(8);
             }
         }
+
         for (int i = 0; i < res.size(); i++) {
             System.out.println(res.get(i));
         }

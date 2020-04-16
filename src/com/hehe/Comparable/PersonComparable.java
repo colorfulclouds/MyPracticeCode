@@ -1,6 +1,6 @@
 package com.hehe.Comparable;
 
-public class Person implements Comparable<Person> {
+public class PersonComparable implements Comparable<PersonComparable> {
     public int age;
     public String name;
 
@@ -17,7 +17,7 @@ public class Person implements Comparable<Person> {
         this.name = name;
     }
 
-    public Person(int age, String name) {
+    public PersonComparable(int age, String name) {
         super();
         this.age = age;
         this.name = name;
@@ -30,7 +30,7 @@ public class Person implements Comparable<Person> {
 
 
     //实现Comparable接口必须实现compareTo方法
-    public int compareTo(Person o) {
+    public int compareTo(PersonComparable o) {
         if (this.age == o.age && this.name == o.name) {
             return 0;
         } else if (this.age > o.age) {

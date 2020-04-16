@@ -33,7 +33,7 @@ public class BubbleSort {
         }
 
         // 输出
-        SysOut(sort);
+//        SysOut(sort);
 
     }
 
@@ -51,7 +51,6 @@ public class BubbleSort {
                 }
             }
         }
-
 
     }
 
@@ -77,9 +76,9 @@ public class BubbleSort {
             System.out.print(arr[i] + "   ");
         }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        bubbleSort(arr);
+//        bubbleSort(arr);
 
-        // sort();
+         sort(arr);
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

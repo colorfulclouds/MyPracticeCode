@@ -8,11 +8,11 @@ import junit.framework.TestCase;
 public class TestCompare extends TestCase{
     @Test
     public void test1(){
-        List<Person> list = new ArrayList<Person>();
-        Person test1=new Person(66,"????");
-        Person test2=new Person(30,"????????");
-        Person test3=new Person(18,"?????");
-        Person test4=new Person(20,"?????");
+        List<PersonComparable> list = new ArrayList<PersonComparable>();
+        PersonComparable test1=new PersonComparable(66,"????");
+        PersonComparable test2=new PersonComparable(30,"????????");
+        PersonComparable test3=new PersonComparable(18,"?????");
+        PersonComparable test4=new PersonComparable(20,"?????");
         list.add(test4);
         list.add(test3);
         list.add(test2);

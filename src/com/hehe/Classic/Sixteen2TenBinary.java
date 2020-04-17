@@ -13,8 +13,6 @@ public class Sixteen2TenBinary {
 //        }
 
         String s = "10";
-
-
         Scanner sc=new Scanner(System.in);
         while (sc.hasNext()){
             String str=sc.next().substring(2);
@@ -29,6 +27,7 @@ public class Sixteen2TenBinary {
         }
     }
 
+    //进制转换：16 to 2
     public static int fun(String s){
         int n=0;
         int count= 0;

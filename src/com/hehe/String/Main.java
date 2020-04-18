@@ -1,12 +1,13 @@
 package com.hehe.String;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+
 
         //浮点数取整：小数点后数字大于5的要向前进1
 //        float flt = sc.nextFloat();

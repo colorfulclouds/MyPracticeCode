@@ -5,6 +5,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class reduceInJava {
+    /**
+     * 输入
+     *
+     * 4  input
+     * 0 1  s( "0 1" ) => sArr( [0,1] )
+     * 0 2
+     * 1 2
+     * 3 4
+     * 输出  arrs
+     *
+     * 0 3
+     * 1 2
+     * 3 4
+     * @param args
+     * @throws IOException
+     */
 
     public static void main(String[] args) throws IOException {
         BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));

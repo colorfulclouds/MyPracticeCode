@@ -34,7 +34,7 @@ public class hw_CheckNum {
         Scanner sc = new Scanner(System.in);
         ArrayList<Boolean> array = new ArrayList<>();
 
-        while (sc.hasNextLine()){//每次接受一行数据，对每一行数据进行处理
+        while (sc.hasNextLine()){   //每次接受一行数据，对每一行数据进行处理
             String[] tmp = sc.nextLine().split(" ");
             int[] arr = new int[tmp.length];
             for (int i = 0; i < tmp.length; i++) {

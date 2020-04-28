@@ -1,12 +1,7 @@
 package com.hehe.ArrayAndList;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
-import javax.swing.*;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class hw_CheckNum {

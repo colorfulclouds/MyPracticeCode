@@ -44,6 +44,7 @@ public class reduceInJava {
                 if (arrs[i] != 0)
                     System.out.println(i + " " + arrs[i]);
             }
+
         }
 
 //        Exception in thread "main" java.lang.NumberFormatException: For input string: ""

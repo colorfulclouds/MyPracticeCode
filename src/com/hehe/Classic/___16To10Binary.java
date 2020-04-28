@@ -3,7 +3,7 @@ package com.hehe.Classic;
 import java.util.Scanner;
 
 //进制转换：16 to 2
-public class Sixteen2TenBinary {
+public class ___16To10Binary {
 
     public static void main(String[] args){
 //        Scanner sc = new Scanner(System.in);

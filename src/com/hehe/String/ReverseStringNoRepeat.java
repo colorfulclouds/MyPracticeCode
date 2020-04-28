@@ -1,15 +1,19 @@
-package com.hehe.ArrayAndList;
+package com.hehe.String;
 
 import java.util.HashSet;
 import java.util.Scanner;
 
-
+/**
+ * 输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。
+ *
+ *
+ */
 public class ReverseStringNoRepeat {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s  = sc.nextLine();
-//        reverse(s);
-        test(s);
+        reverse(s);
+//        test(s);
 
         //52ms的方法
 

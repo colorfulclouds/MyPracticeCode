@@ -61,7 +61,7 @@ public class ArrayListRemove {
     public static void remove2(ArrayList<String> list){
       for(Iterator<String> ite = list.iterator();ite.hasNext();){
           if(ite.next().equals("b"))
-              ite.remove();
+              ite.remove();  // list.remove(ite.next());
       }
 
         for (String s : list) {

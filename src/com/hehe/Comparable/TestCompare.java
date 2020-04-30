@@ -17,8 +17,9 @@ public class TestCompare extends TestCase{
         list.add(test3);
         list.add(test2);
         list.add(test1);
+        list.sort(PersonComparable::compareTo);
 
-        Collections.sort(list);
+//        Collections.sort(list);
 
         for(Object s:list){
             System.out.println(s);

@@ -1,4 +1,5 @@
 package com.hehe.Sort;
+
 import java.util.Arrays;
 
 /*插入排序
@@ -12,20 +13,19 @@ public class InsertSort {
 
     public static void InsertSort01(int[] arr) {
         // 插入排序
-        int v, j;
-        for (int i = 1; i < arr.length; i++) {
-            for (v = arr[i], j = i - 1; j >= 0 && arr[j] > v; j--)
-                arr[j + 1] = arr[j];
-            arr[j + 1] = v;
+        int cur, p;  //cur 当前待排序
+        for (int i = 1; i < arr.length; i++) {  //趟数 ： n-1趟
+            for (cur = arr[i], p = i - 1; p >= 0 && arr[p] > cur; p--) //每趟往待排区域遍历插入一个数
+                arr[p + 1] = arr[p]; //移动
+            arr[p + 1] = cur;
         }
-
     }
 
 
     public static void InsertSort02(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i - 1; j >= 0 && arr[j] > arr[j+1]; j--) {
-                swap(arr, j, j+1);
+            for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
+                swap(arr, j, j + 1);
             }
         }
     }
@@ -44,26 +44,27 @@ public class InsertSort {
 
     /**
      * 产生一个大小和数值都随机的随机数组
-     * @param size
-     * @param value
+     *
+     * @param size  最大容量
+     * @param value 最大值
      * @return
      */
-    public static int[] generateRandomArray(int size,int value){
-        int[] arr = new int[(int) ((size+1)*Math.random())];
+    public static int[] generateRandomArray(int size, int value) {
+        int[] arr = new int[(int) ((size + 1) * Math.random())];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int)( (Math.random()*(value+1) - (int)(Math.random()*(value+1))) );
+            arr[i] = (int) ((Math.random() * (value + 1) - (int) (Math.random() * (value + 1))));
         }
         return arr;
-
     }
 
     /**
      * 拷贝出一个一样的数组
+     *
      * @param arr
      * @return
      */
     public static int[] copyArray(int[] arr) {
-        if(arr == null)
+        if (arr == null)
             return null;
         int[] res = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -75,13 +76,14 @@ public class InsertSort {
 
     /**
      * 判断两个数组是否相等
+     *
      * @param arr1
      * @param arr2
      * @return
      */
-    public static boolean isEqual(int[] arr1,int[] arr2) {
+    public static boolean isEqual(int[] arr1, int[] arr2) {
 
-        if((arr1==null && arr2!=null) ||(arr2==null && arr1!=null)){
+        if ((arr1 == null && arr2 != null) || (arr2 == null && arr1 != null)) {
             return false;
         }
         if (arr1 == null && arr2 == null) {
@@ -101,6 +103,7 @@ public class InsertSort {
 
     /**
      * 绝对正确的方法
+     *
      * @param arr
      */
     public static void Right(int[] arr) {
@@ -109,14 +112,15 @@ public class InsertSort {
 
     /**
      * 打印数组
+     *
      * @param arr
      */
     public static void printArray(int[] arr) {
-        if(arr == null){
+        if (arr == null) {
             return;
         }
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i] + " ");
+            System.out.print(arr[i] + " ");
         }
         System.out.println();
 
@@ -144,8 +148,10 @@ public class InsertSort {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
+
             InsertSort02(arr1);
             Right(arr2);
+
             if (!isEqual(arr1, arr2)) {
                 succeed = false;
                 break;
@@ -157,7 +163,7 @@ public class InsertSort {
         System.out.println("排列前的顺序为：");
         printArray(arr);
 
-        InsertSort01(arr);
+//        InsertSort01(arr);
         InsertSort02(arr);
 
         System.out.println("排列后的顺序为：");

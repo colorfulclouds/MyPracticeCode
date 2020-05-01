@@ -86,7 +86,7 @@ public class QuickSort {
 
         QuickSort01(a, 0, a.length - 1);
 
-        QuickSort02(a, 0, a.length - 1);
+//        QuickSort02(a, 0, a.length - 1);
 
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");

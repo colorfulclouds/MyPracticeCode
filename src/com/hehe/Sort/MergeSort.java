@@ -4,21 +4,21 @@ public class MergeSort {
 
     /**
      * 归并排序
-     * @param data
+     * @param arr
      * @param left
      * @param right
      */
-    public static void mergeSort(int[] data, int left, int right) {
-        if (left == right || data.length<2 || data == null)
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left == right || arr.length<2 || arr == null)
             return;
 
         int center = (left + right) / 2;
         //同等功效  且 防止溢出
 //		int center = left +(right-left>>1);
 
-        mergeSort(data, left, center);
-        mergeSort(data, center + 1, right);
-        merge(data, left, center, right);
+        mergeSort(arr, left, center);
+        mergeSort(arr, center + 1, right);
+        merge(arr, left, center, right);
     }
 
 

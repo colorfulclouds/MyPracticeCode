@@ -17,16 +17,16 @@ public class BubbleSort {
 
 
     //1.
-    public static void sort(int[] sort) {
+    public static void sort(int[] arr) {
         int temp;
 
         // 排序
-        for (int i = 0; i < sort.length - 1; i++) { // 趟数
-            for (int j = 0; j < sort.length - i - 1; j++) {
-                if (sort[j] > sort[j + 1]) {
-                    temp = sort[j];
-                    sort[j] = sort[j + 1];
-                    sort[j + 1] = temp;
+        for (int i = 0; i < arr.length - 1; i++) { // 趟数
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
 
             }

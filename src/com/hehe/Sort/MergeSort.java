@@ -78,6 +78,7 @@ public class MergeSort {
      */
     /**
      * 归并思想在小和问题上的应用 : 原mergeSort
+     * 本部分代码仍然有错 正确见（SortCodePra）
      * @param data
      * @param left
      * @param right
@@ -85,7 +86,7 @@ public class MergeSort {
      */
     public static int mergeSortInSmallSort(int[] data, int left, int right) {
         if (left == right || data.length<2 || data == null)
-            return -1;
+            return -1;  // X
 
         int center = (left + right) / 2;
         //同等功效
@@ -106,7 +107,7 @@ public class MergeSort {
      */
     public static int mergeInSmallSum(int[] data, int left, int center, int right) {
         // 申请临时数组
-        int[] help = new int[data.length];
+        int[] help = new int[data.length];  // X
         int i = 0;
         // 左数组第一个元素索引
         int p1 = left;
@@ -117,7 +118,7 @@ public class MergeSort {
         while (p1 <= center && p2 <= right) {
             //原：help[i++] = data[p1] < data[p2] ? data[p1] : data[p2];
             //改编代码，可用于求小和问题
-            res += data[p1] < data[p2] ? (right - (p2++) + 1) : 0;
+            res += data[p1] < data[p2] ? (right - (p2) + 1) : 0;   // X
         }
         while (p1 <= center) {
             help[i++] = data[p1++];

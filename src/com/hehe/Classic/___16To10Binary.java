@@ -27,7 +27,7 @@ public class ___16To10Binary {
         }
     }
 
-    //进制转换：16 to 2
+    //进制转换：16 to 2(未看)
     public static int fun(String s){
         int n=0;
         int count= 0;

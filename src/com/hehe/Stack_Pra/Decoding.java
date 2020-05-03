@@ -52,6 +52,8 @@ public class Decoding {
                 }
                 res = chars.pop()+ tmp;
             }
+
+
         }
 
         return res;

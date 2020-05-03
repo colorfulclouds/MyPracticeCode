@@ -5,14 +5,14 @@ public class SortCodePra {
         int maxSize = 20;
         int maxValue = 100;
 
-//        int[] arr = generateRandomArray(maxSize, maxValue);
-        int[] arr = {1,3,4,2,5};
+        int[] arr = generateRandomArray(maxSize, maxValue);
+//        int[] arr = {1,3,4,2,5};
         System.out.println("排列前的顺序为：");
         printArray(arr);
 
 //        Insertsort(arr);
 //        BubbleSort(arr);
-//        QuikSort(arr, 0, arr.length - 1);
+        QuikSort(arr, 0, arr.length - 1);
 //        mergeSort(arr, 0, arr.length - 1);
         int n = mergeSortInSmallSort(arr,0,arr.length-1);
         System.out.println("该数组的小和为： "+ n);
@@ -142,7 +142,7 @@ public class SortCodePra {
             r--;
         if (l < r)
             arr[l++] = arr[r];
-        while (l < r && arr[l] < provit)
+        while (l < r && arr[l] <= provit)
             l++;
         if (l < r)
             arr[r++] = arr[l];

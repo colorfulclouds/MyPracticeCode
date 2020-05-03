@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
+//-1.112.14.137 -1.112.14.128 255.255.255.224
+//本代码 有问题 判断非法ip地址不够详细
+
 /**
  * IP地址匹配
  *
@@ -14,6 +17,12 @@ import java.util.Scanner;
  * 1 202.112.14.128   1 代表匹配 后者是网段
  */
 public class IPTest {
+    /**
+     *
+     * @param s
+     * @param ip
+     * @return
+     */
     static boolean judge(String s, IP ip) {
         String[] split = s.split("\\.");
         System.out.println(Arrays.toString(split));
@@ -76,14 +85,14 @@ class IP {
         if (this == o) return true;
         if(o == null) return false;
         if (!(o instanceof IP)) return false;
-        if (o == null || getClass() != o.getClass()) return false;  //自动生成的equals方法里面的 o.getClass()获取类的定义信息
+
+        //自动生成的equals方法里面的 o.getClass()获取类的定义信息
+        if (o == null || getClass() != o.getClass()) return false;
+
         IP ip = (IP) o;
         return a == ip.a &&
                 b == ip.b &&
                 c == ip.c &&
                 d == ip.d;
-    }
-
-    public IP() {
     }
 }

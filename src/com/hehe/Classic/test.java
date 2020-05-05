@@ -3,6 +3,7 @@ package com.hehe.Classic;
 public class test {
     public static void main(String[] args) {
         System.out.println(MethodBinary(137 & 224));
+        System.out.println(MethodBinary(3 & 1));
     }
 
     public static String MethodBinary(int num){

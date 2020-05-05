@@ -3,6 +3,7 @@ package com.hehe.ArrayAndList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /*输出数组中三个数字之和等于0，的所有组合
  *
  *
@@ -12,19 +13,19 @@ public class get3Num {
     public static List<List<Integer>> threeSum(int[] nums) {
         //给定数组排序
         Arrays.sort(nums);
-//        for (int i = 0; i <nums.length ; i++) {
-//            System.out.println(nums[i]);
-//        }
+        for (int i = 0; i <nums.length ; i++) {
+            System.out.print(nums[i]+" ");
+        }
         List<List<Integer>> allList = new ArrayList<>();
 
-        //设i为start指针与end指针的和
-        for (int i = 0; i < nums.length - 2; ) {
+        //设i为start指针与end指针的和 --的相反数
+        for (int i = 0; i < nums.length - 2; ) { //i++ 一个一个自增 会有重复的序列 故需要特殊处理
             //start指针对应起始位置
             int start = i + 1;
             //end指针对应结束位置
             int end = nums.length - 1;
             while (start < end) {
-                if (nums[start] + nums[end] == -nums[i]) {
+                if (nums[start] + nums[end] == -nums[i]) {   //同 ：nums[start] + nums[end] +nums[i] == 0
                     List<Integer> list = new ArrayList<>(3);
                     list.add(nums[i]);
                     list.add(nums[start]);
@@ -40,7 +41,7 @@ public class get3Num {
                     while (nums[start] == nums[start - 1] && start < end) {
                         start++;
                     }
-                }else if (nums[start] + nums[end] > -nums[i]) { //3值的和大于0时，重新检测end指针是否重复后降值
+                } else if (nums[start] + nums[end] > -nums[i]) { //3值的和大于0时，重新检测end指针是否重复后降值
                     end--;
                     while (nums[end] == nums[end + 1] && start < end) {
                         end--;
@@ -52,7 +53,7 @@ public class get3Num {
                     }
                 }
             }
-            i++;
+            i++; //特殊处理i 将重复序列去掉
             while (nums[i] == nums[i - 1] && i < nums.length - 2) {
                 i++;
             }
@@ -61,7 +62,8 @@ public class get3Num {
     }
 
     public static void main(String[] args) {
-        int nums[] = {-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0};
+        int nums[] = {-4, -2, 1, 0, 0, -2, 3, 1, -5, 0};
+
         List<List<Integer>> ends = threeSum(nums);
         for (List<Integer> i : ends) {
             System.out.println(i);

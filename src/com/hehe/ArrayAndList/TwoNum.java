@@ -20,26 +20,35 @@ public class TwoNum {
 
     //两数之和等于target，并输出两数下标（数组类型）
     public static int[] twoSum(int[] nums, int target) {
+//        int[] res = new int[2];
 
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-
-        //依次加入map
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
-        }
-
-        //对每一个数字遍历寻找其另一半
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-
-            //若存在一个值等于另一半，而且不是当前i的角标
-            if (map.containsKey(complement) && map.get(complement) != i) {
-                //返回两个数字下标的数组形式
-                return new int[]{i, map.get(complement)};
+        for (int i = 0; i <nums.length ; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if(nums[i] + nums[j] == target)
+                    return new int[]{i,j};
             }
         }
-//		    throw new IllegalArgumentException("No two sum solution");
         return null;
+
+//        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+//
+//        //依次加入map
+//        for (int i = 0; i < nums.length; i++) {
+//            map.put(nums[i], i);
+//        }
+//
+//        //对每一个数字遍历寻找其另一半
+//        for (int i = 0; i < nums.length; i++) {
+//            int complement = target - nums[i];
+//
+//            //若存在一个值等于另一半，而且不是当前i的角标
+//            if (map.containsKey(complement) && map.get(complement) != i) {
+//                //返回两个数字下标的数组形式
+//                return new int[]{i, map.get(complement)};
+//            }
+//        }
+////		    throw new IllegalArgumentException("No two sum solution");
+//        return null;
     }
 }
 

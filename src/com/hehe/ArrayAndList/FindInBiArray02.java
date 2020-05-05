@@ -21,10 +21,8 @@ public class FindInBiArray02 {
         Scanner sc = new Scanner(System.in);
 //		while(sc.hasNext()){
         int num = sc.nextInt();
-        System.out.println(FindInBiArray(a,rows,column,num));
+        System.out.println(FindInBiArray(a, rows, column, num));
 //		}
-
-
 
 
         //打印二维数组
@@ -41,7 +39,6 @@ public class FindInBiArray02 {
 //		}
 
 
-
     }
 
 
@@ -50,12 +47,12 @@ public class FindInBiArray02 {
      * 该数组从左往右递增  从上往下递增
      *
      * */
-    public static void OriginalArray(int[][] a){
+    public static void OriginalArray(int[][] a) {
 
         //a.length 是行数
         //a[0].length 是0行的元素个数
         int index = 1;
-        for (int i = 0; i <a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 a[i][j] = index;
                 ++index;
@@ -71,24 +68,25 @@ public class FindInBiArray02 {
      * 思路：从右上角数字开始，若该数字大于所要查找的数字，剔除该数字所在的列，相反，剔除该数字所在行
      *       最后该数字在剩余数组的右上角
      * */
-    public static boolean FindInBiArray(int a[][],int rows,int columns,int num){
+    public static boolean FindInBiArray(int a[][], int rows, int columns, int num) {
         boolean found = false;
-        if(a != null && rows > 0 && columns > 0){
-            int row = 0;
-            int column = columns - 1;
+        if (a != null && rows > 0 && columns > 0) {
+            int p_row = 0;
+            int p_column = columns - 1;
 
-            //row是递增 [0-row]的角标都能满足
-            //column是递减 column=0时要能进循环
+            //p_row是递增 [0-row]的角标都能满足
+            //p_column是递减 p_column=0时要能进循环
 
-            while (row<rows && column>=0) {
-                if(a[row][column] == num){
+            while (p_row < rows && p_column >= 0) {
+                if (a[p_row][p_column] == num) {
                     found = true;
                     break;
-                }else if(a[row][column]>num)
-                    --column;
+                } else if (a[p_row][p_column] > num)
+                    --p_column;
                 else
-                    ++row;
+                    ++p_row;
             }
+
         }
         return found;
     }

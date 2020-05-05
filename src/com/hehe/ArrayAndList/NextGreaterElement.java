@@ -39,7 +39,6 @@ public class NextGreaterElement {
                     break;
                 }
                 //nums2[j] <= nums1[i] 的时候，都不进行操作，直接进入 i++
-
             }
         }
         return nums1;

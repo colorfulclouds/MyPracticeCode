@@ -50,12 +50,12 @@ public class hw_CheckNum {
 
     //判断是否是两位和一位交替
     private static Boolean checkOne(int[] arr) {
-        Boolean one = arr[0] / 10 == 0;
+        Boolean fore = arr[0] / 10 == 0;
         int index = 1;
         while (index < arr.length) {
             Boolean cur = arr[index] / 10 == 0;
-            if (cur & one) {
-                one = cur;
+            if (cur & fore) {
+                fore = cur;
                 index++;
             } else
                 return false;

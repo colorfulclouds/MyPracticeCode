@@ -19,17 +19,39 @@ public class MaxTime {
         Scanner sc = new Scanner(System.in);
         String[] strs = sc.nextLine().split(",");
         //输入的数组，接收时是字符串，需要处理
-        try {//如何处理其他异常
-            strs[0] = strs[0].substring(1);
-            strs[strs.length - 1] = strs[strs.length - 1].substring(0, 1);
+
+//            strs[0] = strs[0].substring(1);
+//            strs[strs.length - 1] = strs[strs.length - 1].substring(0, 1);
             int[] nums = new int[strs.length];
             for (int i = 0; i < strs.length; i++) {
                 nums[i] = Integer.parseInt(strs[i]);
                 //System.out.println(nums[i]);
             }
             happy_2_day(nums);
-        } catch (Exception e) {
+    }
+
+    public static void happy_2_day(int[] nums) {
+        int[] _max = {23, 59, 59};
+        int[] flag = {0, 0, 0, 0, 0, 0};
+        String[] result = new String[3];
+        int max = 0;
+
+        //依次为result数组赋值
+        for (int i = 0; i < result.length; i++) {
+            max = Find(nums, flag, _max[i]);
+            if (max == -1) {
+                System.out.println("invalid");
+//                System.exit(-1);
+            } else if (max < 10) {
+//                String tmp = "0" + String.valueOf(max);
+                String tmp = "0" + max;
+                result[i] = tmp;
+            } else {
+                result[i] = String.valueOf(max);
+            }
         }
+        System.out.println(result[0] + ":" + result[1] + ":" + result[2]);
+
     }
 
     public static int Find(int[] nums, int[] flag, int _max) {
@@ -59,35 +81,17 @@ public class MaxTime {
                 }
             }
         }
+
         if (flag[max_i] != -1 && flag[max_j] != -1) {
             flag[max_i] = -1;
             flag[max_j] = -1;
         }
         return max;
+
+
     }
 
-    public static void happy_2_day(int[] nums) {
-        int[] _max = {23, 59, 59};
-        int[] flag = {0, 0, 0, 0, 0, 0};
-        String[] result = new String[3];
-        int max = 0;
 
-        //依次为result数组赋值
-        for (int i = 0; i < result.length; i++) {
-            max = Find(nums, flag, _max[i]);
-            if (max == -1) {
-                System.out.println("invalid");
-//                System.exit(-1);
-            } else if (max < 10) {
-//                String tmp = "0" + String.valueOf(max);
-                String tmp = "0" + max;
-                result[i] = tmp;
-            } else {
-                result[i] = String.valueOf(max);
-            }
-        }
-        System.out.println(result[0] + ":" + result[1] + ":" + result[2]);
-    }
 }
 
 

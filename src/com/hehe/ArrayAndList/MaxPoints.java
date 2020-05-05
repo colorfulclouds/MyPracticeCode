@@ -33,13 +33,13 @@ public class MaxPoints {
 //		}
         // 按照 X 从大到小排列最大点
         //最大点满足 x比前一个最大点的y值要大
-        int many = points[0].y;    //points[0]是第一个最大点
-        int len = 1;
+        int fore = points[0].y;    //points[0]是第一个最大点
+        int len = 1;  // 利用数组可覆盖的性质 使用原数组进行结果存储 有len个就遍历到len个
         for (int i = 1; i < num; i++){  //依次遍历其它点
-            if (points[i].y > many){   //满足条件的亦为最大点
+            if (points[i].y > fore){   //满足条件的亦为最大点
                 points[len].x = points[i].x;    //使用原Points类型的points数组
                 points[len].y = points[i].y;
-                many = points[i].y;
+                fore = points[i].y;
                 len += 1;
             }
         }
@@ -64,7 +64,6 @@ public class MaxPoints {
 
     //坐标点的类
     public static class Point{
-
         public int x;
         public int y;
 

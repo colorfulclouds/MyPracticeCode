@@ -13,7 +13,7 @@ public class RunAndTag {
         for (int i = 0; i < 4*n; i++){  //全部赋初值为0
             flag[i] = 0;
         }
-        int start = 0;  //起始点是每次标记的终点
+        int start = 0;  //起始点是每次标记的点
         int count = 0;
 
         while(true){
@@ -34,15 +34,6 @@ public class RunAndTag {
         int num = sc.nextInt();
         System.out.println(runAndTag(num));
 
-
-        //？？？？？？？当时为什么这样？？？？？？
-
-//        int[] tmp = new int[num];
-//
-//        for (int i = 0; i < num; i++) {
-//            tmp[i] = sc.nextInt();
-//            System.out.println(run(tmp[i]));
-//        }
     }
 
 }

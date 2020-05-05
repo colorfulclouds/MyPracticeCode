@@ -1,6 +1,4 @@
-package com.hehe.DynamicProgramming;
-import java.util.ArrayList;
-import java.util.List;
+package com.hehe.RecursiveAndDynamic;
 
 //题目逻辑：
 //int a = rec_opt(arr, i-2) + arr[i];

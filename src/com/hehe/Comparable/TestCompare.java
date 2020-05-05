@@ -1,13 +1,7 @@
 package com.hehe.Comparable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
-import junit.framework.TestCase;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
-
 /**
  * @Test注解与TestCase的区别
  *

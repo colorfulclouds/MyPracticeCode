@@ -1,4 +1,4 @@
-package com.hehe.DynamicProgramming;
+package com.hehe.RecursiveAndDynamic;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

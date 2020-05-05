@@ -18,10 +18,14 @@ public class PersonComparable implements Comparable<PersonComparable> {
     }
 
     public PersonComparable(int age, String name) {
-        super();
         this.age = age;
         this.name = name;
     }
+//    public PersonComparable(int age, String name) {
+//        super();
+//        this.age = age;
+//        this.name = name;
+//    }
 
     @Override
     public String toString() {   //当输出该类对象时的各字段输出格式 自定义

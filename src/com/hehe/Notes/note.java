@@ -22,3 +22,7 @@ public class note {
 //
 //            6.  保存，重启eclipse。
 }
+
+
+//IDEA 撤销操作
+//HEAD^

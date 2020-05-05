@@ -49,11 +49,11 @@ public class QueueBasic {
         private int[] data;
         private int front;
         private int rear;
-        private int size;
+//        private int size;
         private int count;
 
         public Queue(int size){
-            this.size = size;
+//            this.size = size;
             front = 0;
             rear = -1;
             data = new int[size];
@@ -66,8 +66,7 @@ public class QueueBasic {
         }
 
         public int Top(){
-            int top = data[rear];
-            return top;
+            return data[rear];
         }
 
         public boolean isEmpty(){
@@ -87,7 +86,6 @@ public class QueueBasic {
             rear = -1;
             count = 0;
         }
-
 
 
     }

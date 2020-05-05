@@ -25,7 +25,7 @@ public class sort {
      *
      *       冒泡排序（bubble sort） — O(n2)
      *
-     *       归并排序 （merge sort）— O(n log n); 需要 O(n) 额外存储空间
+     *       归并排序 （merge sort）— O(nlog n); 需要 O(n) 额外存储空间
      *
      *       二叉树排序（Binary tree sort） — O(nlogn); 需要 O(n) 额外存储空间
      *

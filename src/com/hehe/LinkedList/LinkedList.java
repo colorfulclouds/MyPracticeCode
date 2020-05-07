@@ -9,7 +9,7 @@ class LinkedList {
         head = null;
     }
 
-    // 链表的每个节点类
+    // 链表数据结构
     public static class ListNode {
         public int data;// 每个节点的数据
         public ListNode next;// 每个节点指向下一个节点的连接

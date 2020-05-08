@@ -1,4 +1,5 @@
 package com.hehe.GreedAlgrithom;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class ResourceRequest_hw {
@@ -42,6 +43,10 @@ public class ResourceRequest_hw {
 //            machines[i] = sc.nextInt();
             machines.add(sc.nextInt());
         }
+        Collections.sort(machines);  //排序使得在分配机器时 按照空闲机器最小能满足服务的顺序分配 大的留给可能的大作业
+//        for (int i = 0; i < machines.size(); i++) {
+//            System.out.println(machines.get(i));
+//        }
         int size,cost;
         Request r;
         //将 请求信息 进 收益大根堆
@@ -88,6 +93,14 @@ public class ResourceRequest_hw {
 
 //3 5
 //10 12 15
+//8 10
+//12 11
+//16 22
+//13 14
+//9 11
+
+//3 5
+//15 12 10
 //8 10
 //12 11
 //16 22

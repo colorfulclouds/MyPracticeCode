@@ -21,7 +21,7 @@ public class BubbleSort {
         int temp;
 
         // 排序
-        for (int i = 0; i < arr.length - 1; i++) { // 趟数
+        for (int i = 0; i < arr.length - 1; i++) { // 趟数 n-1趟
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     temp = arr[j];

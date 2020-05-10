@@ -9,7 +9,7 @@ public class MergeSort {
      * @param right
      */
     public static void mergeSort(int[] arr, int left, int right) {
-        if (left == right || arr.length < 2 || arr == null)
+        if (left == right || arr.length < 2 || arr == null)  //一个元素 或者 空 的时候不用归并
             return;
         int center = (left + right) / 2;
         //同等功效  且 防止溢出

@@ -1,5 +1,4 @@
 package com.hehe.GreedAlgrithom;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ResourceRequest_hw {
@@ -105,4 +104,10 @@ public class ResourceRequest_hw {
 //12 11
 //16 22
 //13 14
+//9 11
+
+//3 3
+//15 12 10
+//8 10
+//18 11
 //9 11

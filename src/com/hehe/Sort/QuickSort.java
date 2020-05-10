@@ -1,7 +1,6 @@
 package com.hehe.Sort;
 
 public class QuickSort {
-
     /**
      * 一次划分
      *

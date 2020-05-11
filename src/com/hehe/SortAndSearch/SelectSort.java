@@ -1,5 +1,5 @@
 
-package com.hehe.Sort;
+package com.hehe.SortAndSearch;
 
 public class SelectSort {
     /*

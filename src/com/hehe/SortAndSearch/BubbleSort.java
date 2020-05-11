@@ -1,6 +1,4 @@
-package com.hehe.Sort;
-
-import java.util.Scanner;
+package com.hehe.SortAndSearch;
 
 /*冒泡排序：
  * 请输入10个排序的数据：

@@ -1,4 +1,4 @@
-package com.hehe.Sort;
+package com.hehe.SortAndSearch;
 
 public class SortCodePra {
     public static void main(String[] args) {

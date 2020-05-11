@@ -1,4 +1,4 @@
-package com.hehe.Sort;
+package com.hehe.SortAndSearch;
 
 import java.util.Arrays;
 

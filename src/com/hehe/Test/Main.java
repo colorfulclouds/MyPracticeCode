@@ -4,34 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
-        List<String> res = get();
-        for (int i = 0; i < res.size(); i++) {
-            System.out.println(res.get(i));
-        }
+//        System.out.println(Math.round(-1.5));
     }
 
-    public static List<String> get() {
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        String[] str = new String[num];
-        sc = new Scanner(System.in);
-        for (int i = 0; i < num; i++) {
-            String s = new String(sc.nextLine());
-            str[i] = s;
+
+    public static int walk01(int[][] matrix) {
+        return walkll(matrix,0,0);
+    }
+
+    private static int walkll(int[][] matrix, int i, int j) {
+        if(i == matrix.length-1 && j == matrix[0].length-1)
+            return matrix[i][j];
+        if(i == matrix.length-1){
+            return matrix[i][j] + walkll(matrix,i,j+1);
+        }
+        if(j == matrix[0].length-1){
+            return matrix[i][j] + walkll(matrix,i+1,j);
         }
 
-        ArrayList<String> res = new ArrayList<String>();
-        for (int i = 0; i < num; i++) {
-            String s = str[i];
-            if (s.length() % 8 != 0)
-                s = s + "00000000";
-            while (s.length() >= 8) {
-                res.add(s.substring(0,8));
-                s = s.substring(8);
-            }
-        }
-        return res;
+        int right = walkll(matrix,i,j+1);
+        int down = walkll(matrix,i+1,j);
+        return matrix[i][j] + Math.min(right,down);
     }
+
+
 }

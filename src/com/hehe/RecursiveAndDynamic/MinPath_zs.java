@@ -20,7 +20,7 @@ public class MinPath_zs {
     public static int walk(int[][] matrix, int i, int j) {
         if (i == matrix.length - 1 && j == matrix[0].length - 1)
             return matrix[i][j];
-        if (i == matrix.length - 1)
+        if (i == matrix.length - 1)  //最后一行时  返回当前元素和右边一个元素相加
             return matrix[i][j] + walk(matrix, i, j + 1);
         if (j == matrix[0].length - 1)
             return matrix[i][j] + walk(matrix, i + 1, j);
@@ -29,7 +29,7 @@ public class MinPath_zs {
         int down = walk(matrix,i+1,j);
         return matrix[i][j] + Math.min(right, down);
     }
-
+//============================================================================================
 
     public static int minPath1(int[][] matrix) {
         return process1(matrix, matrix.length - 1, matrix[0].length - 1);

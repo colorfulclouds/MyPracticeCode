@@ -13,6 +13,7 @@ public class TraversalBinaryTree {
         public int value;
         public Node left;
         public Node right;
+
         public Node (int data){
             this.value = data;
         }
@@ -56,7 +57,7 @@ public class TraversalBinaryTree {
     public static void preOrderUnRecur(Node head) {
         System.out.print("pre-order: ");
         if (head != null) {
-            Stack<Node> stack = new Stack<Node>();
+            Stack<Node> stack = new Stack<>();
             stack.add(head);
             while (!stack.isEmpty()) { // 需要循环  错写成了if
                 head = stack.pop();  //使用了head变量

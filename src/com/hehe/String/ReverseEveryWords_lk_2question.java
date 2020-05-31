@@ -19,6 +19,11 @@ public class ReverseEveryWords_lk_2question {
 
     }
 
+    /**
+     * 反转每一个单词内部
+     * @param s
+     * @return
+     */
     public static String reverseWords_557(String s) {
         String[] words = s.split(" ");
         StringBuilder sb = new StringBuilder();
@@ -28,6 +33,11 @@ public class ReverseEveryWords_lk_2question {
         return sb.toString().trim();  //trim() 去掉字符换两端多余的空格
     }
 
+    /**
+     * 反转所有单词
+     * @param s
+     * @return
+     */
     public static String reverseWords_151(String s) {
         String[] words = s.split("\\s+");
         StringBuilder sb = new StringBuilder();

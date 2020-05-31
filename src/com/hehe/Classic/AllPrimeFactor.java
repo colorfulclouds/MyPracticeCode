@@ -23,11 +23,10 @@ public class AllPrimeFactor {
         int first = 2;
         while (first <= slong) {  //注意等于的情况
             if (slong % first == 0) { //可以除尽时：1、到最后一个质数了  2、小于最后一个质数
+                sb.append(first).append(" ");
                 if (slong == first) {
-                    sb.append(first).append(" ");
                     break;
                 } else {
-                    sb.append(first).append(" ");
                     slong /= first;
                 }
             } else {

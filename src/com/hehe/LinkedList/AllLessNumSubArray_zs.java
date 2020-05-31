@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.LinkedList;
 
 import java.util.LinkedList;
 
@@ -30,24 +30,26 @@ public class AllLessNumSubArray_zs {
         LinkedList<Integer> qmax = new LinkedList<>();
         int L = 0, R = 0;
 
-        while (L < arr.length) {
-            while (R < arr.length) {
+        while (L < arr.length) { //L控制 左边界
+            while (R < arr.length) { //R控制 右边界
+                //向 两个双端队列中添加元素 加到不能再加为止
                 while (!qmin.isEmpty() && arr[R] <= arr[qmin.peekLast()])
                     qmin.pollFirst();
                 qmin.addLast(R);
                 while (!qmax.isEmpty() && arr[R] >= arr[qmax.peekLast()])
                     qmax.pollFirst();
                 qmax.addLast(R);
-                if (arr[qmax.peekFirst()] - arr[qmin.peekFirst()] > num)
+
+                if (arr[qmax.peekFirst()] - arr[qmin.peekFirst()] > num) //不能加了
                     break;
                 R++;
             }
-            if (L == qmin.peekFirst())
+            if (L == qmin.peekFirst()) //删除过期元素
                 qmin.pollFirst();
             if (R == qmax.peekFirst())
                 qmax.pollFirst();
 
-            res += R - L;
+            res += R - L; //L-R的子集均满足要求
             L++;
         }
         return res;

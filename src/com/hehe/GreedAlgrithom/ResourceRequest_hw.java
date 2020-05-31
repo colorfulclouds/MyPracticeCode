@@ -1,4 +1,5 @@
 package com.hehe.GreedAlgrithom;
+
 import java.util.*;
 
 public class ResourceRequest_hw {
@@ -46,24 +47,24 @@ public class ResourceRequest_hw {
 //        for (int i = 0; i < machines.size(); i++) {
 //            System.out.println(machines.get(i));
 //        }
-        int size,cost;
+        int size, cost;
         Request r;
         //将 请求信息 进 收益大根堆
         for (int i = 0; i < N; i++) {
             size = sc.nextInt();
             cost = sc.nextInt();
-            r = new Request(size,cost);
+            r = new Request(size, cost);
             queue.add(r);
         }
 
         int W = 0;  //收益
         //有空闲机器 有待处理的请求
-        while(!machines.isEmpty() && !queue.isEmpty()){  //一次调度周期理解为一次输入的所有请求的处理
+        while (!machines.isEmpty() && !queue.isEmpty()) {  //一次调度周期理解为一次输入的所有请求的处理
             int which = isOk(machines, queue.peek().size);
-            if(which!=-1){
+            if (which != -1) {
                 W += queue.poll().cost;
                 machines.remove(which);
-            }else
+            } else
                 queue.poll();
         }
 
@@ -74,6 +75,7 @@ public class ResourceRequest_hw {
     /**
      * 查找给定数组中是否有某个值
      * （空闲机器中有无可提供服务的机器）
+     *
      * @param list
      * @param size
      * @return 有则返回下标，无则返回-1

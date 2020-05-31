@@ -3,7 +3,6 @@ package com.hehe.SortAndSearch;
 public class QuickSort {
     /**
      * 一次划分
-     *
      * @param a
      * @param l
      * @param r
@@ -34,10 +33,39 @@ public class QuickSort {
     public static void QuickSort01(int[] a, int l, int r) {
         if (l < r) {
             int q = onePartition(a, l, r);
-            System.out.println(q);
+            System.out.println("本次选取的中轴值是：" + q);
             QuickSort01(a, l, q - 1);
             QuickSort01(a, q + 1, r);
         }
+    }
+
+
+    // =============================快排应用 ==================================
+
+    /**
+     * 利用一次划分求数组的中位数
+     * @param a
+     * @return
+     */
+    public static int findMediaMethod2(int[] a) {
+        if (a.length == 0) return -1;
+        //中位数位置
+        int mid = (a.length - 1) / 2;
+        //左右指针位置
+        int left = 0, right = a.length - 1;
+        //进行快排操作后哨兵元素的位置
+        int provit = 0;
+        provit = onePartition(a, left, right);
+        while (true) {
+            //System.out.println("qsIdx= "+qsIdx);
+            if (provit == mid)
+                break;
+            else if (provit < mid)
+                provit = onePartition(a, provit + 1, right);
+            else
+                provit = onePartition(a, left, provit - 1);
+        }
+        return a[provit];
     }
 
     // ==================================================================================
@@ -84,6 +112,7 @@ public class QuickSort {
         int[] a = { 8, 6, 4, 1, 3, 2, 9 };
 
         QuickSort01(a, 0, a.length - 1);
+//        System.out.println(findMediaMethod2(a));;
 
 //        QuickSort02(a, 0, a.length - 1);
 

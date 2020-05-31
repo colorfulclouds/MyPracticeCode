@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.LinkedList;
 
 import java.util.LinkedList;
 
@@ -11,7 +11,7 @@ public class SlidingWindowMaxArray_zs {
      * 所有窗口的最大值的求解
      * O(n) : 因为 每个元素都会进出队列各一次
      * @param arr
-     * @param w 窗口大小
+     * @param w 已知的窗口大小
      * @return
      */
     public static int[] getMaxWindow(int[] arr, int w) {
@@ -21,6 +21,7 @@ public class SlidingWindowMaxArray_zs {
 
         if (arr.length < w || arr == null || w < 1)
             return null;
+
         for (int i = 0; i <arr.length; i++) {
             while(!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[i])  //队尾比当前值小 出队 直到比当前值大
                 qmax.pollLast();

@@ -37,9 +37,9 @@ public class reorganizeString_lk767 {
         while (arr[loc] > 0) {
             chars[evenIndex] = maxNumChar;  //复用原字符数组
             evenIndex += 2;
-            arr[loc]--;
+            arr[loc]--;  //！
         }
-        //其余数字放置：若奇数位未完 先按照奇数位放置 再按照偶数位放置
+        //其余数字放置：若奇数位未完 先将奇数位填充完 再按照偶数位放置
         int oddIndex = 1;
         for (int i = 0; i < arr.length; i++) {
             int num = arr[i];

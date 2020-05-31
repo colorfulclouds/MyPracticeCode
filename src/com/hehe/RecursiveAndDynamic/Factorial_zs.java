@@ -20,7 +20,7 @@ public class Factorial_zs {
     }
 
     public static void main(String[] args) {
-        int n = 5;
+        int n = 50;
         System.out.println(getFactorial1(n));
         System.out.println(getFactorial2(n));
     }

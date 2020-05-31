@@ -77,8 +77,7 @@ public class QueueBasic {
             if(isEmpty()){
                 return -1;
             }
-            int value = data[rear--];
-            return value;
+            return data[rear--];
         }
 
         public void Clear(){

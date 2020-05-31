@@ -13,10 +13,10 @@ package com.hehe.String;
 public class ReverseEveryWords_lk_2question {
 
     public static void main(String[] args) {
-//        System.out.println(reverseWords_557(new String("Let's take LeetCode contest")));
+        System.out.println(reverseWords_557(new String("Let's take LeetCode contest")));
         // s'teL ekat edoCteeL tsetnoc
         System.out.println(reverseWords_151(new String("example   good a")));
-
+        //a good example
     }
 
     /**

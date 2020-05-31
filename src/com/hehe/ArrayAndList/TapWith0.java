@@ -25,6 +25,7 @@ public class TapWith0 {
 
     public static void Cut(String[] str) {
         ArrayList<String> res = new ArrayList<>();
+
         for (int i = 0; i < str.length; i++) {
             String s = str[i];
             if (s.length() % 8 != 0)

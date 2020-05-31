@@ -9,13 +9,17 @@ import java.util.Scanner;
  * */
 public class MinPlusSum {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        //数组大小
-        int num = sc.nextInt();
-        int[] array = new int[num];
-        for (int i = 0; i < num; i++) {
-            array[i] = sc.nextInt();
-        }
+//        Scanner sc = new Scanner(System.in);
+//        //数组大小
+//        int num = sc.nextInt();
+//        int[] array = new int[num];
+//        for (int i = 0; i < num; i++) {
+//            array[i] = sc.nextInt();
+//        }
+
+        int[] array = {1,2,3};
+        int num = array.length;
+
 
         //===========================可抽取的函数主体===============================
         //初始化当前最大值，全局变量

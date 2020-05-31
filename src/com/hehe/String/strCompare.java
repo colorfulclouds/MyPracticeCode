@@ -50,12 +50,12 @@ public class strCompare {
             }
             k++;
         }
-        return len1-len2;
+        return len1-len2;  //短的串和长的串开始部分 相等的话 返回0较合适
     }
 
     public static void main(String[] args) {
         String s1 = "123B3445";
-        String s2 = "123A";
+        String s2 = "123B";
         System.out.println("两字符串的比较结果："+s1.compareTo(s2));
         System.out.println("输出结果解释：");
         System.out.println(s1 + " 和 " + s2 + " " + "字符串中第一个不同字母ASCII的差值（s1 - s2）:"+s1.compareTo(s2));

@@ -11,17 +11,17 @@ public class isDuplicationInArray {
     public static void main(String[] args) {
 
         //三种情况的测试用例
-//        int[] arr = {2,3,1,0,2,5,3};
+        int[] arr = {2,3,1,0,2,5,3};
         int[] arr1 = {};
-//        int[] arr2 = {2, 1, 3, 4};
+        int[] arr2 = {2, 1, 3, 4};
 
 //        System.out.println(DuplicationInArray(arr));
 //        System.out.println(DuplicationInArray(arr1));
 //        System.out.println(DuplicationInArray(arr2));
 
-//        System.out.println(DupInArr(arr));
+        System.out.println(DupInArr(arr));
         System.out.println(DupInArr(arr1));
-//        System.out.println(DupInArr(arr2));
+        System.out.println(DupInArr(arr2));
 
 
     }

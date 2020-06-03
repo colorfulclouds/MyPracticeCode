@@ -9,6 +9,22 @@ import java.util.List;
 
 public class test {
     public static void main(String[] args) {
+        String s = "2dsdfd";
+        int i = 0;
+        while(s.charAt(i) != '\0'){    //java中String 没有结束标识 '\0'
+            System.out.println(s.charAt(i));
+            i++;
+        }
+
+
+        //Arrays.toString  Arrays.deepToString
+//        int a[] = {1, 2, 3};
+//        System.out.println(Arrays.toString(a));
+//        int b[][] = {{1, 2, 3}, {4, 5, 6}};
+//        System.out.println(Arrays.toString(b));
+//        System.out.println(Arrays.deepToString(b));
+
+
 //        int nums[] = {-4, -2, 1, 0, 0, -2, 3, 1, -5, 0};
 //        List<List<Integer>> ends = threeSum(nums);
 //        for (List<Integer> i : ends) {

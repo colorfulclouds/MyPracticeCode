@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+/**
+ * 数组实现栈
+ */
 public class QueueBasic {
     public static void main(String[] args) {
 //        Queue queue = new Queue(4);

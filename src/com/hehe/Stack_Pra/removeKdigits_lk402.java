@@ -5,16 +5,26 @@ import java.util.List;
 
 //import org.hamcrest.core.IsEqual;
 
-public class removeKdigits_test {
+/**
+ * 单调栈的应用
+ * 移除指定个数的数字 使得剩下的数字最小
+ *
+ */
+public class removeKdigits_lk402 {
 
     public static void main(String[] args) {
         rmKdigits(new String("3400236"), 3);
+        rmKdigits(new String("1432219"), 3);
 
     }
 
 
     /* 思路：
-     *栈空入栈  非空判断  当前数字比栈顶小 && 删除标记大于零（可删）：top--  删除标记k--
+     *栈空入栈，
+     *非空判断：
+     *  当前数字比栈顶小 && 删除标记大于零（可删）
+     *      top--  删除标记k--
+     *  否则将当前字符入栈（栈中元素是从小到大，最后截取需要的位数即可）
      *
      * */
     public static void  rmKdigits(String num, int k) {
@@ -63,6 +73,7 @@ public class removeKdigits_test {
 
     // 将剩余字符串 强制转化为整数
 
+    //Dropped
     public static String rmKdigits1(String num, int k) {
 
         List<Character> charlist = new ArrayList<Character>();

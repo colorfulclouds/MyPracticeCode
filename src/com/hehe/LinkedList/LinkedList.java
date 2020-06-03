@@ -2,7 +2,7 @@ package com.hehe.LinkedList;
 
 class LinkedList {
     public int size;// 链表节点的个数
-    public  ListNode head;// 头节点
+    public ListNode head;// 头节点
 
     public LinkedList() {
         size = 0;

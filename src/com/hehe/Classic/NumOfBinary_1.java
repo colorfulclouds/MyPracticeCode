@@ -18,8 +18,12 @@ public class NumOfBinary_1 {
     }
 
 
-    /*有几个1 就循环几次
-     * */
+    /**
+     * 有几个1 就循环几次
+     * 分析：一个整数减去1，再和原整数做与运算，会把该整数最右边的 1 变为 0，整数中有几个 1 就进行多少次这样的操作
+     * @param n
+     * @return
+     */
     public static int nums2(int n) {
         int count = 0;
         while (n > 0) {

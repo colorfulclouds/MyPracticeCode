@@ -42,7 +42,7 @@ public class SingleNumber {
             res ^= num;
         }
 
-        //获得k中最低位的1
+        //获得 res 中最低位的1
         int mask = 1;
 
         //mask = res & (-res) 这种方法也可以得到mask，具体原因百度 哈哈哈哈哈

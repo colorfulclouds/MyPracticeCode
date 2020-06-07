@@ -37,7 +37,7 @@ public class Power {
         result *= result;
 
         //判断exponent是奇数还是偶数 奇数需要最后再乘以底数
-        //位运算代替求余运算符
+        //位运算代替求余运算符 判断一个数是奇数还是偶数
         //0x1  与  001  与 1
         if((exponent & 1) == 1)
             result *= base;

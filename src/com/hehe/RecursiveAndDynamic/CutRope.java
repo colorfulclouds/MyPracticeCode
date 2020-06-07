@@ -7,12 +7,12 @@ package com.hehe.RecursiveAndDynamic;
  */
 public class CutRope {
     public static void main(String[] args) {
-        System.out.println("最后的结果是：" + maxMultiPart(6));
-        System.out.println("数学方法的最后的结果是：" + maxMultiPart02(6));
+        System.out.println("dp最后的结果是：" + maxMultiPart(6));
+        System.out.println("贪婪算法的最后的结果是：" + maxMultiPart02(6));
 
 
-        System.out.println("最后的结果是：" + maxMultiPart(9));
-        System.out.println("数学方法的最后的结果是：" + maxMultiPart02(9));
+        System.out.println("dp最后的结果是：" + maxMultiPart(9));
+        System.out.println("贪婪算法的最后的结果是：" + maxMultiPart02(9));
 
     }
 
@@ -44,8 +44,8 @@ public class CutRope {
     }
 
     /**
-     * 除3求解
-     * 推论二： 尽可能将绳子以长度 3 等分为多段时，乘积最大。
+     * 贪婪算法求解
+     * 尽可能将绳子以长度 3 等分为多段时，乘积最大。
      * <p>
      * 切分规则：
      * 最优： 33 。把绳子尽可能切为多个长度为 33 的片段，留下的最后一段绳子的长度可能为 0,1,20,1,2 三种情况。

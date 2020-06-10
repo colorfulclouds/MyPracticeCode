@@ -36,11 +36,11 @@ public class PrintNumber {
     }
 
 
-    public static boolean increment(StringBuilder str) { //判断上一个字符串是否达到最大
+    public static boolean increment(StringBuilder str) { //判断上一个字符串是否达到最大 不到最大加 1 操作
         boolean isOverflow = false;
 
         for (int i = str.length() - 1; i >= 0; i--) {
-            char s = (char) (str.charAt(i) + 1); //加 1 操作
+            char s = (char) (str.charAt(i) + 1);  //加 1 操作
             // 如果s大于'9'则发生进位
             if (s > '9') {
                 str.replace(i, i + 1, "0");

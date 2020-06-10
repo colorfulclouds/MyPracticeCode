@@ -8,7 +8,7 @@ package com.hehe.Classic;
 public class Power {
 
     public static double Powers(double base,int exponent){
-        //**
+        //不合法情况
         if((base == 0) && (exponent < 0))
             return -1;
 
@@ -31,7 +31,7 @@ public class Power {
             return base;
         if(exponent == 0)
             return 1;
-
+        //=============================================================================
         //exponent 右移代表除运算
         double result = PowerWithUnsignedExponent(base, exponent>>1);
         result *= result;
@@ -41,13 +41,14 @@ public class Power {
         //0x1  与  001  与 1
         if((exponent & 1) == 1)
             result *= base;
+        //=============================================================================
 
         return result;
     }
 
 
     public static void main(String[] args) {
-        double result = Powers(2, -2);
+        double result = Powers(-2, 3);
         System.out.println(result);
     }
 

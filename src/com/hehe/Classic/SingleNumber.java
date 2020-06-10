@@ -4,7 +4,7 @@ package com.hehe.Classic;
  * 1、一组数据中 一个数字出现一次 其他数字均出现两次
  * 2、一组数据中 两个数字出现一次 其他数字均出现两次
  *
- * 注：任何数和自己亦或结果为 0
+ * 注：任何数和自己异或结果为 0
  */
 public class SingleNumber {
     public static void main(String[] args) {

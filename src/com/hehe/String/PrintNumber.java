@@ -5,10 +5,11 @@ package com.hehe.String;
  * 输入n 打印从 1 到 最大的 n 位数
  * n:2
  * 1 2 3 ... 99
-  */
+ */
 public class PrintNumber {
+
     public static void main(String[] args) {
-        int n = 2;
+        int n = 1;
         int[] res = printNumbers(n);
 
         for (int x : res)
@@ -16,6 +17,10 @@ public class PrintNumber {
     }
 
     public static int[] printNumbers(int n) {
+        if (n <= 0) {
+            return new int[]{-1};
+        }
+
         int[] res = new int[(int) Math.pow(10, n) - 1];
         int cur = 0;
         StringBuilder str = new StringBuilder();
@@ -56,7 +61,6 @@ public class PrintNumber {
         }
         return isOverflow;
     }
-
 
 
 }

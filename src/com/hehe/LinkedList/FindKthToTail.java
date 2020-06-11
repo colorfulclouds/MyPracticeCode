@@ -12,6 +12,7 @@ class ListNode01 {
 
 /**
  * 链表倒数第K个节点
+ * 注意：代码的鲁棒性
  */
 public class FindKthToTail {
     static ListNode01 find(ListNode01 head,int k){

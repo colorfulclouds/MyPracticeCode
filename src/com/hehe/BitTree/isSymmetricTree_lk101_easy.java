@@ -1,5 +1,8 @@
 package com.hehe.BitTree;
 
+/**
+ * 给定一个二叉树，检查它是否是镜像对称的。
+ */
 public class isSymmetricTree_lk101_easy {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -25,7 +28,9 @@ public class isSymmetricTree_lk101_easy {
         if (left == null || right == null)  //一个为空
             return false;
 
-        return left.val == right.val && Helper(left.left, right.right) && Helper(left.right, right.left); //镜像的判断
+        //镜像的判断（互为镜像的两个结点继续判断： A结点 的左子结点 和 B结点的右子结点
+        //                                    A结点 的右子结点 和 B结点的左子结点）
+        return left.val == right.val && Helper(left.left, right.right) && Helper(left.right, right.left);
 
 //        if(left.val == right.val)
 //            return Helper(left.left,right.right)

@@ -18,7 +18,7 @@ public class hw01_Count_101 {
             if ((input & flag) == 5) {
                 count++;
                 isFind = true;
-            } else if(!isFind)   //
+            } else if(!isFind)   //(input & flag) != 5 而且还要 isFind==false 才能 index++
                 index++;
             input >>>= 1;
         }

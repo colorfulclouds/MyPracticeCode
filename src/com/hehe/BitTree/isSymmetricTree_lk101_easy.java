@@ -50,4 +50,25 @@ public class isSymmetricTree_lk101_easy {
     }
 
 
+    /**
+     * 输出一颗二叉树的镜像树
+     * @param root
+     */
+    void Mirror(TreeNode root){
+        if(root==null)
+            return;
+        if(root.left == null && root.right == null)
+            return;
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+
+        if(root.left != null)
+            Mirror(root.left);
+        if(root.right != null)
+            Mirror(root.right);
+
+    }
+
+
 }

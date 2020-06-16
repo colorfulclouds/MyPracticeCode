@@ -1,5 +1,8 @@
 package com.hehe.BitTree;
 
+//https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/solution/mian-shi-ti-33-er-cha-sou-suo-shu-de-hou-xu-bian-6/
+//辅助单调栈解法？？？
+
 public class IsBinarySearchTreeSeq {
     public static void main(String[] args) {
         System.out.println(verifyPostorder(new int[]{5,7,6,9,11,10,8}));

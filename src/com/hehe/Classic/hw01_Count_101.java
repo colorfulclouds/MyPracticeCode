@@ -20,7 +20,7 @@ public class hw01_Count_101 {
                 isFind = true;
             } else if(!isFind)   //(input & flag) != 5 而且还要 isFind==false 才能 index++
                 index++;
-            input >>>= 1;
+            input >>>= 1;    //无符号数右移
         }
         if (!isFind)
             index = -1;

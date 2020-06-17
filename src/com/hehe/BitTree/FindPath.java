@@ -1,11 +1,15 @@
 package com.hehe.BitTree;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
 /**
  * 二叉树中和为某一值的路径
+ *
+ * 路径：从根节点到叶子结点
+ * 路段：路径上某一段
  */
 public class FindPath {
     public static void main(String[] args) {
@@ -14,6 +18,7 @@ public class FindPath {
         head.left.left = new Node(4);
         head.left.right = new Node(7);
         head.right = new Node(12);
+        head.right.right = new Node(1);
 //        findPath(head, 22);  //错误的
 
         LinkedList<List<Integer>> res = findPath01(head, 22);
@@ -36,17 +41,17 @@ public class FindPath {
         path.add(head.value);
         target -= head.value;
         if (target == 0 && head.left == null && head.right == null)
-//            res.add(new LinkedList<>(path));
             res.add(new LinkedList<>(path));
         recur(head.left, target);
         recur(head.right, target);
         path.removeLast();   // !
 
 
+
     }
 
     /**
-     * 只能打印出一条满足条件的路径
+     * 错误的！！！
      *
      * @param head
      * @param target

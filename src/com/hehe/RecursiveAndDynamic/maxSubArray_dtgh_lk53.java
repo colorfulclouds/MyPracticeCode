@@ -1,4 +1,4 @@
-package com.hehe.ArrayAndList;
+package com.hehe.RecursiveAndDynamic;
 
 /**
  *  给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
@@ -12,7 +12,7 @@ package com.hehe.ArrayAndList;
  *  * 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6
  */
 
-/**最大和的连续子数组(动态规划)
+/**最大和的连续子数组和(动态规划)
  * 动态规划转移方程
  * f(i) = max { f(i−1) + ai ,ai}
  *
@@ -26,12 +26,18 @@ public class maxSubArray_dtgh_lk53 {
     public static void main(String[] args) {
 //        int[] nums = {-2,4,-1,2,1,1,-3,-5,4};
         int[] nums = {1,-2,-3,-4,9,1};
+        int[] nums1 = {1,2,3,4,9,1};
 
-//        System.out.println(maxSubArray_dtgh_lk53(nums));
+        System.out.println(maxSubArray_dtgh_lk53(nums));
 
-        System.out.println(maxSubArrayPlus_dtgh_lk53(nums));
+//        System.out.println(maxSubArrayPlus_dtgh_lk53(nums1));
     }
 
+    /**
+     * 最大和的连续子数组和
+     * @param nums
+     * @return
+     */
     public static int maxSubArray_dtgh_lk53(int[] nums){
         int n = nums.length;
         int res_max = nums[0];

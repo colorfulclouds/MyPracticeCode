@@ -34,7 +34,7 @@ public class maxSubArray_dtgh_lk53 {
     }
 
     /**
-     * 最大和的连续子数组和
+     * 最大的连续子数组和
      * @param nums
      * @return
      */

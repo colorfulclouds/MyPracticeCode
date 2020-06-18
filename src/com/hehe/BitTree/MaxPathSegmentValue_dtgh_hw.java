@@ -2,6 +2,7 @@ package com.hehe.BitTree;
 
 /**
  * 动态规划求 树的 子路段的 最大和
+ * 题目中是1（2,3（4,5））的给定树的形式，需要重建树才能用本方法
  */
 public class MaxPathSegmentValue_dtgh_hw {
     public static void main(String[] args) {

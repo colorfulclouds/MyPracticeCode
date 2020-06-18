@@ -41,7 +41,7 @@ public class FindPath {
         path.add(head.value);
         target -= head.value;
         if (target == 0 && head.left == null && head.right == null)
-            res.add(new LinkedList<>(path));
+            res.add(new LinkedList<>(path));   //需要new 一个LinkedList结点 将path转型放进去
         recur(head.left, target);
         recur(head.right, target);
         path.removeLast();   // !

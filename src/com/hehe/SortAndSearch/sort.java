@@ -1,4 +1,4 @@
-package com.hehe.Notes;
+package com.hehe.SortAndSearch;
 
 public class sort {
 

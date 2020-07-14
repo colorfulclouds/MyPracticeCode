@@ -74,8 +74,8 @@ public class MergeSort {
      * 所以小和为1+1+3+1+1+3+4+2=16
      */
     /**
-     * 归并思想在小和问题上的应用 : 原mergeSort
-     * 本部分代码仍然有错 正确见（SortCodePra）
+     * 归并思想在小和问题上的应用 : 原mergeSort  本部分代码仍然有错 正确见（SortCodePra）
+     *
      * @param data
      * @param left
      * @param right

@@ -2,7 +2,7 @@ package com.hehe.Stack_Pra;
 
 import java.util.HashMap;
 
-import org.junit.Test;
+//import org.junit.Test;
 
 public class test {
 
@@ -50,7 +50,7 @@ public class test {
     /**
      * StringBuilder 的append()示例
      */
-    @Test
+//    @Test
     private static void testAppendAPIs() {
 
         System.out.println("-------------------------------- testAppendAPIs -------------------------------");

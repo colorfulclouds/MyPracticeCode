@@ -30,8 +30,8 @@ public class NextGreaterElement {
         for (int i = 0; i < length1; i++) {
 //            search = Arrays.binarySearch(nums2, nums1[i]) + 1;
             search = find(nums2, nums1[i]) + 1;  //nums1[i] 中的每个元素遍历过之后就没有作用了，将遍历过的元素置为结果元素
-            for (int j = search; j <= length2; j++) { // 没在第二个数组中找到该数字
-                if (j == 0 || j == length2) {
+            for (int j = search; j <= length2; j++) {
+                if (j == 0 || j == length2) { // 没在第二个数组中找到该数字
                     nums1[i] = -1;
                     break;
                 } else if (nums2[j] > nums1[i]) {

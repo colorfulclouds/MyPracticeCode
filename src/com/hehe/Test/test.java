@@ -1,6 +1,7 @@
 package com.hehe.Test;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class test {
 
@@ -15,12 +16,48 @@ public class test {
         a = a ^ b;
         //------------------------------------------------------------------------------------
 
-        String s1 = "123";
-        String s2 = "123";
-        String s3 = "ab";
-        String s4 = new String("ab");
+        Double bb = Double.valueOf(123.3);
 
 
+        Integer x1 = 100; //valueOf触发自动装箱
+//        Integer x5 = 100;
+//        Long l = 200L;
+        Integer x2 = Integer.valueOf(100);  // valueOf 装箱 （-128~127）
+        Integer x3 = new Integer(100);
+        Integer x4 = new Integer(100);
+        System.out.print("res1:   ");
+        System.out.println(x1==x2);
+        System.out.print("res2:   ");
+        System.out.println(x1==x3);
+        System.out.print("res3:   ");
+        System.out.println(x2==x3);
+        System.out.print("res4:   ");
+        System.out.println(x4==x3);
+
+//        System.out.println(l == (x1+x5));
+
+String aa= "sds";
+aa.equals("sds");
+
+
+        class Person{
+            String name;
+            int age;
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;  //this  Person对象的引用
+                if (o == null || getClass() != o.getClass()) return false;
+                Person person = (Person) o;
+                return age == person.age &&
+                        name.equals(person.name);
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hash(name, age);
+            }
+        }
         /**
          * 当调用 String 类的 intern（）方法时，若常量池中已经包含一个等于此 String 对象的字符串
          * （用 Object 的 equals 方法确定），则返回池中的字符串，否则将此 String 对象添加到池中，
@@ -33,14 +70,18 @@ public class test {
          * 所以，调用s3的intern方法后返回的引用就是s3本身的引用，而使用字面量声明的s4也是指向这个引用的，
          * 所以这两个地址相同
          */
+//        String s1 = "123";
+//        String s2 = "123";
+//        String s3 = "ab";
+//        String s4 = new String("ab");
+//
+//        String s5 = new String("ab") + new String("cd");
+//        s5.intern();
+//        String s6 = "abcd";
 
-        String s5 = new String("ab") + new String("cd");
-        s5.intern();
-        String s6 = "abcd";
-
-        System.out.println(s1 == s2); //true
-        System.out.println(s3 == s4); //false
-        System.out.println(s5 == s6); //true
+//        System.out.println(s1 == s2); //true
+//        System.out.println(s3 == s4); //false
+//        System.out.println(s5 == s6); //true
         //------------------------------------------------------------------------------------
 //        /**
 //         * Arrays.binarySearch 的测试

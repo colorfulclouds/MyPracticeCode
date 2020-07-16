@@ -9,23 +9,6 @@ public class IsBinarySearchTreeSeq {
         System.out.println(verifyPostorder(new int[]{7,4,6,5}));
     }
 
-    /**
-     * len做参数不对 （剑指offer 181页）疑问！！！
-     * @param order
-     * @param len
-     * @return
-     */
-//    public static boolean verifySequence(int[] order,int len){
-//        if(order == null || len<=0)
-//            return false;
-//        int root = order[len-1];
-//        int i = 0;
-//        while(order[i] < root) i++;
-//        int m = i;
-//        while (order[i] > root) i++;
-//        return i == len && verifySequence(order,m-1) && verifySequence(order,len);
-//
-//    }
 
     /**
      * 判断 给定序列 是否是 二叉搜索树的后序遍历序列

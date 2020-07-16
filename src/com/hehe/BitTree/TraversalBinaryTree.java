@@ -24,6 +24,7 @@ public class TraversalBinaryTree {
 
     /**
      * 层序遍历 用队列
+     *
      * @param head
      */
     public static void levelOrder(Node head) {
@@ -35,9 +36,9 @@ public class TraversalBinaryTree {
         while (!queue.isEmpty()) {  //注意栈空的判断 不能用queue != null 判断
             Node peek = queue.poll();
             System.out.print(peek.value + " ");
-            if(peek.left!=null)
+            if (peek.left != null)
                 queue.add(peek.left);
-            if(peek.right!=null)
+            if (peek.right != null)
                 queue.add(peek.right);
         }
     }
@@ -45,6 +46,7 @@ public class TraversalBinaryTree {
     /**
      * 层序遍历 用队列
      * 每一层打印一行（本方法返回数组，每个元素时每一层的结点）
+     *
      * @param head
      * @return
      */
@@ -59,9 +61,9 @@ public class TraversalBinaryTree {
             for (int i = 0; i < size; i++) { //遍历一层的结点 并将下一层全部入队列
                 Node peek = queue.poll();
                 tmp.add(peek.value);
-                if(peek.left!=null)
+                if (peek.left != null)
                     queue.add(peek.left);
-                if(peek.right!=null)
+                if (peek.right != null)
                     queue.add(peek.right);
             }
             list.add(tmp);
@@ -71,10 +73,9 @@ public class TraversalBinaryTree {
 
     /**
      * 之字形打印树
-     * @param head
-     * @return
      *
-     * hehe
+     * @param head
+     * @return hehe
      */
     public static List<List<Integer>> levelOrder02(Node head) {
         Queue<Node> queue = new ArrayDeque<>(); //new LinkedList<>();
@@ -88,17 +89,17 @@ public class TraversalBinaryTree {
 
             for (int i = 0; i < size; i++) { //遍历一层的结点 并将下一层全部入队列
                 Node peek = queue.poll();
-                if(n==0)  //也可以用结果数组的size ：if(res.size % 2 == 0)
+                if (n == 0)  //也可以用结果数组的size ：if(res.size % 2 == 0)
                     tmp.addLast(peek.value);
                 else
                     tmp.addFirst(peek.value);
-                if(peek.left!=null)
+                if (peek.left != null)
                     queue.add(peek.left);
-                if(peek.right!=null)
+                if (peek.right != null)
                     queue.add(peek.right);
             }
             res.add(tmp);
-            n = (n == 0)? 1:0;
+            n = (n == 0) ? 1 : 0;
 
         }
         return res;
@@ -107,30 +108,28 @@ public class TraversalBinaryTree {
 
     /**
      * 之字形打印树
-     * @param head
-     * @return
      *
-     *网友答案
+     * @param head
+     * @return 网友答案
      */
     public static List<List<Integer>> levelOrder03(Node head) {
         Queue<Node> queue = new LinkedList<>();
         List<List<Integer>> res = new ArrayList<>();
-        if(head != null)
+        if (head != null)
             queue.add(head);
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             LinkedList<Integer> tmp = new LinkedList<>();
-            for(int i = queue.size(); i > 0; i--) {
+            for (int i = queue.size(); i > 0; i--) {
                 Node node = queue.poll();
-                if(res.size() % 2 == 0) tmp.addLast(node.value); // 偶数层 -> 队列头部
+                if (res.size() % 2 == 0) tmp.addLast(node.value); // 偶数层 -> 队列头部
                 else tmp.addFirst(node.value); // 奇数层 -> 队列尾部
-                if(node.left != null) queue.add(node.left);
-                if(node.right != null) queue.add(node.right);
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
             }
             res.add(tmp);
         }
         return res;
     }
-
 
 
     //=========================前 中 后序的 递归实现================================
@@ -192,6 +191,7 @@ public class TraversalBinaryTree {
     /**
      * 错误的！！为什么呢？ArrayDeque不能用作Stack吗？？？
      * 结果是层序的结果
+     *
      * @param head
      */
     public static void preOrderUnRecur01(Node head) {
@@ -237,6 +237,7 @@ public class TraversalBinaryTree {
         System.out.println();
     }
 
+
     /**
      * 后序
      * 思想：前序是根左右，后序是左右根，借鉴前序，根节点先暂存起来，左右完毕之后再打印根节点
@@ -276,31 +277,52 @@ public class TraversalBinaryTree {
 
     /**
      * 后序 双栈
+     *根右左:进栈顺序是根左右（前序是根左右：进栈顺序是根右左） ———> 左右根
      * @param head
      */
-    public static void pos(Node head){
-        Stack<Node> s1= new Stack<>();
-        Stack<Node> s2= new Stack<>();
-        Node cur; //指向当前要检查的节点
+    public static void pos(Node head) {
+        Stack<Node> s1 = new Stack<>();
+        Stack<Node> s2 = new Stack<>();
         s1.push(head);
-        while (!s1.isEmpty()) //还有个 empty() 方法
-        {
-            cur = s1.peek();
-            s1.pop();
-//            cur = s1.pop();
-            s2.push(cur);
-            if (cur.left!=null)
-                s1.push(cur.left);
-            if (cur.right!=null)
-                s1.push(cur.right);
+        while (!s1.isEmpty()){   //还有个 empty() 方法
+            head = s1.pop();
+            s2.push(head);
+            if (head.left != null)
+                s1.push(head.left);
+            if (head.right != null)
+                s1.push(head.right);
         }
         System.out.println("pos_test:");
-        while (!s2.isEmpty())
-        {
-            System.out.print(s2.peek().value + " ");
-            s2.pop();
+        while (!s2.isEmpty()) {
+            System.out.print(s2.pop().value + " ");
+        }
+    }
 
-//            System.out.print(s2.pop().value + " ");
+
+    /**
+     * 后序遍历 单栈
+     * @param root
+     */
+    public static void pos2(Node root) {
+        System.out.println("pos2_test:");
+        Node r = null;
+//        List<Integer> ans = new ArrayList();  //可作为返回的集合元素
+        Deque<Node> stack = new ArrayDeque();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                root = stack.peek();
+                if (root.right == null || root.right == r) { //右节点为空 或者右节点遍历过了 才输出当前的根节点
+//                    ans.add(root.val);
+                    System.out.print(root.value + " ");
+                    r = root;  //用于存储上一个遍历的节点（左右根）
+                    stack.pop();
+                    root = null;
+                } else
+                    root = root.right;
+            }
         }
     }
 
@@ -363,10 +385,12 @@ public class TraversalBinaryTree {
         preOrderUnRecur(head);
         preOrderUnRecur01(head);
 
-		inOrderUnRecur(head);
+        inOrderUnRecur(head);
         posOrderUnRecur01(head);
 //        1 2 4 3 6 7 9 11 10 8 5
         pos(head);
+        System.out.println();
+        pos2(head);
         System.out.println();
 
 //		posOrderUnRecur02(head);

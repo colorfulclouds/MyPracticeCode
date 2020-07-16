@@ -1,21 +1,34 @@
 package com.hehe.BitTree;
 
-public class min_depth {
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
 
-        TreeNode(int x) {
-            val = x;
-        }
+    TreeNode(int x) {
+        val = x;
     }
+}
+public class DepthOfTree {
+
+
+
+    public static int max_depth(TreeNode root) {
+        if (root == null)
+            return 0;
+        int depth_left = max_depth(root.left);
+        int depth_right = max_depth(root.right);
+        return depth_left > depth_right ? depth_left + 1 : depth_right + 1;
+
+    }
+
 
     /**
      * 求给定二叉树的最小深度。最小深度是指树的根结点到最近叶子结点的最短路径上结点的数量。
-     *
+     * <p>
      * 若只有根结点和右结点，则最小深度是根结点到最近的叶子结点 ：右结点的 最短路径上结点的数量
+     *
      * @param root
      * @return
      */
@@ -29,7 +42,7 @@ public class min_depth {
         } else if (root.right == null) {  //右空 左不空
             return min_depth(root.left) + 1;
         }
-        return Math.min(min_depth(root.left), min_depth(root.right))+1;
+        return Math.min(min_depth(root.left), min_depth(root.right)) + 1;
     }
 
 
@@ -45,6 +58,11 @@ public class min_depth {
 
         int res = min_depth(head);
         System.out.println(res);
+
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        System.out.println(max_depth(root));
 
     }
 

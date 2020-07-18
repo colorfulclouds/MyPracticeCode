@@ -24,7 +24,7 @@ public class zf_me0716test {
 
         //看源码了解到，如果使用封装类Equals判断两个变量是否相等，首先需要他们是同一个类型的(同是Double或者同是Integer)，如果是值相等，就是true
         //用 == 判断时，判断的是地址，如果有表达式参与，则比较的是值
-        //Integer i= XXX 自动装箱，和Integer i= Integer.valueOf(10) 等价，范围在（-128~127）可以使用Integer缓冲池，超过此范围的自动装箱的两个数是不等的
+        //Integer i= XXX 自动装箱，和Integer i= Integer.valueOf(10) 等价，范围在（-128~127）可以使用Integer缓冲池，超过此范围的自动装箱的两个数用==判断是不等的，因为超过此范围的会重新new，地址不一样了
         //Integer i= XXX 和 Integer.valueOf(XXX)区别是 new 每次都会new一个新的对象，而Integer.valueOf(XXX) 可能会用缓存池的对象
 
 

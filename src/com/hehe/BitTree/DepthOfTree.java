@@ -12,15 +12,12 @@ class TreeNode {
 }
 public class DepthOfTree {
 
-
-
     public static int max_depth(TreeNode root) {
         if (root == null)
             return 0;
         int depth_left = max_depth(root.left);
         int depth_right = max_depth(root.right);
         return depth_left > depth_right ? depth_left + 1 : depth_right + 1;
-
     }
 
 
@@ -35,14 +32,20 @@ public class DepthOfTree {
     public static int min_depth(TreeNode root) {
         if (root == null) {  //无根
             return 0;
-        } else if (root.left == null && root.right == null) {   //单根
-            return 1;
-        } else if (root.left == null) {   //左空 右不空
-            return min_depth(root.right) + 1;
-        } else if (root.right == null) {  //右空 左不空
-            return min_depth(root.left) + 1;
         }
-        return Math.min(min_depth(root.left), min_depth(root.right)) + 1;
+        int depth_left = min_depth(root.left);
+        int depth_right = min_depth(root.right);
+
+//        else if (root.left == null && root.right == null) {   //单根
+//            return 1;
+//        } else if (root.left == null) {   //左空 右不空
+//            return min_depth(root.right) ;
+//        } else if (root.right == null) {  //右空 左不空
+//            return min_depth(root.left);
+//        }
+//        return Math.min(min_depth(root.left), min_depth(root.right)) + 1;
+
+        return Math.min(depth_left, depth_right) + 1;
     }
 
 
@@ -56,13 +59,17 @@ public class DepthOfTree {
         head.left.right.left = new TreeNode(5);
         head.left.right.right = new TreeNode(4);
 
-        int res = min_depth(head);
-        System.out.println(res);
-
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
+        root.left.left = new TreeNode(4);
         root.right = new TreeNode(3);
-        System.out.println(max_depth(root));
+
+        System.out.println("min_depth1: " + min_depth(head));
+        System.out.println("min_depth2: " + min_depth(root));
+
+        System.out.println("max_depth2： " + max_depth(head));
+        System.out.println("max_depth1： " + max_depth(root));
+
 
     }
 

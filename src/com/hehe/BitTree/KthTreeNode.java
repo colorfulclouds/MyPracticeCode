@@ -39,7 +39,7 @@ public class KthTreeNode {
 
     public static int Kth01(Node01 head, int k) {
         int res = 0;
-        System.out.println("第 " + k + " 大的数字是: ");
+        System.out.println("中序遍历的第 " + k + " 个数字是: ");
         if (head != null) {
             Stack<Node01> stack = new Stack<>();
 
@@ -63,7 +63,7 @@ public class KthTreeNode {
 
     public static int Kth02(Node01 head, int k) {
         int res = 0;
-        System.out.println("第 " + k + " 大的数字是: ");
+        System.out.println("中序遍历的第 " + k + " 大的数字是: ");
         if (head != null) {
             Stack<Node01> stack = new Stack<>();
 

@@ -11,7 +11,7 @@ public class test {
     public static void main(String[] args) {
         String s = "2dsdfd";
         int i = 0;
-        while(s.charAt(i) != '\0'){    //java中String 没有结束标识 '\0'
+        while(i<s.length()){    //java中String 没有结束标识 '\0',故不能用s.charAt(i)!='\0' 来判断串的结束
             System.out.println(s.charAt(i));
             i++;
         }

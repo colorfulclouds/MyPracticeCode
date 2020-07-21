@@ -8,7 +8,7 @@ import java.util.Map;
 /*
  * 两数之和等于既定的目标数字，找出这两个数，返回在数组的中的下标
  * */
-public class TwoNum {
+public class SumToTarget {
 
     public static void main(String[] args) {
 
@@ -28,19 +28,26 @@ public class TwoNum {
         for (int i : res)
             System.out.print(i + " ");
 
+        System.out.println();
         //3、和为 s 的连续正数序列
-        System.out.println("=====");
+        System.out.println("=====3-1=====");
         List<int[]> res1 = sumTos(9);
         for (int[] i : res1) {
-                System.out.print(i[0] + "~" +i[1]);
+            System.out.print(i[0] + "~" + i[1]);
             System.out.println();
         }
-
+        System.out.println("=====3-2=====");
+        List<int[]> res2  = sumTos01(9);
+        for (int[] i : res2) {
+            System.out.print(i[0] + "~" + i[1]);
+            System.out.println();
+        }
 
     }
 
     /**
-     * 3、和为 s 的连续正数序列
+     * 3-1、和为 s 的连续正数序列
+     *
      * @param s
      * @return
      */
@@ -48,12 +55,11 @@ public class TwoNum {
         int i = 1, j = 2;
         List<int[]> list = new ArrayList<>();
 
-        while (i < (1 + s) / 2) {
-            if (Sum(i, j) == s){
-                list.add(new int[]{i,j});
+        while (i < (1 + s) / 2) {  //因为序列至少要有两个数字，需要将i 增加到 （1+s）/2  的位置
+            if (Sum(i, j) == s) {
+                list.add(new int[]{i, j});
                 j++;
-            }
-            else if (Sum(i, j) < s && i < ((1 + s) / 2)) {
+            } else if (Sum(i, j) < s && i < ((1 + s) / 2)) {
                 j++;
             } else if ((Sum(i, j) > s && i < ((1 + s) / 2)))
                 i++;
@@ -66,14 +72,29 @@ public class TwoNum {
     }
 
 
-    /**
-     *
+    /**3-2、和为 s 的连续正数序列
+     * 滑动窗口
      * @param s
      * @return
      */
     public static List<int[]> sumTos01(int s) {
-
-        return null;
+        int i = 1, j = 2;
+        List<int[]> list = new ArrayList<>();
+        int curSum = i + j;
+        while (i < (1 + s) / 2) {
+            if(curSum == s){
+                list.add(new int[]{i, j});
+                j++;
+                curSum += j;
+            }else if(curSum < s &&  i < (1 + s) / 2){
+                j++;
+                curSum += j;
+            }else if(curSum > s &&  i < (1 + s) / 2){
+                curSum -= i;
+                i++;
+            }
+        }
+        return list;
     }
 
     /**

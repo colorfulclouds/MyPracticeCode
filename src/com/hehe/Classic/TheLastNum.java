@@ -43,6 +43,8 @@ public class TheLastNum {
      * @return
      */
     public static int fun01(int n, int m) {
+        if(n == 0)
+            return -1;
         int x = 0;
         for (int i = 1; i < n ; i++) {
             x =( x + m) % (i + 1);

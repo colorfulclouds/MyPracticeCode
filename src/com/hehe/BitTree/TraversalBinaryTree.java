@@ -73,13 +73,13 @@ public class TraversalBinaryTree {
 
     /**
      * 之字形打印树
-     *
+     * 与牛客保持一致 返回结果是ArrayList<ArrayList<Integer>> 类型
      * @param head
      * @return hehe
      */
-    public static List<List<Integer>> levelOrder02(Node head) {
+    public static ArrayList<ArrayList<Integer>> levelOrder02(Node head) {
         Queue<Node> queue = new ArrayDeque<>(); //new LinkedList<>();
-        List<List<Integer>> res = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         if (head != null)
             queue.add(head);
         int n = 0;  //判断奇偶层标志变量
@@ -98,9 +98,12 @@ public class TraversalBinaryTree {
                 if (peek.right != null)
                     queue.add(peek.right);
             }
-            res.add(tmp);
+            ArrayList<Integer> res_tmp = new ArrayList<>();
+            while (tmp.peekFirst() != null){
+                res_tmp.add(tmp.pollFirst());
+            }
+            res.add(res_tmp);
             n = (n == 0) ? 1 : 0;
-
         }
         return res;
     }
@@ -399,7 +402,7 @@ public class TraversalBinaryTree {
 //        levelOrder(head);
         List<List<Integer>> list = levelOrder01(head);
         System.out.println(list.toString());
-        List<List<Integer>> list1 = levelOrder02(head);
+        ArrayList<ArrayList<Integer>> list1 = levelOrder02(head);
         System.out.println(list1.toString());
         List<List<Integer>> list2 = levelOrder03(head);
         System.out.println(list2.toString());

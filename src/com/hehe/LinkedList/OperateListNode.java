@@ -108,4 +108,31 @@ public class OperateListNode {
         return cur;
 
     }
+
+    /**
+     * 链表去重
+     * @param pHead
+     * @return
+     */
+    public static ListNode deleteDuplication(ListNode pHead) {
+        if(pHead == null)
+            return new ListNode(-1);
+        else{
+            ListNode p = new ListNode(pHead.val);
+            ListNode cur = p;
+            pHead = pHead.next;
+            while(pHead != null){
+                while(pHead != null && cur.val == pHead.val){   //pHead为空时 若cur.val == pHead.val 在&&前，会报错应先判断 pHead != null
+                    pHead = pHead.next;
+                }
+                if(pHead != null){
+                    cur.next = new ListNode(pHead.val);
+                    cur = cur.next;
+                    pHead = pHead.next;
+                }
+            }
+            return p;
+        }
+
+    }
 }

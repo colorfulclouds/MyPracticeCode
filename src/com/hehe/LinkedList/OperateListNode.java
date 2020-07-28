@@ -28,14 +28,15 @@ public class OperateListNode {
         head.next = new ListNode(5);
         head.next.next = new ListNode(1);
         head.next.next.next = new ListNode(9);
-        //删除链表 测试用例
+//        删除链表 测试用例
         ListNode node = deleteNode(head.next, 4);
         while (node != null) {
-            System.out.println(node.val);
+            System.out.print(node.val + " ");
             node = node.next;
         }
+        System.out.println();
 
-        //反转链表 测试用例
+        System.out.println("=======反转链表 测试====================");
         ListNode reverseHead = reverseList(head);
         ListNode reverseHead01 = reverseList(null);
         ListNode reverseHead02 = reverseList(new ListNode(2));
@@ -43,14 +44,34 @@ public class OperateListNode {
             System.out.print(reverseHead.val + " ");
             reverseHead = reverseHead.next;
         }
+        System.out.println();
+
+        System.out.println("===========空白链表反转================");
         while(reverseHead01 != null){
             System.out.print(reverseHead01.val + " ");
             reverseHead01 = reverseHead01.next;
         }
+        System.out.println();
+
+        System.out.println("===========================");
         while(reverseHead02 != null){
             System.out.print(reverseHead02.val + " ");
             reverseHead02 = reverseHead02.next;
         }
+        System.out.println();
+
+
+        System.out.println("==========链表元素去重 测试===============");
+        ListNode head1 = new ListNode(4);
+        head1.next = new ListNode(4);
+        head1.next.next = new ListNode(5);
+        head1.next.next.next = new ListNode(5);
+        ListNode res = deleteDuplication(head1);
+        while(res != null){
+            System.out.print(res.val + " ");
+            res = res.next;
+        }
+        System.out.println();
 
     }
 

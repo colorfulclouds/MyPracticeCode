@@ -43,6 +43,14 @@ public class KthTreeNode {
         if (head != null) {
             Stack<Node01> stack = new Stack<>();
 
+            /**
+             *测试代码
+             */
+//            if(stack == null)  //false
+//                System.out.println();
+//            if(stack.isEmpty())  //true
+//                System.out.println();
+
             while (!stack.isEmpty() || head != null) {
                 if (head != null) {
                     stack.push(head);

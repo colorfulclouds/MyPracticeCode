@@ -1,5 +1,7 @@
 package com.hehe.LinkedList;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 class ListNode {
     int val;
     ListNode next;
@@ -17,7 +19,7 @@ class ListNode {
  * 说明：
  * 题目保证链表中节点的值互不相同
  * 若使用 C 或 C++ 语言，你不需要 free 或 delete 被删除的节点
- *
+ * <p>
  * 2、反转链表
  */
 public class OperateListNode {
@@ -28,7 +30,8 @@ public class OperateListNode {
         head.next = new ListNode(5);
         head.next.next = new ListNode(1);
         head.next.next.next = new ListNode(9);
-//        删除链表 测试用例
+//
+        System.out.println("=======删除链表 测试用例====================");
         ListNode node = deleteNode(head.next, 4);
         while (node != null) {
             System.out.print(node.val + " ");
@@ -40,21 +43,21 @@ public class OperateListNode {
         ListNode reverseHead = reverseList(head);
         ListNode reverseHead01 = reverseList(null);
         ListNode reverseHead02 = reverseList(new ListNode(2));
-        while(reverseHead != null){
+        while (reverseHead != null) {
             System.out.print(reverseHead.val + " ");
             reverseHead = reverseHead.next;
         }
         System.out.println();
 
         System.out.println("===========空白链表反转================");
-        while(reverseHead01 != null){
+        while (reverseHead01 != null) {
             System.out.print(reverseHead01.val + " ");
             reverseHead01 = reverseHead01.next;
         }
         System.out.println();
 
         System.out.println("===========================");
-        while(reverseHead02 != null){
+        while (reverseHead02 != null) {
             System.out.print(reverseHead02.val + " ");
             reverseHead02 = reverseHead02.next;
         }
@@ -67,11 +70,47 @@ public class OperateListNode {
         head1.next.next = new ListNode(5);
         head1.next.next.next = new ListNode(5);
         ListNode res = deleteDuplication(head1);
-        while(res != null){
+        while (res != null) {
             System.out.print(res.val + " ");
             res = res.next;
         }
         System.out.println();
+
+        System.out.println("==========链表中 将有重复的元素 全部去掉===============");
+//        ListNode head2 = new ListNode(1);
+//        head2.next = new ListNode(2);
+//        head2.next.next = new ListNode(3);
+//        head2.next.next.next = new ListNode(3);
+//        head2.next.next.next.next = new ListNode(4);
+//        head2.next.next.next.next.next = new ListNode(4);
+//        head2.next.next.next.next.next.next = new ListNode(5);
+        ListNode head2 = new ListNode(1);
+        head2.next = new ListNode(1);
+        head2.next.next = new ListNode(1);
+        head2.next.next.next = new ListNode(1);
+        head2.next.next.next.next = new ListNode(1);
+        head2.next.next.next.next.next = new ListNode(1);
+        head2.next.next.next.next.next.next = new ListNode(1);
+        //       ListNode resx = deleteDuplication01(head2);
+//        if(resx != null){
+//            while(resx != null){
+//                System.out.println(resx.val + " ");
+//                resx = resx.next;
+//            }
+//        }else{
+//            System.out.println("null");
+//        }
+
+
+        ListNode resx1 = deleteDuplication02(head2);
+        if (resx1 != null) {
+            while (resx1 != null) {
+                System.out.println(resx1.val + " ");
+                resx1 = resx1.next;
+            }
+        } else {
+            System.out.println("null");
+        }
 
     }
 
@@ -96,7 +135,7 @@ public class OperateListNode {
             p1 = p1.next;
             p2 = p1.next;
         }
-        if (p2.val == val) {
+        if (p2 != null && p2.val == val) {
             p1.next = p2.next;
             p2 = p1.next;
             return head;
@@ -109,17 +148,17 @@ public class OperateListNode {
      * @param head
      * @return
      */
-    static ListNode reverseList(ListNode head){
-        if(head == null)
+    static ListNode reverseList(ListNode head) {
+        if (head == null)
             return null;
-        if(head.next == null)
+        if (head.next == null)
             return head;
 
         ListNode pre = null;
         ListNode cur = head;
         ListNode tmp = cur.next;
 
-        while(tmp!=null){
+        while (tmp != null) {
             cur.next = pre;
             pre = cur;
             cur = tmp;
@@ -132,21 +171,22 @@ public class OperateListNode {
 
     /**
      * 链表去重
+     *
      * @param pHead
      * @return
      */
     public static ListNode deleteDuplication(ListNode pHead) {
-        if(pHead == null)
+        if (pHead == null)
             return new ListNode(-1);
-        else{
+        else {
             ListNode p = new ListNode(pHead.val);
             ListNode cur = p;
             pHead = pHead.next;
-            while(pHead != null){
-                while(pHead != null && cur.val == pHead.val){   //pHead为空时 若cur.val == pHead.val 在&&前，会报错应先判断 pHead != null
+            while (pHead != null) {
+                while (pHead != null && cur.val == pHead.val) {   //pHead为空时 若cur.val == pHead.val 在&&前，会报错应先判断 pHead != null
                     pHead = pHead.next;
                 }
-                if(pHead != null){
+                if (pHead != null) {
                     cur.next = new ListNode(pHead.val);
                     cur = cur.next;
                     pHead = pHead.next;
@@ -156,4 +196,106 @@ public class OperateListNode {
         }
 
     }
+
+
+    /**
+     * 01、链表中 将有重复的元素 全部去掉
+     * 1 2 2 3 3 4
+     * 1 4
+     *
+     * hehe
+     * @param pHead
+     * @return
+     */
+    public static ListNode deleteDuplication01(ListNode pHead) {
+        if (pHead == null || pHead.next == null)
+            return pHead;
+
+        HashMap<Integer, Integer> map = new HashMap<>(); //计数map
+
+        while (pHead != null) {
+            map.put(pHead.val, map.getOrDefault(pHead.val, 0) + 1);  // HashMap得更新值操作
+//            if(!map.containsKey(pHead.val))
+//                map.put(pHead.val,1);
+//            else
+//                map.put(pHead.val,map.get(pHead.val)+1);
+            pHead = pHead.next;
+        }
+
+        ArrayList<Integer> res_arr = new ArrayList<>();  //动态结果数组
+        for (Integer k : map.keySet()) {
+            if (map.get(k) == 1)
+                res_arr.add(k);
+        }
+        ListNode res_list = new ListNode(-1);  //！！！哑结点！！！
+        ListNode p = res_list;
+        for (int i = 0; i < res_arr.size(); i++) {
+            p.next = new ListNode(res_arr.get(i));
+            p = p.next;
+        }
+        return res_list.next;
+    }
+
+    /**
+     * 02、链表中 将有重复的元素 全部去掉
+     * 双指针 同起步 在原链表上操作
+     *
+     * zhangfan
+     * @param pHead
+     * @return
+     */
+    public static ListNode deleteDuplication02(ListNode pHead) {
+        ListNode pre, last;
+        ListNode H = new ListNode(-1);
+        H.next = pHead;
+        pre = H;
+        last = H;
+
+        while (last != null) {
+            if (last.next == null || last.next.next == null || last.next.val != last.next.next.val) {
+                pre.next = last.next;
+                pre = pre.next;
+//                last=last.next;
+                last = pre;
+                continue;
+            }
+            last = last.next;
+            while (last.next != null && last.val == last.next.val) {
+                last = last.next;
+            }
+        }
+        return H.next;
+
+    }
+
+    /**
+     * 03、链表中 将有重复的元素 全部去掉
+     * 双指针 不同起步 在原链表上操作
+     * @param pHead
+     * @return
+     */
+    public static ListNode deleteDuplication0X(ListNode pHead) {
+        if(pHead == null || pHead.next == null)
+            return pHead;
+
+        ListNode H = new ListNode(-1);
+        H.next = pHead;
+        ListNode pre = H;
+        ListNode last = H.next;
+        while(last != null){
+            if(last.next != null && last.val == last.next.val){
+                while(last.next != null && last.val == last.next.val)
+                    last = last.next;
+                pre.next = last.next;
+                last = last.next;
+            }else{
+                pre = pre.next;
+                last = last.next;
+            }
+        }
+        return H.next;
+    }
+
+
+
 }

@@ -2,6 +2,11 @@ package com.hehe.GreedAlgrithom;
 
 import java.util.*;
 
+/**
+ * M机器数 N请求数
+ * 请求结构体（需要内存大小，收益）
+ * 求最大收益
+ */
 public class ResourceRequest_hw {
     public static class Request {
         int size;
@@ -10,6 +15,15 @@ public class ResourceRequest_hw {
         public Request(int size, int cost) {
             this.size = size;
             this.cost = cost;
+        }
+
+        @Override
+        public boolean equals(Object o) {   // 复习一下重写equals方法
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Request request = (Request) o;
+            return size == request.size &&
+                    cost == request.cost;
         }
 
     }

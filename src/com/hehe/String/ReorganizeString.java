@@ -1,6 +1,9 @@
 package com.hehe.String;
 
-public class Main {
+/**
+ *重组字符串 若能相同元素的不相邻 即为可重组字符串
+ */
+public class ReorganizeString {
     public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
         String s = "zzzzaabbb";

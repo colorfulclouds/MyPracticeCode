@@ -17,7 +17,7 @@ import java.util.Arrays;
  */
 
 
-public class ReplaceBlank {
+public class replaceBlank_easy {
 
     public static void main(String[] args) {
 //        String str = "Awe are family.";

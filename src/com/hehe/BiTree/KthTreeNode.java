@@ -1,29 +1,21 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 import java.util.Stack;
 
 /**
  * 中序遍历的应用：二叉搜索树的第K大节点(从小到大 或者 从大到小)
  */
-class Node01 {
-    int value;
-    Node01 left;
-    Node01 right;
 
-    Node01(int data) {
-        this.value = data;
-    }
-}
 
 public class KthTreeNode {
     public static void main(String[] args) {
-        Node01 root = new Node01(5);
-        root.left = new Node01(3);
-        root.left.left = new Node01(2);
-        root.left.right = new Node01(4);
-        root.right = new Node01(7);
-        root.right.left = new Node01(6);
-        root.right.right = new Node01(8);
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.right = new TreeNode(7);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(8);
 
 //        System.out.println(KthNodeCore(root, 3).value);  // X
 
@@ -37,11 +29,11 @@ public class KthTreeNode {
     }
 
 
-    public static int Kth01(Node01 head, int k) {
+    public static int Kth01(TreeNode head, int k) {
         int res = 0;
         System.out.println("中序遍历的第 " + k + " 个数字是: ");
         if (head != null) {
-            Stack<Node01> stack = new Stack<>();
+            Stack<TreeNode> stack = new Stack<>();
 
             /**
              *测试代码
@@ -59,7 +51,7 @@ public class KthTreeNode {
                     head = stack.pop();
 //                    System.out.print(head.value + " ");
                     if (k == 1)
-                        res = head.value;
+                        res = head.val;
                     k--;
                     head = head.right;
                 }
@@ -69,11 +61,11 @@ public class KthTreeNode {
         return res;
     }
 
-    public static int Kth02(Node01 head, int k) {
+    public static int Kth02(TreeNode head, int k) {
         int res = 0;
         System.out.println("中序遍历的第 " + k + " 大的数字是: ");
         if (head != null) {
-            Stack<Node01> stack = new Stack<>();
+            Stack<TreeNode> stack = new Stack<>();
 
             while (!stack.isEmpty() || head != null) {
                 if (head != null) {
@@ -83,7 +75,7 @@ public class KthTreeNode {
                     head = stack.pop();
 //                    System.out.print(head.value + " ");
                     if (k == 1)
-                        res = head.value;
+                        res = head.val;
                     k--;
                     head = head.left;
                 }
@@ -99,17 +91,17 @@ public class KthTreeNode {
      */
     int res, k = 3;
 
-    public int Kth(Node01 root, int k) {
+    public int Kth(TreeNode root, int k) {
         this.k = k;
         dfs(root);
         return res;
     }
 
-    void dfs(Node01 root) {
+    void dfs(TreeNode root) {
         if (root == null) return;
         dfs(root.right);
         if (k == 0) return;
-        if (--k == 0) res = root.value;
+        if (--k == 0) res = root.val;
         dfs(root.left);
     }
 
@@ -124,7 +116,7 @@ public class KthTreeNode {
      * @param k
      * @return
      */
-    public static Node01 KthNode(Node01 root, int k) {
+    public static TreeNode KthNode(TreeNode root, int k) {
 
 //        if(root == null || k == 0){
 //            return null;
@@ -132,8 +124,8 @@ public class KthTreeNode {
         return KthNodeCore(root, k);
     }
 
-    public static Node01 KthNodeCore(Node01 root, int k) {
-        Node01 target = null;
+    public static TreeNode KthNodeCore(TreeNode root, int k) {
+        TreeNode target = null;
 
         if (root.left != null)
             target = KthNodeCore(root.left, k);

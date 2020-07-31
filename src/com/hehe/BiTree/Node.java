@@ -1,4 +1,4 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 public class Node {
     private int data;

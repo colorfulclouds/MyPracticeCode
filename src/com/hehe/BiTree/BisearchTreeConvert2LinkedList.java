@@ -1,4 +1,4 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 /**
  * 递归解决 二叉树转换为双向循环链表

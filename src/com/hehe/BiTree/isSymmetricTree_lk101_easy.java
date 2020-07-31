@@ -1,4 +1,4 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 /**
  * 给定一个二叉树，检查它是否是镜像对称的。
@@ -39,15 +39,15 @@ public class isSymmetricTree_lk101_easy {
 //            return false;
     }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+//    public static class TreeNode {
+//        int val;
+//        TreeNode left;
+//        TreeNode right;
+//
+//        TreeNode(int x) {
+//            val = x;
+//        }
+//    }
 
 
     /**

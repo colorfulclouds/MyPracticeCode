@@ -1,4 +1,4 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 /**
  * 动态规划求 树的 子路段的 最大和
@@ -6,15 +6,15 @@ package com.hehe.BitTree;
  */
 public class MaxPathSegmentValue_dtgh_hw {
     public static void main(String[] args) {
-        Node node = new Node(-1);
+        TreeNode node = new TreeNode(-1);
 //        node.left = new Node(3);
 //        node.right = new Node(2);
 //        node.right.left = new Node(0);
 //        node.right.right = new Node(-1); //3
-        node.left = new Node(3);
-        node.right = new Node(2);
-        node.right.right = new Node(-1);
-        node.right.right.right = new Node(3);  //4
+        node.left = new TreeNode(3);
+        node.right = new TreeNode(2);
+        node.right.right = new TreeNode(-1);
+        node.right.right.right = new TreeNode(3);  //4
 
         System.out.println(findPathSegment(node));
 
@@ -27,15 +27,15 @@ public class MaxPathSegmentValue_dtgh_hw {
      * @param head
      * @return
      */
-    public static int findPathSegment(Node head) {
+    public static int findPathSegment(TreeNode head) {
         int cur_max = 0, res_max = 0;
         int max = recur(head, cur_max, res_max);
         return max;
     }
 
-    static int recur(Node head, int cur_max, int res_max) {
+    static int recur(TreeNode head, int cur_max, int res_max) {
         if (head == null) return 0;
-        cur_max = Math.max(cur_max + head.value, head.value);
+        cur_max = Math.max(cur_max + head.val, head.val);
         res_max = Math.max(cur_max, res_max);
 
         if (head.left == null && head.right == null)
@@ -45,15 +45,4 @@ public class MaxPathSegmentValue_dtgh_hw {
         }
     }
 
-
-    // Node 结构体
-    public static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
-            this.value = data;
-        }
-    }
 }

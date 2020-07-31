@@ -1,4 +1,4 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 public class isBalance {
     public static void main(String[] args) {
@@ -46,7 +46,7 @@ public class isBalance {
 
 
 
-    // Node 结构体
+//     Node 结构体
     public static class Node {
         int value;
         Node left;

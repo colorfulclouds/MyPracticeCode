@@ -1,15 +1,16 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
+//class TreeNode {
+//    int val;
+//    TreeNode left;
+//    TreeNode right;
+//
+//    TreeNode(int x) {
+//        val = x;
+//    }
+//}
+//import com.hehe.BiTree.TreeNode;
 public class DepthOfTree {
 
     public static int max_depth(TreeNode root) {

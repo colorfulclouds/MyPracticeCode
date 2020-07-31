@@ -1,6 +1,4 @@
-package com.hehe.BitTree;
-
-import java.util.concurrent.Phaser;
+package com.hehe.BiTree;
 
 public class HasSubTree {
     public static void main(String[] args) {
@@ -75,13 +73,13 @@ public class HasSubTree {
     }
 
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+//    public static class TreeNode {
+//        int val;
+//        TreeNode left;
+//        TreeNode right;
+//
+//        TreeNode(int x) {
+//            val = x;
+//        }
+//    }
 }

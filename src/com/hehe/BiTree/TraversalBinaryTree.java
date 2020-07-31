@@ -1,6 +1,5 @@
-package com.hehe.BitTree;
+package com.hehe.BiTree;
 
-import javax.jnlp.IntegrationService;
 import java.util.*;
 
 /**
@@ -9,17 +8,6 @@ import java.util.*;
 
 public class TraversalBinaryTree {
 
-    // Node 结构体
-    public static class Node {
-        int value;
-        Node left;
-        Node right;
-
-        Node(int data) {
-            this.value = data;
-        }
-    }
-
     //=========================层序遍历================================
 
     /**
@@ -27,15 +15,15 @@ public class TraversalBinaryTree {
      *
      * @param head
      */
-    public static void levelOrder(Node head) {
-        Queue<Node> queue = new ArrayDeque<>(); //new LinkedList<>();
+    public static void levelOrder(TreeNode head) {
+        Queue<TreeNode> queue = new ArrayDeque<>(); //new LinkedList<>();
 //        queue.
 
         if (head != null)
             queue.add(head);
         while (!queue.isEmpty()) {  //注意栈空的判断 不能用queue != null 判断
-            Node peek = queue.poll();
-            System.out.print(peek.value + " ");
+            TreeNode peek = queue.poll();
+            System.out.print(peek.val + " ");
             if (peek.left != null)
                 queue.add(peek.left);
             if (peek.right != null)
@@ -50,8 +38,8 @@ public class TraversalBinaryTree {
      * @param head
      * @return
      */
-    public static List<List<Integer>> levelOrder01(Node head) {
-        Queue<Node> queue = new ArrayDeque<>(); //new LinkedList<>();
+    public static List<List<Integer>> levelOrder01(TreeNode head) {
+        Queue<TreeNode> queue = new ArrayDeque<>(); //new LinkedList<>();
         List<List<Integer>> list = new ArrayList<>();
         if (head != null)
             queue.add(head);
@@ -59,8 +47,8 @@ public class TraversalBinaryTree {
             int size = queue.size();  //当前层的结点数目
             ArrayList<Integer> tmp = new ArrayList<>();  //非双端队列 数组列表即可
             for (int i = 0; i < size; i++) { //遍历一层的结点 并将下一层全部入队列
-                Node peek = queue.poll();
-                tmp.add(peek.value);
+                TreeNode peek = queue.poll();
+                tmp.add(peek.val);
                 if (peek.left != null)
                     queue.add(peek.left);
                 if (peek.right != null)
@@ -77,8 +65,8 @@ public class TraversalBinaryTree {
      * @param head
      * @return hehe
      */
-    public static ArrayList<ArrayList<Integer>> levelOrder02(Node head) {
-        Queue<Node> queue = new ArrayDeque<>(); //new LinkedList<>();
+    public static ArrayList<ArrayList<Integer>> levelOrder02(TreeNode head) {
+        Queue<TreeNode> queue = new ArrayDeque<>(); //new LinkedList<>();
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         if (head != null)
             queue.add(head);
@@ -88,11 +76,11 @@ public class TraversalBinaryTree {
             LinkedList<Integer> tmp = new LinkedList<>();  //双端队列
 
             for (int i = 0; i < size; i++) { //遍历一层的结点 并将下一层全部入队列
-                Node peek = queue.poll();
+                TreeNode peek = queue.poll();
                 if (n == 0)  //也可以用结果数组的size ：if(res.size % 2 == 0)
-                    tmp.addLast(peek.value);
+                    tmp.addLast(peek.val);
                 else
-                    tmp.addFirst(peek.value);
+                    tmp.addFirst(peek.val);
                 if (peek.left != null)
                     queue.add(peek.left);
                 if (peek.right != null)
@@ -115,17 +103,17 @@ public class TraversalBinaryTree {
      * @param head
      * @return 网友答案
      */
-    public static List<List<Integer>> levelOrder03(Node head) {
-        Queue<Node> queue = new LinkedList<>();
+    public static List<List<Integer>> levelOrder03(TreeNode head) {
+        Queue<TreeNode> queue = new LinkedList<>();
         List<List<Integer>> res = new ArrayList<>();
         if (head != null)
             queue.add(head);
         while (!queue.isEmpty()) {
             LinkedList<Integer> tmp = new LinkedList<>();
             for (int i = queue.size(); i > 0; i--) {
-                Node node = queue.poll();
-                if (res.size() % 2 == 0) tmp.addLast(node.value); // 偶数层 -> 队列头部
-                else tmp.addFirst(node.value); // 奇数层 -> 队列尾部
+                TreeNode node = queue.poll();
+                if (res.size() % 2 == 0) tmp.addLast(node.val); // 偶数层 -> 队列头部
+                else tmp.addFirst(node.val); // 奇数层 -> 队列尾部
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
             }
@@ -136,29 +124,29 @@ public class TraversalBinaryTree {
 
 
     //=========================前 中 后序的 递归实现================================
-    public static void preOrderRecur(Node head) {
+    public static void preOrderRecur(TreeNode head) {
         if (head != null) {
-            System.out.println(head.value + " ");
+            System.out.println(head.val + " ");
             preOrderRecur(head.left);
             preOrderRecur(head.right);
         }
 
     }
 
-    public static void inOrderRecur(Node head) {
+    public static void inOrderRecur(TreeNode head) {
         if (head != null) {
             inOrderRecur(head.left);
-            System.out.println(head.value + " ");
+            System.out.println(head.val + " ");
             inOrderRecur(head.right);
         }
 
     }
 
-    public static void posOrderRecur(Node head) {
+    public static void posOrderRecur(TreeNode head) {
         if (head != null) {
             inOrderRecur(head.left);
             inOrderRecur(head.right);
-            System.out.println(head.value + " ");
+            System.out.println(head.val + " ");
         }
 
     }
@@ -172,14 +160,14 @@ public class TraversalBinaryTree {
      *
      * @param head
      */
-    public static void preOrderUnRecur(Node head) {
+    public static void preOrderUnRecur(TreeNode head) {
         System.out.print("pre-order: ");
         if (head != null) {
-            Stack<Node> stack = new Stack<>();
+            Stack<TreeNode> stack = new Stack<>();
             stack.add(head);
             while (!stack.isEmpty()) { // 需要循环  错写成了if
                 head = stack.pop();  //使用了head变量
-                System.out.print(head.value + " ");
+                System.out.print(head.val + " ");
                 if (head.right != null) {
                     stack.push(head.right); // 先右再左 保证是先序遍历
                 }
@@ -197,14 +185,14 @@ public class TraversalBinaryTree {
      *
      * @param head
      */
-    public static void preOrderUnRecur01(Node head) {
+    public static void preOrderUnRecur01(TreeNode head) {
         System.out.print("pre-order01: ");
         if (head != null) {
-            Queue<Node> stack = new ArrayDeque<>();
+            Queue<TreeNode> stack = new ArrayDeque<>();
             stack.add(head);
             while (!stack.isEmpty()) { // 需要循环  错写成了if
                 head = stack.poll();  //使用了head变量
-                System.out.print(head.value + " ");
+                System.out.print(head.val + " ");
                 if (head.left != null) {
                     stack.add(head.left); // 先右再左 保证是先序遍历
                 }
@@ -221,10 +209,10 @@ public class TraversalBinaryTree {
      *
      * @param head
      */
-    public static void inOrderUnRecur(Node head) {
+    public static void inOrderUnRecur(TreeNode head) {
         System.out.println("in-order: ");
         if (head != null) {
-            Stack<Node> stack = new Stack<>();
+            Stack<TreeNode> stack = new Stack<>();
 
             while (!stack.isEmpty() || head != null) {
                 if (head != null) {
@@ -232,7 +220,7 @@ public class TraversalBinaryTree {
                     head = head.left;
                 } else {
                     head = stack.pop();
-                    System.out.print(head.value + " ");
+                    System.out.print(head.val + " ");
                     head = head.right;
                 }
             }
@@ -249,12 +237,12 @@ public class TraversalBinaryTree {
      *
      * @param head
      */
-    public static void posOrderUnRecur01(Node head) {
+    public static void posOrderUnRecur01(TreeNode head) {
         System.out.println("pos-order: ");
-        Stack<Node> s3 = new Stack<>();
+        Stack<TreeNode> s3 = new Stack<>();
         if (head != null) {
-            Stack<Node> s1 = new Stack<>();
-            Stack<Node> s2 = new Stack<>();
+            Stack<TreeNode> s1 = new Stack<>();
+            Stack<TreeNode> s2 = new Stack<>();
             s1.push(head);
             while (!s1.isEmpty()) {
                 head = s1.pop();
@@ -273,7 +261,7 @@ public class TraversalBinaryTree {
         }
         //逆序输出才是正确答案
         while (!s3.isEmpty()) {
-            System.out.print(s3.pop().value + " ");
+            System.out.print(s3.pop().val + " ");
         }
         System.out.println();
     }
@@ -283,9 +271,9 @@ public class TraversalBinaryTree {
      *根右左:进栈顺序是根左右（前序是根左右：进栈顺序是根右左） ———> 左右根
      * @param head
      */
-    public static void pos(Node head) {
-        Stack<Node> s1 = new Stack<>();
-        Stack<Node> s2 = new Stack<>();
+    public static void pos(TreeNode head) {
+        Stack<TreeNode> s1 = new Stack<>();
+        Stack<TreeNode> s2 = new Stack<>();
         s1.push(head);
         while (!s1.isEmpty()){   //还有个 empty() 方法
             head = s1.pop();
@@ -297,7 +285,7 @@ public class TraversalBinaryTree {
         }
         System.out.println("pos_test:");
         while (!s2.isEmpty()) {
-            System.out.print(s2.pop().value + " ");
+            System.out.print(s2.pop().val + " ");
         }
     }
 
@@ -306,11 +294,11 @@ public class TraversalBinaryTree {
      * 后序遍历 单栈
      * @param root
      */
-    public static void pos2(Node root) {
+    public static void pos2(TreeNode root) {
         System.out.println("pos2_test:");
-        Node r = null;
+        TreeNode r = null;
 //        List<Integer> ans = new ArrayList();  //可作为返回的集合元素
-        Deque<Node> stack = new ArrayDeque();
+        Deque<TreeNode> stack = new ArrayDeque();
         while (!stack.isEmpty() || root != null) {
             if (root != null) {
                 stack.push(root);
@@ -319,7 +307,7 @@ public class TraversalBinaryTree {
                 root = stack.peek();
                 if (root.right == null || root.right == r) { //右节点为空 或者右节点遍历过了 才输出当前的根节点
 //                    ans.add(root.val);
-                    System.out.print(root.value + " ");
+                    System.out.print(root.val + " ");
                     r = root;  //用于存储上一个遍历的节点（左右根）
                     stack.pop();
                     root = null;
@@ -334,12 +322,12 @@ public class TraversalBinaryTree {
      *
      * @param head
      */
-    public static void posOrderUnRecur02(Node head) {
+    public static void posOrderUnRecur02(TreeNode head) {
         System.out.println("pos-order: ");
         if (head != null) {
-            Stack<Node> stack = new Stack<>();
+            Stack<TreeNode> stack = new Stack<>();
             stack.push(head);
-            Node c = null;
+            TreeNode c = null;
             while (!stack.isEmpty()) {
                 c = stack.peek();
                 if (c.left != null && head != c.left && head != c.right) {
@@ -347,7 +335,7 @@ public class TraversalBinaryTree {
                 } else if (c.right != null && head != c.right) {
                     stack.push(c.right);
                 } else {
-                    System.out.print(stack.pop().value + " ");
+                    System.out.print(stack.pop().val + " ");
                     head = c;
                 }
             }
@@ -356,17 +344,17 @@ public class TraversalBinaryTree {
     }
 
     public static void main(String[] args) {
-        Node head = new Node(5);
-        head.left = new Node(3);
-        head.right = new Node(8);
-        head.left.left = new Node(2);
-        head.left.right = new Node(4);
-        head.left.left.left = new Node(1);
-        head.right.left = new Node(7);
-        head.right.left.left = new Node(6);
-        head.right.right = new Node(10);
-        head.right.right.left = new Node(9);
-        head.right.right.right = new Node(11);
+        TreeNode head = new TreeNode(5);
+        head.left = new TreeNode(3);
+        head.right = new TreeNode(8);
+        head.left.left = new TreeNode(2);
+        head.left.right = new TreeNode(4);
+        head.left.left.left = new TreeNode(1);
+        head.right.left = new TreeNode(7);
+        head.right.left.left = new TreeNode(6);
+        head.right.right = new TreeNode(10);
+        head.right.right.left = new TreeNode(9);
+        head.right.right.right = new TreeNode(11);
 
         // recursive
         System.out.println("==============recursive  递归==============");

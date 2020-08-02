@@ -22,13 +22,15 @@ public class KthTreeNode {
         System.out.println(Kth01(root, 3)); //从小到大数
         System.out.println(Kth02(root, 3)); //从大到小数
 
-
-
-//        System.out.println();
-
     }
 
 
+    /**
+     * 中序遍历的第 k个数字是:
+     * @param head
+     * @param k
+     * @return
+     */
     public static int Kth01(TreeNode head, int k) {
         int res = 0;
         System.out.println("中序遍历的第 " + k + " 个数字是: ");
@@ -36,7 +38,7 @@ public class KthTreeNode {
             Stack<TreeNode> stack = new Stack<>();
 
             /**
-             *测试代码
+             *测试代码21
              */
 //            if(stack == null)  //false
 //                System.out.println();
@@ -61,6 +63,12 @@ public class KthTreeNode {
         return res;
     }
 
+    /**
+     * 中序遍历的第k大的数字
+     * @param head
+     * @param k
+     * @return
+     */
     public static int Kth02(TreeNode head, int k) {
         int res = 0;
         System.out.println("中序遍历的第 " + k + " 大的数字是: ");
@@ -86,44 +94,6 @@ public class KthTreeNode {
     }
 
 
-    /**
-     *what's this????
-     */
-    int res, k = 3;
-
-    public int Kth(TreeNode root, int k) {
-        this.k = k;
-        dfs(root);
-        return res;
-    }
-
-    void dfs(TreeNode root) {
-        if (root == null) return;
-        dfs(root.right);
-        if (k == 0) return;
-        if (--k == 0) res = root.val;
-        dfs(root.left);
-    }
-
-    /**
-     *what's this????
-     */
-
-    /**
-     * 错误的!!!!
-     *
-     * @param root
-     * @param k
-     * @return
-     */
-    public static TreeNode KthNode(TreeNode root, int k) {
-
-//        if(root == null || k == 0){
-//            return null;
-//        }
-        return KthNodeCore(root, k);
-    }
-
     public static TreeNode KthNodeCore(TreeNode root, int k) {
         TreeNode target = null;
 
@@ -139,7 +109,6 @@ public class KthTreeNode {
             target = KthNodeCore(root.right, k);
         }
         return target;
-
     }
 }
 

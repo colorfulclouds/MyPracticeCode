@@ -23,14 +23,14 @@ import java.util.Scanner;
 public class StringPattern_easy {
 
     //求解字符串内含有多少模式串
-    public static void strPattern(String s1,String s2){
+    public static int strPattern(String s1,String s2){
         int count = 0;
         int lim = s1.length() - s2.length();
         int k = 0;
         while (k <= lim) {
             for (int j = 0; j < s2.length(); j++) {
-                System.out.println(s1.charAt(k + j) + "===");
-                System.out.println(s2.charAt(j));
+//                System.out.println(s1.charAt(k + j) + "===");
+//                System.out.println(s2.charAt(j));
                 if(j == s2.length() - 1 && (s1.charAt(k + j) == '?' || s1.charAt(k + j) == s2.charAt(j)))
                     count++;
                 if (s1.charAt(k + j) != '?' && s1.charAt(k + j) != s2.charAt(j)) {
@@ -39,7 +39,7 @@ public class StringPattern_easy {
             }
             k++;
         }
-        System.out.println(count);
+        return count;
     }
 
     public static void main(String[] args) {
@@ -47,9 +47,12 @@ public class StringPattern_easy {
 //        String s1 = sc.nextLine();
 //        String s2 = sc.nextLine();
 
-        String s1 = "ababaaba";
-        String s2 = "aba";
-        strPattern(s1,s2);
+        String s1 = "ababa";
+        String s2 = "ababaaba";
+        String s3 = "aba";
+
+        System.out.println(strPattern(s1,s3));
+        System.out.println(strPattern(s2,s3));
 
         //matches
         System.out.println(s1.matches("(.*)"));

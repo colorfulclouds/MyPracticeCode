@@ -24,11 +24,23 @@ public class IsSubSequence {
         System.out.println(isSubsequence(s,t)); //true
 
         String s1 = "abcde";
-        String t1 = "acf";
+        String t1 = "cf";
         System.out.println(isSubsequence(s1,t1)); //false
+        System.out.println("++++++++++");
+
+        System.out.println(isSubsequence01(s,t)); //false
+        System.out.println(isSubsequence01(s1,t1)); //false
 
     }
 
+    /**
+     * 动态规划
+     * 是否是子序列
+     * 如果仅依赖前一个状态 可改为一维数组
+     * @param s
+     * @param t
+     * @return
+     */
     public static boolean isSubsequence(String s, String t) {
         boolean[][] table = new boolean[t.length() +1][s.length()+1];
 
@@ -62,8 +74,30 @@ public class IsSubSequence {
 
     }
 
-    //如果仅依赖前一个状态 可改为一维数组
 
+    /**
+     * 递归
+     * 判断是否是子序列
+     * @param s
+     * @param t
+     * @return
+     */
+    public static boolean isSubsequence01(String s, String t) {
+        String tmp = "";// = new String();
+        int i = 0;
+       return isSubCore(s,i,tmp,t);
+
+    }
+
+    private static boolean isSubCore(String s, int i, String tmp,String t) {
+        if(tmp.equals(t))
+            return true;
+        if(i<s.length())
+            return isSubCore(s,i+1,tmp,t) || isSubCore(s,i+1,tmp + String.valueOf(s.charAt(i)),t);
+        else
+            return false;
+
+    }
 
 
 }

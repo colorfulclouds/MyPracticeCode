@@ -33,7 +33,7 @@ public class Sol0802_pdd1 {
                 return;
             }
             else if(cur > K){
-                cur = K - (cur % 3);//2*K - cur;  //k - (cur - k)
+                cur = 2*K - cur; //K - (cur % 3);  //k - (cur - k)
                 count++;
             }
         }

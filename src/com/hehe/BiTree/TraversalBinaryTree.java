@@ -87,7 +87,7 @@ public class TraversalBinaryTree {
                     queue.add(peek.right);
             }
             ArrayList<Integer> res_tmp = new ArrayList<>();
-            while (tmp.peekFirst() != null){
+            while (tmp.peekFirst() != null) {
                 res_tmp.add(tmp.pollFirst());
             }
             res.add(res_tmp);
@@ -179,14 +179,30 @@ public class TraversalBinaryTree {
         System.out.println();
     }
 
+    public static void preOrderUnRecur01(TreeNode head) {
+        System.out.print("pre-order01: ");
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() && head != null) {
+            if (head != null) {
+                System.out.print(head.val + " ");
+                stack.push(head);
+                head = head.left;
+            } else {
+                head = stack.pop();
+                head = head.right;
+            }
+        }
+        System.out.println();
+    }
+
     /**
      * 错误的！！为什么呢？ArrayDeque不能用作Stack吗？？？
      * 结果是层序的结果
      *
      * @param head
      */
-    public static void preOrderUnRecur01(TreeNode head) {
-        System.out.print("pre-order01: ");
+    public static void preOrderUnRecur02(TreeNode head) {
+        System.out.print("pre-order02: ");
         if (head != null) {
             Queue<TreeNode> stack = new ArrayDeque<>();
             stack.add(head);
@@ -268,14 +284,15 @@ public class TraversalBinaryTree {
 
     /**
      * 后序 双栈
-     *根右左:进栈顺序是根左右（前序是根左右：进栈顺序是根右左） ———> 左右根
+     * 根右左:进栈顺序是根左右（前序是根左右：进栈顺序是根右左） ———> 左右根
+     *
      * @param head
      */
     public static void pos(TreeNode head) {
         Stack<TreeNode> s1 = new Stack<>();
         Stack<TreeNode> s2 = new Stack<>();
         s1.push(head);
-        while (!s1.isEmpty()){   //还有个 empty() 方法
+        while (!s1.isEmpty()) {   //还有个 empty() 方法
             head = s1.pop();
             s2.push(head);
             if (head.left != null)
@@ -292,6 +309,7 @@ public class TraversalBinaryTree {
 
     /**
      * 后序遍历 单栈
+     *
      * @param root
      */
     public static void pos2(TreeNode root) {
@@ -373,16 +391,18 @@ public class TraversalBinaryTree {
 
         // un recursive
         System.out.println("============unrecursive=============");
-        preOrderUnRecur(head);
+//        preOrderUnRecur(head);
+//        preOrderUnRecur01(head);
+//
+//        inOrderUnRecur(head);
         preOrderUnRecur01(head);
 
-        inOrderUnRecur(head);
-        posOrderUnRecur01(head);
+//        posOrderUnRecur01(head);
 //        1 2 4 3 6 7 9 11 10 8 5
-        pos(head);
-        System.out.println();
-        pos2(head);
-        System.out.println();
+//        pos(head);
+//        System.out.println();
+//        pos2(head);
+//        System.out.println();
 
 //		posOrderUnRecur02(head);
 

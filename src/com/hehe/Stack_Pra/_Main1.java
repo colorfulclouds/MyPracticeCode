@@ -33,7 +33,7 @@ public class _Main1 {
             }
         }
         StringBuilder sb = new StringBuilder();
-        for(int i = 0;i<res.length();i++){
+        for (int i = 0; i < res.length(); i++) {
             sb.append(res.charAt(i));
         }
         System.out.println(sb.reverse());

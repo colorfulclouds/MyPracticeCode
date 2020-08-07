@@ -1,4 +1,4 @@
-package test;
+package com.interview;
 
 public class zf_me0716test {
     public static void main(String[] args) {

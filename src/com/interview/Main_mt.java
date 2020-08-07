@@ -1,4 +1,4 @@
-package test;
+package com.interview;
 
 public class Main_mt {
     public static void main(String[] args) {

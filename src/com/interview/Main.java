@@ -1,4 +1,4 @@
-package test;
+package com.interview;
 
 /**
  * huawei 5.14面试题目

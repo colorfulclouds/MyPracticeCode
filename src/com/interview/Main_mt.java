@@ -1,5 +1,10 @@
 package com.interview;
 
+/**
+ * jz
+ * 查找有重复元素的排序数组中 指定元素第一次出现的位置
+ *
+ */
 public class Main_mt {
     public static void main(String[] args) {
         //Scanner in = new Scanner(System.in);
@@ -21,7 +26,7 @@ public class Main_mt {
         int mid = (start + (end-start))/2;  //1、改进
         while(start < end){
             if(arr[mid] == target){
-                if( arr[mid-1] == target)
+                if( arr[mid-1] == target && mid > 1)
                     end = mid;
                 else if((arr[mid-1] != target && mid>0) || mid == 0) //2、越界错误更改
                     return mid;

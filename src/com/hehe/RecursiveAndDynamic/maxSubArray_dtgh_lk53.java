@@ -26,14 +26,18 @@ public class maxSubArray_dtgh_lk53 {
     public static void main(String[] args) {
 //        int[] nums = {-2,4,-1,2,1,1,-3,-5,4};
         int[] nums = {1,-2,-3,-4,9,1};
+
         int[] nums1 = {1,2,3,4,9,1};
         int[] nums2 = {-1,-2,-3,-4,-9,-1};
+        int[] nums3 = {3,-2,3,-4,-2,3};
 
-        System.out.println(maxSubArray_dtgh_lk53(nums));
-        System.out.println(maxSubArray_dtgh_lk53(nums1));
-        System.out.println(maxSubArray_dtgh_lk53(nums2));
+//        System.out.println(maxSubArray_dtgh_lk53(nums));
+//        System.out.println(maxSubArray_dtgh_lk53(nums1));
+//        System.out.println(maxSubArray_dtgh_lk53(nums2));
+//        System.out.println(maxSubArray_dtgh_lk53(nums3));
 
-//        System.out.println(maxSubArrayPlus_dtgh_lk53(nums1));
+        System.out.println(maxSubArrayPlus_dtgh_lk53(nums));
+        System.out.println(maxSubArrayPlus_dtgh_lk53(nums3));
     }
 
     /**
@@ -44,7 +48,7 @@ public class maxSubArray_dtgh_lk53 {
     public static int maxSubArray_dtgh_lk53(int[] nums){
         int n = nums.length;
         int res_max = nums[0];
-        int cur_max = nums[0];
+//        int cur_max = nums[0];
 
         for (int i = 1; i < n; i++) {
 //            cur_max = Math.max(nums[i],cur_max + nums[i]);
@@ -57,12 +61,10 @@ public class maxSubArray_dtgh_lk53 {
 
     public static int maxSubArrayPlus_dtgh_lk53(int[] nums){  //错误的！！！！！ 不能用来算乘积
         int res_max = nums[0];
-        int cur_max = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
-            cur_max = Math.max(nums[i],cur_max * nums[i]);
-//            cur_max = cur_max + nums[i];   //此种写法没有考虑单个值最大的情况
-            res_max = Math.max(cur_max,res_max);
+//            cur_max = Math.max(nums[i],cur_max * nums[i]);
+            res_max = Math.max(nums[i] * res_max,res_max);
         }
         return res_max;
     }

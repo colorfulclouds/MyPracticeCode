@@ -2,6 +2,10 @@ package com.hehe.SortAndSearch;
 
 import com.sun.scenario.animation.shared.ClipEnvelope;
 
+/**
+ * 二分查找最多只与 [log2 n] + 1个元素比较   //下界
+ * 完全二叉树的高度
+ */
 public class BinarySearch {
 
     /**

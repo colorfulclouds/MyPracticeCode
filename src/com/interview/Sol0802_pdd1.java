@@ -22,14 +22,14 @@ public class Sol0802_pdd1 {
         int count = 0;
         int cur = 0;
         if(K == 0){ //特殊情况的处理
-            System.out.println("p");
+            System.out.println("p....");
             return;
         }
 
         for (int i = 0; i < N; i++) {
             cur += arr[i];
             if(cur == K && i < N-1){  //要求在第N步之前到达的返回P
-                System.out.println("P");
+                System.out.println("P....");
                 return;
             }
             else if(cur > K){

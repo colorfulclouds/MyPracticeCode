@@ -170,6 +170,20 @@ public class OperateListNode {
     }
 
     /**
+     * 反转链表递归版
+     * zf
+     * @param head
+     * @return
+     */
+    public ListNode reverseList01(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode p = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+    }
+
+    /**
      * 链表去重
      *
      * @param pHead

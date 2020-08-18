@@ -1,4 +1,4 @@
-package com.hehe.String;
+package com.hehe.RecursiveAndDynamic;
 
 
 /**
@@ -21,15 +21,15 @@ public class IsSubSequence {
     public static void main(String[] args) {
         String s = "abcde";
         String t = "ace";
-        System.out.println(isSubsequence(s,t)); //true
+        System.out.println(isSubsequence(s, t)); //true
 
         String s1 = "abcde";
         String t1 = "cf";
-        System.out.println(isSubsequence(s1,t1)); //false
+        System.out.println(isSubsequence(s1, t1)); //false
         System.out.println("++++++++++");
 
-        System.out.println(isSubsequence01(s,t)); //false
-        System.out.println(isSubsequence01(s1,t1)); //false
+        System.out.println(isSubsequence01(s, t)); //false
+        System.out.println(isSubsequence01(s1, t1)); //false
 
     }
 
@@ -42,15 +42,15 @@ public class IsSubSequence {
      * @return
      */
     public static boolean isSubsequence(String s, String t) {
-        boolean[][] table = new boolean[t.length() +1][s.length()+1];
+        boolean[][] table = new boolean[t.length() + 1][s.length() + 1];
 
         for (int col = 0; col <= s.length(); col++) {
             table[0][col] = true;
         }
         for (int row = 1; row <= t.length(); row++) {
             for (int col = 1; col <= s.length(); col++) {
-                char chr1 = t.charAt(row-1);
-                char chr2 = s.charAt(col-1);
+                char chr1 = t.charAt(row - 1);
+                char chr2 = s.charAt(col - 1);
                 //自己的办法总是很笨 -_-!
 //                if(chr1 == chr2){
 //                    table[row][col] = table[row - 1][col - 1];
@@ -62,7 +62,6 @@ public class IsSubSequence {
 //                }
 //                else
 //                    table[row][col] = false;
-
                 if (chr1 == chr2)
                     table[row][col] = table[row - 1][col - 1];
                 else
@@ -85,15 +84,15 @@ public class IsSubSequence {
     public static boolean isSubsequence01(String s, String t) {
         String tmp = "";// = new String();
         int i = 0;
-       return isSubCore(s,i,tmp,t);
+        return isSubCore(s, i, tmp, t);
 
     }
 
-    private static boolean isSubCore(String s, int i, String tmp,String t) {
-        if(tmp.equals(t))
+    private static boolean isSubCore(String s, int i, String tmp, String t) {
+        if (tmp.equals(t))
             return true;
-        if(i<s.length())
-            return isSubCore(s,i+1,tmp,t) || isSubCore(s,i+1,tmp + String.valueOf(s.charAt(i)),t);
+        if (i < s.length())
+            return isSubCore(s, i + 1, tmp, t) || isSubCore(s, i + 1, tmp + s.charAt(i), t);
         else
             return false;
 

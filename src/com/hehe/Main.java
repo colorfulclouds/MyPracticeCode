@@ -5,6 +5,12 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
+
+		/**
+		 * boolean 类型的数组 初始化后是false类型的
+		 */
+
 		/**
 		 * 转化日期
 		 */

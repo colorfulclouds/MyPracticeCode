@@ -1,4 +1,4 @@
-package com.hehe.RecursiveAndDynamic;
+package com.hehe.Classic;
 
 
 public class Fibonacci {

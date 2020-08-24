@@ -48,7 +48,7 @@ public class IPO_zs {
             nodes[i] = new Node(Profits[i], Capital[i]);
         }
 
-        PriorityQueue<Node> minCostQ = new PriorityQueue<>(new MinCostComparator());
+        PriorityQueue<Node> minCostQ = new PriorityQueue<>(new MinCostComparator());   //默认就是小根堆
         PriorityQueue<Node> maxProfitQ = new PriorityQueue<>(new MaxProfitComparator());
         for (int i = 0; i < nodes.length; i++) {
             minCostQ.add(nodes[i]);

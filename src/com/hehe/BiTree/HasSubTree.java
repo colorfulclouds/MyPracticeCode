@@ -27,13 +27,16 @@ public class HasSubTree {
      */
     static boolean hasSubTree(TreeNode root1,TreeNode root2){
         boolean res = false;
-        //root2空树时？？？
+
+        if(root1 == null || root2 == null)
+            return false;
         if(root1!=null && root2!=null){
             if(root1.val == root2.val)   //结点值的判断 需要改进 因为如果是float/double这些小数时，计算机表示有误差
                 res =  DoseTree2InTree1(root1,root2); //根节点相等继续判断其它结点
             if(!res)
                 return hasSubTree(root1.left,root2) || hasSubTree(root1.right,root2);  //依次判断左,右结点
         }
+
         return res;
     }
 
@@ -44,7 +47,7 @@ public class HasSubTree {
      * @return
      */
     private static boolean DoseTree2InTree1(TreeNode root1, TreeNode root2) {
-        if(root2 == null)
+        if(root2 == null)  //
             return true;
         if(root1 == null)
             return false;

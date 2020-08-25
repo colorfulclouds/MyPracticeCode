@@ -32,9 +32,7 @@ public class HasSubTree {
             if(root1.val == root2.val)   //结点值的判断 需要改进 因为如果是float/double这些小数时，计算机表示有误差
                 res =  DoseTree2InTree1(root1,root2); //根节点相等继续判断其它结点
             if(!res)
-                res = hasSubTree(root1.left,root2);  //依次判断左结点
-            if(!res)
-                res = hasSubTree(root1.right,root2);  //依次判断右结点
+                return hasSubTree(root1.left,root2) || hasSubTree(root1.right,root2);  //依次判断左,右结点
         }
         return res;
     }

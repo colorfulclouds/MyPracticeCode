@@ -9,23 +9,27 @@ import java.util.Scanner;
 public class T20200808_wangyi3 {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] ns = new int[n];
-        int sum = 0;
-        for(int i = 0; i < n; i++){
-            ns[i] = sc.nextInt();
-            sum += ns[i];
-        }
-        String str = String.valueOf(sum);
-        Arrays.sort(ns);
-        int i = 0;
-        while(str.contains("5") && i < n){
-            sum -= ns[i];
-            str = String.valueOf(sum);
-            i++;
-        }
-        System.out.println(sum);
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int[] ns = new int[n];
+//        int sum = 0;
+//        for(int i = 0; i < n; i++){
+//            ns[i] = sc.nextInt();
+//            sum += ns[i];
+//        }
+//        String str = String.valueOf(sum);
+//        Arrays.sort(ns);
+//        int i = 0;
+//        while(str.contains("5") && i < n){
+//            sum -= ns[i];
+//            str = String.valueOf(sum);
+//            i++;
+//        }
+//        System.out.println(sum);
+
+        String str = "65";
+        String res = str.replace("5","0");
+        System.out.println(res);
     }
 
 

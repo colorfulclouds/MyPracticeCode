@@ -67,21 +67,6 @@ public class maxSubArray_dtgh_lk53 {
         return res_max;
     }
 
-    /**
-     * 错误的！！！！！ 不能用来算乘积
-     * @param nums
-     * @return
-     */
-    public static int maxSubArrayPlus_dtgh_lk53(int[] nums) {
-        int res_max = nums[0];
-        int cur_max = nums[0];
-
-        for (int i = 1; i < nums.length; i++) {
-            cur_max = Math.max(nums[i],cur_max * nums[i]);
-            res_max = Math.max(cur_max, res_max);
-        }
-        return res_max;
-    }
 
     /**
      *求最大连续子序列和的连续子序列

@@ -14,14 +14,14 @@ public class Print_All_Subsquences_zs {
 
     public static void main(String[] args) {
         //打印打印串、数组的全部子序列
-//        String test = "abc";
-////        printAllSubsquence(test);
-//        printAllSub(test.toCharArray(), 0, new String());
+        String test = "abc";
+//        printAllSubsquence(test);
+        printAllSub(test.toCharArray(), 0, new String());
 
 
         //数组中数字任意组合 是否能得到一个给定值
-        int[] arr = {1,2,7,4};
-        System.out.println(isSum01(arr,0,0,11));;
+//        int[] arr = {1,2,7,4};
+//        System.out.println(isSum01(arr,0,0,11));;
     }
 
     /**

@@ -176,8 +176,9 @@ public class OperateListNode {
      * @return
      */
     public ListNode reverseList01(ListNode head) {
-        if (head == null || head.next == null) return head;
-        ListNode p = reverseList(head.next);
+        if (head == null || head.next == null)
+            return head;
+        ListNode p = reverseList01(head.next);
         head.next.next = head;
         head.next = null;
         return p;
@@ -308,6 +309,29 @@ public class OperateListNode {
             }
         }
         return H.next;
+    }
+
+    /**
+     * 合并两个有序链表
+     * （有序链表的归并，递归）
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        if(list1 == null)
+            return list2;
+        if(list2 == null)
+            return list1;
+        ListNode res = null;
+        if(list1.val <= list2.val){
+            res = list1;
+            res.next = Merge(list1.next,list2);
+        }else{
+            res = list2;
+            res.next = Merge(list1,list2.next);
+        }
+        return res;
     }
 
 

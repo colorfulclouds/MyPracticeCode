@@ -38,7 +38,7 @@ public class FindKthToTail {
     }
 
     /**
-     * 找环中的第 k 个节点
+     * 找 链表倒数第K个节点
      * @param head
      * @param k
      * @return
@@ -63,7 +63,7 @@ public class FindKthToTail {
 
 
     /**
-     * 找到链表中的环的入口节点
+     * 找到链表中的环的入口节点 ，已知环中节点个数
      * @param head
      * @param n
      * @return

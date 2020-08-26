@@ -20,7 +20,7 @@ public class HasSubTree {
     }
 
     /**
-     * root2 是否是 root1 的的字结构
+     * root2 是否是 root1 的子结构
      * @param root1
      * @param root2
      * @return
@@ -28,7 +28,7 @@ public class HasSubTree {
     static boolean hasSubTree(TreeNode root1,TreeNode root2){
         boolean res = false;
 
-        if(root1 == null || root2 == null)
+        if(root1 == null || root2 == null) //定义空树不是任何树的子树
             return false;
         if(root1!=null && root2!=null){
             if(root1.val == root2.val)   //结点值的判断 需要改进 因为如果是float/double这些小数时，计算机表示有误差

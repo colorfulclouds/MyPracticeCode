@@ -1,6 +1,57 @@
 package com.hehe.ArrayAndList;
 
+import java.util.ArrayList;
+
 public class PrintMatrixSomeWays {
+
+    /**
+     * 旋转打印数组  返回数组方式
+     * @param matrix
+     * @return
+     */
+    public static ArrayList<Integer> printMatrix001(int [][] matrix) {
+        int aR = 0;
+        int aC = 0;
+        int bR = matrix.length - 1;
+        int bC = matrix[0].length - 1;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (aR <= bR && aC <= bC) {
+            printEdge(matrix, aR++, aC++, bR--, bC--,list);
+        }
+        return list;
+    }
+
+
+    private static void printEdge(int[][] matrix, int aR, int aC, int bR, int bC,ArrayList<Integer> list) {
+        if (aR == bR) {
+            for (int i = aC; i <= bC; i++) {
+                list.add(matrix[aR][i]);
+            }
+        } else if (bC == aC) {
+            for (int i = aR; i <= bR; i++) {
+                list.add(matrix[i][aC]);
+            }
+        } else {
+            int curR = aR;
+            int curC = aC;
+            while (curC != bC) {
+                list.add(matrix[aR][curC]);
+                curC++;
+            }
+            while (curR != bR) {
+                list.add(matrix[curR][bC]);
+                curR++;
+            }
+            while (curC != aC) {
+                list.add(matrix[bR][curC]);
+                curC--;
+            }
+            while (curR != aR) {
+                list.add(matrix[curR][aC]);
+                curR--;
+            }
+        }
+    }
 
     /**
      * 旋转打印矩阵01
@@ -15,9 +66,11 @@ public class PrintMatrixSomeWays {
         while (aR <= bR && aC <= bC) {
             printEdge(matrix, aR++, aC++, bR--, bC--);
         }
+        System.out.println();
     }
 
-    /**旋转打印矩阵02 打印一圈即可
+    /**
+     * 旋转打印矩阵02 打印一圈即可
      *
      * @param matrix
      * @param aR
@@ -27,16 +80,16 @@ public class PrintMatrixSomeWays {
      */
     private static void printEdge(int[][] matrix, int aR, int aC, int bR, int bC) {
         if (aR == bR) {
-            for (int i = 0; i < bC; i++) {
+            for (int i = aC; i <= bC; i++) {  //代码有误 改为i = aC
                 System.out.print(matrix[aR][i] + " ");
-                if (i == bC - 1)
-                    System.out.println();
+//                if (i == bC - 1)
+//                    System.out.println();
             }
-        } else if (bC == aC) {
-            for (int i = 0; i < bR; i++) {
+        } else if (bC == aC) { //代码有误 改为i = aR
+            for (int i = aR; i <= bR; i++) {
                 System.out.print(matrix[i][aC] + " ");
-                if (i == bR - 1)
-                    System.out.println();
+//                if (i == bR - 1)
+//                    System.out.println();
             }
         } else {
             int curR = aR;
@@ -145,13 +198,46 @@ public class PrintMatrixSomeWays {
 
     public static void main(String[] args) {
         int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-        // printMatrix(matrix);
-        // spiralPrintMatrix(matrix);
+        int[][] matrix1 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}, {17, 18, 19, 20}};
+        int[][] matrix2 = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
+//        printMatrix(matrix);
+//        System.out.println("======================================");
+//        printMatrix(matrix1);
+//        System.out.println("======================================");
+//        printMatrix(matrix2);
+//        System.out.println("======================================");
 
-        // rotate(matrix);
-        // printMatrix(matrix);
+//        spiralPrintMatrix(matrix);
+//        System.out.println("======================================");
+//        spiralPrintMatrix(matrix1);
+//        System.out.println("======================================");
+//        spiralPrintMatrix(matrix2);
+//        System.out.println("======================================");
+//        1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+//        ======================================
+//        1 2 3 4 8 12 16 20 19 18 17 13 9 5 6 7 11 15 14 10
+//        ======================================
+//        1 2 3 4 5 10 15 20 25 24 23 22 21 16 11 6 7 8 9 14 19 18 17 12 13
+//        ======================================
 
-        ZigZag(matrix);
+       int[][] matrix001 = {{1}};
+//        spiralPrintMatrix(matrix001);
+//        System.out.println("======================================");
+        ArrayList<Integer> list = printMatrix001(matrix001);
+        for(int i : list){
+            System.out.print(i + " ");
+        }
+
+
+//        ArrayList<Integer> list = printMatrix1(matrix2);
+//        for(int i : list){
+//            System.out.print(i + " ");
+//        }
+//         rotate(matrix);
+//        System.out.println("======================================");
+
+//        ZigZag(matrix);
+//        System.out.println("======================================");
     }
 
 }

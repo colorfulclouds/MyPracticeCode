@@ -54,21 +54,21 @@ public class SlidingWindowMaxArray_zs {
      */
     public static int[] getMinWindow(int[] arr, int w) {
         int[] res = new int[arr.length - w + 1];
-        LinkedList<Integer> qmax = new LinkedList<Integer>();
+        LinkedList<Integer> qmin = new LinkedList<Integer>();
         int index = 0;
 
         if (arr.length < w || arr == null || w < 1)
             return null;
 
         for (int i = 0; i <arr.length; i++) {
-            while(!qmax.isEmpty() && arr[qmax.peekLast()] >= arr[i])  //队尾比当前值小 出队 直到比当前值大
-                qmax.pollLast();
+            while(!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[i])  //队尾比当前值小 出队 直到比当前值大
+                qmin.pollLast();
 
-            qmax.addLast(i);  //进队
-            if(qmax.peekFirst() == i-w) //过期出队
-                qmax.pollFirst();
+            qmin.addLast(i);  //进队
+            if(qmin.peekFirst() == i-w) //过期出队
+                qmin.pollFirst();
             if(i >= w-1) //窗口到额定长度时 每次出最大值 加入最大窗口值数组
-                res[index++] = arr[qmax.peekFirst()];
+                res[index++] = arr[qmin.peekFirst()];
         }
 
         return res;

@@ -21,9 +21,12 @@ public class StackWithMin {
     }
 
     public void Pop(){
+        A.pop();
+        B.pop();
 
-        if(!A.isEmpty() && A.pop() == B.peek())
-            B.pop();
+//        if(!A.isEmpty() && A.pop() == B.peek())
+//            B.pop();
+
     }
 
     public int Top(){

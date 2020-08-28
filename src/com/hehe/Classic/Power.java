@@ -26,11 +26,11 @@ public class Power {
     }
 
     //**优化后的指数运算
-    public static double PowerWithUnsignedExponent(double base,int exponent) {
+        public static double PowerWithUnsignedExponent(double base,int exponent) {
         if(exponent == 1)
             return base;
-//        if(exponent == 0)
-//            return 1;
+        if(exponent == 0)
+            return 1;
         //=============================================================================
         //exponent 右移代表除运算
         double result = PowerWithUnsignedExponent(base, exponent>>1);

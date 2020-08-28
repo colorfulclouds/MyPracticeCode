@@ -11,10 +11,19 @@ import java.util.Scanner;
  */
 public class T20200823_aiqy1 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int res = ContZero(n);
-        System.out.println(res);
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int res = ContZero(n);
+//        System.out.println(res);
+        System.out.println(10*9*8*7*6*5*4*3*2);
+        System.out.println(9*8*7*6*5*4*3*2);
+        System.out.println(8*7*6*5*4*3*2);
+        System.out.println(7*6*5*4*3*2);
+        System.out.println(6*5*4*3*2);
+        System.out.println(5*4*3*2);
+        System.out.println(4*3*2);
+        System.out.println(3*2);
+        System.out.println(2);
 
     }
 

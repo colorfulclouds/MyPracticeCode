@@ -1,7 +1,6 @@
-package com.interview;
+package com.hehe.RecursiveAndDynamic;
 
 import java.util.Scanner;
-
 /**
  *
  * 4                //n行
@@ -13,9 +12,9 @@ import java.util.Scanner;
  *
  * 1、note:边界
  * 2、从下往上算
- * dp[i][j] = Math.max(dp[i+1][j-1],Math.max(dp[i+1][j],dp[i+1][j+1]))+arr[i][j];
+ * dp[i][j] = Math.max(dp[i+1][j-1],Math.max(dp[i+1][j],dp[i+1][j+1]))   +   arr[i][j];
  */
-public class T20200827_jd2 {
+public class MaxStageSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

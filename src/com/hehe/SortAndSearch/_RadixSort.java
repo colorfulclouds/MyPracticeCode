@@ -3,7 +3,7 @@ package com.hehe.SortAndSearch;
 
 import java.util.Arrays;
 
-public class RadixSort {
+public class _RadixSort {
 
     // only for no-negative value
     public static void radixSort(int[] arr) {

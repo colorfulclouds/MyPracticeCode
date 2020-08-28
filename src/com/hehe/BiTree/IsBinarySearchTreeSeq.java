@@ -17,7 +17,11 @@ public class IsBinarySearchTreeSeq {
      * @return
      */
     public static boolean verifyPostorder(int[] order) {
-        return recur(order, 0, order.length - 1);
+        if(order != null && order.length > 0)
+            return recur(order,0,order.length - 1);
+        else
+            return false;
+//        return recur(order, 0, order.length - 1);
     }
 
     static boolean recur(int[] order, int i, int j) {

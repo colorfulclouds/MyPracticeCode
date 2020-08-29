@@ -11,6 +11,7 @@ public class RegularMatch {
         System.out.println(isMatch("aaa", "ab*ac*a"));
         System.out.println(isMatch("aaa", "aa.a"));
         System.out.println(isMatch("aaa", "ab*a"));
+        System.out.println(isMatch("aaa", ".*"));
 
 //        true
 //        true
@@ -31,9 +32,10 @@ public class RegularMatch {
         if(patten.isEmpty())
             return str.isEmpty();
 
-        if (patten.length() > 1 && patten.charAt(1) == '*' && str.length() >= 1) {
+        if (patten.length() > 1 && patten.charAt(1) == '*' && str.length() >= 1) { //patten 至少为 q*样子
+
             if (str.charAt(0) == patten.charAt(0) || patten.charAt(0) == '.')
-                return MatchCore(str, patten.substring(2))
+                return MatchCore(str, patten.substring(2)) //patten后面可能有 x* 去匹配 0+ 个str中的字符
                         || MatchCore(str.substring(1), patten)
                         || MatchCore(str.substring(1), patten.substring(2));
             else

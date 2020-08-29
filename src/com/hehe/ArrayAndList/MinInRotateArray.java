@@ -1,4 +1,4 @@
-package com.hehe.SortAndSearch;
+package com.hehe.ArrayAndList;
 
 /**
  * jz-11

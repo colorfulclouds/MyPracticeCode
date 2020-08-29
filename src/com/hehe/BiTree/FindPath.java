@@ -1,5 +1,6 @@
 package com.hehe.BiTree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -24,29 +25,45 @@ public class FindPath {
         System.out.println(res.toString());
 
 
+        System.out.println("==================");
+
+        ArrayList<ArrayList<Integer>> res01 = FindPath(head,22);
+        System.out.println(res01.toString());
+
+
     }
 
     static LinkedList<List<Integer>> res = new LinkedList<>();
     static LinkedList<Integer> path = new LinkedList<>();
 
-
     public static LinkedList<List<Integer>> findPath01(Node head, int target) {
-        recur(head, target);
-        return res;
-    }
-
-    static void recur(Node head, int target) {
-        if (head == null) return;
+        if (head == null) return res;
         path.add(head.value);
         target -= head.value;
         if (target == 0 && head.left == null && head.right == null)
             res.add(new LinkedList<>(path));   //需要new 一个LinkedList结点 将path转型放进去
-        recur(head.left, target);
-        recur(head.right, target);
+        findPath01(head.left, target);
+        findPath01(head.right, target);
         path.removeLast();   // !
+        return res;
+    }
 
 
 
+    private static ArrayList<ArrayList<Integer>> res01 = new ArrayList<>();
+    private static ArrayList<Integer> list = new ArrayList<Integer>();
+
+    public static ArrayList<ArrayList<Integer>> FindPath(Node root,int target) {
+        if(root == null)
+            return res01;
+        list.add(root.value);
+        target -= root.value;
+        if(target == 0 && root.left == null && root.right == null)
+            res01.add(new ArrayList<>(list));  // !!!
+        FindPath(root.left,target);
+        FindPath(root.right,target);
+        list.remove(list.size()-1);
+        return res01;
     }
 
     /**
@@ -88,7 +105,6 @@ public class FindPath {
         }
         System.out.println();
     }
-
 
     // Node 结构体
     public static class Node {

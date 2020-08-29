@@ -1,10 +1,12 @@
 package com.hehe.Classic;
 
+
 import java.util.Scanner;
 
 public class ___10To2andCount1 {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        //___10To2andCount1
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
         int count = 0;
@@ -15,6 +17,52 @@ public class ___10To2andCount1 {
             n=n>>1;  //右移
         }
         System.out.println(count);
+
+
+        /**
+         * 火星文三进制
+         */
+//        String s = fun(3, 10);  //自定义的10进制转换成其他任意进制的方法
+////        String s = Integer.toString(10,3);  //java自带的10进制转换成其他任意进制的方法
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0; i < s.length(); i++) {
+//            if (s.charAt(i) == '0')
+//                sb.append("@");
+//            if (s.charAt(i) == '1')
+//                sb.append("5");
+//            if (s.charAt(i) == '2')
+//                sb.append("8");
+//
+//        }
+//        System.out.println(sb);
+
+    }
+
+
+    /**
+     * 十进制转换为 n 进制
+     *
+     * @param n
+     * @param num
+     * @return
+     */
+    public static String fun(int n, int num) {
+        // n 表示目标进制, num 要转换的值
+        String str = "";
+        int yushu;      // 保存余数
+        int shang = num;      // 保存商
+        while (shang > 0) {
+            yushu = shang % n;
+            shang = shang / n;
+
+            // 10-15 -> a-f
+            if (yushu > 9) {
+                str = (char) ('a' + (yushu - 10)) + str;
+            } else {
+                str = yushu + str;
+            }
+        }
+        return str;
     }
 
 

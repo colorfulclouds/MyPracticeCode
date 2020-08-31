@@ -18,6 +18,19 @@ public class ___10To2andCount1 {
         }
         System.out.println(count);
 
+        System.out.println("=====测试java自带的进制转换=====");
+
+        System.out.println(Integer.toString(10,3));  //java自带的10进制转换成其他任意进制的方法
+        System.out.println(Integer.toString(10,2));
+        System.out.println(Integer.toString(10,8));
+        System.out.println(Integer.toString(10,16));
+
+        System.out.println(Integer.parseInt("10",2)); //java自带的其他任意进制转换成10进制的方法
+        System.out.println(Integer.parseInt("10",3));
+        System.out.println(Integer.parseInt("10",8));
+        System.out.println(Integer.parseInt("10",16));
+
+        System.out.println("=====测试java自带的进制转换=====");
 
         /**
          * 火星文三进制

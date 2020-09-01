@@ -32,6 +32,9 @@ public class UglyNum {
      * @return
      */
     public static int[] UglyNum_Xth01(int n) {
+        if(n == 0)
+            return new int[0];
+
         int[] dp = new int[n];
         dp[0] = 1;
         int a = 0;

@@ -8,27 +8,28 @@ public class LongestPalindrome {
 
 
         System.out.println("==============回文子串的个数和最长回文子串=================");
-        int[] res = numOfPalindrome("acbccbcc");
-        System.out.println(res[0]+" "+res[1]);
+        int[] res = numOfPalindrome("abccdccc");
+        System.out.println(res[0] + " " + res[1]);
 
     }
 
     /**
-     * 回文串的个数和最长回文子串 ????
+     * 回文串的个数和最长回文子串
+     * zf 中心扩展法
      * @param s
      * @return
      */
     public static int[] numOfPalindrome(String s) {
         int[] res = new int[2];
-        int n = s.length();
+        int n = 2 * s.length() - 1;  //从第一个到最后一个字母 依次以一个或者连续两个元素为中心扩展
         int l = 0;
         for (int i = 0; i < n; i++) {
-            int left = i/2;
+            int left = i / 2;
             int right = left + i % 2;
-            if(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
-                if(right - left > 0)
-                    res[0] ++;
-                l = Math.max(l,right - left + 1);
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                if (right - left > 0)
+                    res[0]++;
+                l = Math.max(l, right - left + 1);
                 left--;
                 right++;
 

@@ -78,7 +78,7 @@ public class SubStringQs {
 //                res = Math.max(right - left + 1, res);
 
         }
-        return chars.length - left;
+        return chars.length - left;  //返回的是历史最大的窗口大小
 //        return res;
     }
 }

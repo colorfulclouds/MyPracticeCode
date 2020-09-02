@@ -14,7 +14,7 @@ public class LongestPalindrome {
     }
 
     /**
-     * 回文串的个数和最长回文子串
+     * 1、回文串的个数和最长回文子串
      * zf 中心扩展法
      * @param s
      * @return
@@ -42,7 +42,7 @@ public class LongestPalindrome {
 
 
     /**
-     * 最长回文子串 暴力
+     * 2、最长回文子串 暴力
      * O（n^3）
      *
      * @param s
@@ -85,7 +85,7 @@ public class LongestPalindrome {
 
 
     /**
-     * 最长回文子串 Manacher
+     * 3、最长回文子串 Manacher
      * O（N^2）
      * @param s
      * @return
@@ -154,8 +154,9 @@ public class LongestPalindrome {
         return sb.toString();
     }
 
+    //===============================================未看============================================================
     /**
-     * 最长回文子串 Manacher
+     * 4、最长回文子串 Manacher
      * O（N）
      * @param s
      * @return

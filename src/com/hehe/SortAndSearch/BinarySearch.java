@@ -34,7 +34,7 @@ public class BinarySearch {
 
     /**
      * 查找第一个k的位置
-     *
+     *递归
      * @param nums
      * @param start
      * @param end
@@ -62,6 +62,7 @@ public class BinarySearch {
 
     /**
      * 查找最后一个k的位置
+     * 递归
      * @param nums
      * @param start
      * @param end
@@ -169,11 +170,37 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 查找第一个k的位置
+     * 非递归
+     * @param arr
+     * @param low
+     * @param high
+     * @param key
+     * @return
+     */
+    public static int getFirstK01(int[] arr, int low, int high, int key) {
+        if (key < arr[low] || key > arr[high] || low > high) {
+            return -1;
+        }
+        int mid = 0;
+        while (low <= high) {
+            mid = (high + low) / 2;
+            if (key < arr[mid])
+                high = mid - 1;
+            else if (key > arr[mid])
+                low = mid + 1;
+            else if(arr[mid - 1] != key && mid > 0 && arr[mid] == key || mid == 0)
+                return mid;
+            else
+                high = mid - 1;
+        }
+        return -1;
+    }
+
 
     public static void main(String[] args) {
-
         int[] arr = {1, 3, 5, 7, 9, 11};
-
         int key = 3;
 //        System.out.println(recursionBinarySearch(arr, key, 0, arr.length - 1));
 //        System.out.println(commonBinarySearch(arr, key));
@@ -200,6 +227,8 @@ public class BinarySearch {
          */
         int[] nums = {1, 2, 3, 3, 3, 4, 5};
         System.out.println(timesOfNum(nums,3));
+        System.out.println("==============================");
+        System.out.println(getFirstK01(nums,0,nums.length-1,3));
 
 
     }

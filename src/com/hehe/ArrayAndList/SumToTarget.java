@@ -37,7 +37,7 @@ public class SumToTarget {
             System.out.println();
         }
         System.out.println("=====3-2=====");
-        List<int[]> res2  = sumTos01(9);
+        List<int[]> res2 = sumTos01(9);
         for (int[] i : res2) {
             System.out.print(i[0] + "~" + i[1]);
             System.out.println();
@@ -72,8 +72,10 @@ public class SumToTarget {
     }
 
 
-    /**3-2、和为 s 的连续正数序列
+    /**
+     * 3-2、和为 s 的连续正数序列
      * 滑动窗口
+     *
      * @param s
      * @return
      */
@@ -82,19 +84,49 @@ public class SumToTarget {
         List<int[]> list = new ArrayList<>();
         int curSum = i + j;
         while (i < (1 + s) / 2) {
-            if(curSum == s){
+            if (curSum == s) {
                 list.add(new int[]{i, j});
                 j++;
                 curSum += j;
-            }else if(curSum < s &&  i < (1 + s) / 2){
+            } else if (curSum < s && i < (1 + s) / 2) {
                 j++;
                 curSum += j;
-            }else if(curSum > s &&  i < (1 + s) / 2){
+            } else if (curSum > s && i < (1 + s) / 2) {
                 curSum -= i;
                 i++;
             }
         }
         return list;
+    }
+
+    /**
+     * 3-3、和为 s 的连续正数序列
+     * 滑动窗口
+     *
+     * @param sum
+     * @return
+     */
+    public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        int plow = 1, phigh = 2;
+
+        while (phigh > plow) {
+            //差为1的连续序列，那么求和公式是(a0+an)*n/2
+            int cur = (phigh + plow) * (phigh - plow + 1) / 2;
+            if (cur == sum) {
+                ArrayList<Integer> list = new ArrayList<>();
+                for (int i = plow; i <= phigh; i++) {
+                    list.add(i);
+                }
+                result.add(list);
+                plow++;
+            } else if (cur < sum) { //如果当前窗口内的值之和小于sum，那么右边窗口右移一下
+                phigh++;
+            } else { //如果当前窗口内的值之和大于sum，那么左边窗口右移一下
+                plow++;
+            }
+        }
+        return result;
     }
 
     /**
@@ -116,6 +148,34 @@ public class SumToTarget {
         }
         return null;
 
+    }
+
+    //    。
+
+    /**
+     * 输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的
+     *
+     * 注意：成绩最小的，递增的序列，外层的乘积小于内层
+     *       故，夹逼找到的第一个就可以返回了 即为最小的那对
+     * @param array
+     * @param sum
+     * @return
+     */
+    public ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {
+        int a = 0;
+        int b = array.length - 1;
+        int plus = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (a < b) {
+            if (array[a] + array[b] == sum) {
+                list.add(array[a]);
+                list.add(array[b]);
+            } else if (array[a] + array[b] > sum) {
+                b--;
+            } else
+                a++;
+        }
+        return list;
     }
 
     /**

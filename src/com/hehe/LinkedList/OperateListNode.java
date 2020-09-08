@@ -112,6 +112,15 @@ public class OperateListNode {
             System.out.println("null");
         }
 
+        System.out.println("==============删除链表的倒数第N个节点=================");
+        ListNode pHead = new ListNode(1);
+        pHead.next = new ListNode(2);
+        pHead.next.next = new ListNode(3);
+        pHead.next.next.next = new ListNode(4);
+        pHead.next.next.next.next = new ListNode(5);
+
+        removeNthFromEnd(pHead,2);
+
     }
 
     /**
@@ -141,6 +150,32 @@ public class OperateListNode {
             return head;
         } else
             return head;
+    }
+
+    /**
+     * 删除链表的倒数第N个节点
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode p1 = dummy;
+        ListNode p2 = dummy;
+
+        while (n >= 0) {
+            p1 = p1.next;
+            n--;
+        }
+        while (p1 != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        p2.next = p2.next.next;
+        return dummy.next;
+
     }
 
     /**
@@ -290,20 +325,20 @@ public class OperateListNode {
      * @return
      */
     public static ListNode deleteDuplication0X(ListNode pHead) {
-        if(pHead == null || pHead.next == null)
+        if (pHead == null || pHead.next == null)
             return pHead;
 
         ListNode H = new ListNode(-1);
         H.next = pHead;
         ListNode pre = H;
         ListNode last = H.next;
-        while(last != null){
-            if(last.next != null && last.val == last.next.val){
-                while(last.next != null && last.val == last.next.val)
+        while (last != null) {
+            if (last.next != null && last.val == last.next.val) {
+                while (last.next != null && last.val == last.next.val)
                     last = last.next;
                 pre.next = last.next;
                 last = last.next;
-            }else{
+            } else {
                 pre = pre.next;
                 last = last.next;
             }
@@ -314,23 +349,24 @@ public class OperateListNode {
     /**
      * 合并两个有序链表
      * （有序链表的归并，递归）
+     *
      * @param list1
      * @param list2
      * @return
      */
-    public ListNode Merge(ListNode list1,ListNode list2) {
-        if(list1 == null)
+    public ListNode Merge(ListNode list1, ListNode list2) {
+        if (list1 == null)
             return list2;
-        if(list2 == null)
+        if (list2 == null)
             return list1;
 
         ListNode res = null;
-        if(list1.val <= list2.val){
+        if (list1.val <= list2.val) {
             res = list1;
-            res.next = Merge(list1.next,list2);
-        }else{
+            res.next = Merge(list1.next, list2);
+        } else {
             res = list2;
-            res.next = Merge(list1,list2.next);
+            res.next = Merge(list1, list2.next);
         }
         return res;
     }
@@ -338,29 +374,30 @@ public class OperateListNode {
     /**
      * 合并两个有序链表
      * （有序链表的归并，非递归）
+     *
      * @param list1
      * @param list2
      * @return
      */
-    public ListNode Merge01(ListNode list1,ListNode list2) {
+    public ListNode Merge01(ListNode list1, ListNode list2) {
         ListNode head = new ListNode(-1);
         head.next = null;
         ListNode p = head;
-        while(list1 != null && list2 !=null){
-            if(list1.val <= list2.val){
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
                 p.next = list1;
                 p = p.next;
                 list1 = list1.next;
-            }else{
+            } else {
                 p.next = list2;
                 p = p.next;
                 list2 = list2.next;
             }
         }
-        if(list1 != null){
+        if (list1 != null) {
             p.next = list1;
         }
-        if(list2 !=null){
+        if (list2 != null) {
             p.next = list2;
         }
         return head.next;

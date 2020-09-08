@@ -2,14 +2,17 @@ package com.hehe.String;
 
 public class LongestPalindrome {
     public static void main(String[] args) {
-        System.out.println("=============最长回文子串 Manacher==============");
-        System.out.println(longestPalindrome01("abccccdd"));
-        System.out.println(longestPalindrome02("abccccdd"));
+//        System.out.println("=============最长回文子串 Manacher==============");
+//        System.out.println(longestPalindrome01("abccccdd"));
+//        System.out.println(longestPalindrome02("abccccdd"));
+//
+//
+//        System.out.println("==============回文子串的个数和最长回文子串=================");
+//        int[] res = numOfPalindrome("abccdccc");
+//        System.out.println(res[0] + " " + res[1]);
 
 
-        System.out.println("==============回文子串的个数和最长回文子串=================");
-        int[] res = numOfPalindrome("abccdccc");
-        System.out.println(res[0] + " " + res[1]);
+        System.out.println(longestPalindrome03("babad"));
 
     }
 
@@ -22,21 +25,52 @@ public class LongestPalindrome {
     public static int[] numOfPalindrome(String s) {
         int[] res = new int[2];
         int n = 2 * s.length() - 1;  //从第一个到最后一个字母 依次以一个或者连续两个元素为中心扩展
-        int l = 0;
+        int maxLen = 0;
+//        String ss = "";
         for (int i = 0; i < n; i++) {
             int left = i / 2;
             int right = left + i % 2;
             while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-                if (right - left > 0)
+                if (right - left > 0) //记录所有的回文子串的个数
                     res[0]++;
-                l = Math.max(l, right - left + 1);
+//                if(right - left + 1 > maxLen)  //截取最长的回文子串本串
+//                    ss = s.substring(left,right+1);
+                maxLen = Math.max(maxLen, right - left + 1); //最长的回文子串的长度
+
                 left--;
                 right++;
 
             }
         }
-        res[1] = l;
+        res[1] = maxLen;
         return res;
+    }
+
+    /**
+     * 最长的回文子串本串
+     *
+     * @param s
+     * @return
+     */
+    public static String longestPalindrome03(String s) {
+        int n = 2 * s.length() - 1;
+        int maxLen = 0;
+        String res = "";
+        for (int i = 0; i < n; i++) {
+            int left = i / 2;
+            int right = left + i % 2;
+            while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+                if((right - left + 1) > maxLen){
+                    res = s.substring(left,right +1);
+                    maxLen = right - left + 1;
+                }
+                left --;
+                right++;
+            }
+        }
+        return res;
+
+
     }
 
 
@@ -153,6 +187,7 @@ public class LongestPalindrome {
         sb.append(divide);
         return sb.toString();
     }
+
 
     //===============================================未看============================================================
     /**

@@ -13,6 +13,10 @@ public class MaxSubStr {
         String res = getLCS(a, b);
         System.out.println(res);
 
+        System.out.println("+++++++++++++++++++");
+        System.out.println(getLCS01(a,b));
+        System.out.println(getLCS01(b,a));
+
 
     }
 
@@ -40,6 +44,12 @@ public class MaxSubStr {
         return str1.substring(maxEnd - maxLen + 1, maxEnd + 1);
     }
 
+    /**
+     * 经典解法
+     * @param s
+     * @param t
+     * @return
+     */
     public static int getLCS01(String s, String t) {
         if (s == null || t == null) {
             return 0;
@@ -48,23 +58,24 @@ public class MaxSubStr {
         int sLength = s.length();
         int tLength = t.length();
         int[][] dp = new int[sLength][tLength];
+        //int end = 0;
 
         for (int i = 0; i < sLength; i++) {
             for (int k = 0; k < tLength; k++) {
-
                 if (s.charAt(i) == t.charAt(k)) {
                     if (i == 0 || k == 0) {
                         dp[i][k] = 1;
                     } else {
                         dp[i][k] = dp[i - 1][k - 1] + 1;
                     }
+//                    if(dp[i][k] > result) //记录最长公共子串的末位下标
+//                        end = k;
                     result = Math.max(dp[i][k], result);
-                } else {
-                    dp[i][k] = 0;
-                }
 
+                }
             }
         }
+        //String res = t.substring(end - result + 1,end +1); //截取最长的公共子串
         return result;
     }
 

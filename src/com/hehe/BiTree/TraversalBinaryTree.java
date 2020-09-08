@@ -340,6 +340,25 @@ public class TraversalBinaryTree {
         }
     }
 
+    public static List<Integer> postorderTraversal(TreeNode root) {
+        if (root == null) return Collections.emptyList();
+        List<Integer> res = new ArrayList<>();  //保存结果
+        Stack<TreeNode> stack = new Stack<>();   //调用栈
+        stack.push(root);    //先将根结点入栈
+
+        while (!stack.isEmpty()) {
+            TreeNode t = stack.pop();
+            if (t != null) {
+                stack.push(t);   //完全模拟递归，真的是秒杀全场
+                stack.push(null);    //！完美
+                if (t.right != null) stack.push(t.right);
+                if (t.left != null) stack.push(t.left);
+            } else {
+                res.add(stack.pop().val);
+            }
+        }
+        return res;
+    }
     /**
      * can not understand 后序遍历 炫技版
      *
@@ -391,6 +410,11 @@ public class TraversalBinaryTree {
 
         System.out.print("pos-order: ");
 //		posOrderRecur(head);
+
+        List<Integer> list11 = postorderTraversal(head);
+        for(int i : list11){
+            System.out.print(i + " ");
+        }
         System.out.println();
 
 

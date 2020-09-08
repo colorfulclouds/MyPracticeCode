@@ -52,7 +52,7 @@ public class Print_All_Permutations_zs {
     }
 
     public static void process1(char[] chs, int i) {
-        if (i == chs.length) {
+        if (i == chs.length - 1) {
             System.out.println(String.valueOf(chs));
         }
         for (int j = i; j < chs.length; j++) {

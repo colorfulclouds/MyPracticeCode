@@ -48,8 +48,8 @@ public class StringPattern_easy {
 //        String s2 = sc.nextLine();
 
         String s1 = "ababa";
-        String s2 = "ababaaba";
-        String s3 = "aba";
+        String s2 = "ababaabc";
+        String s3 = "abc";
 
         System.out.println(strPattern(s1,s3));
         System.out.println(strPattern(s2,s3));

@@ -2,6 +2,8 @@ package com.hehe.SortAndSearch;
 
 import com.sun.scenario.animation.shared.ClipEnvelope;
 
+import java.util.Arrays;
+
 /**
  * 二分查找最多只与 [log2 n] + 1个元素比较   //下界
  * 完全二叉树的高度
@@ -23,8 +25,8 @@ public class BinarySearch {
         int len = nums.length;
         int res = 0;
         if (len > 0) {
-            int first = getFirstK(nums, 0, len-1, k);
-            int last = getLastK(nums, 0, len-1, k);
+            int first = getFirstK(nums, 0, len - 1, k);
+            int last = getLastK(nums, 0, len - 1, k);
 
             if (first > -1 && last > -1)
                 res = last - first + 1;
@@ -34,7 +36,8 @@ public class BinarySearch {
 
     /**
      * 查找第一个k的位置
-     *递归
+     * 递归
+     *
      * @param nums
      * @param start
      * @param end
@@ -63,6 +66,7 @@ public class BinarySearch {
     /**
      * 查找最后一个k的位置
      * 递归
+     *
      * @param nums
      * @param start
      * @param end
@@ -173,6 +177,7 @@ public class BinarySearch {
     /**
      * 查找第一个k的位置
      * 非递归
+     *
      * @param arr
      * @param low
      * @param high
@@ -190,10 +195,35 @@ public class BinarySearch {
                 high = mid - 1;
             else if (key > arr[mid])
                 low = mid + 1;
-            else if(arr[mid - 1] != key && mid > 0 && arr[mid] == key || mid == 0)
+            else if (arr[mid - 1] != key && mid > 0 && arr[mid] == key || mid == 0)
                 return mid;
             else
                 high = mid - 1;
+        }
+        return -1;
+    }
+
+    /**
+     * 0-n-1 的数字 第一个重复的那个数字
+     *
+     * @param numbers
+     * @return
+     */
+    public static int duplicate(int numbers[]) {
+        Arrays.sort(numbers);
+        int low = 0;
+        int high = numbers.length - 1;
+        int mid = 0;
+        while (low <= high) {
+            mid = (low + high) / 2;
+            if (mid == numbers[mid]) {
+                low = mid + 1;
+            } else if (mid > numbers[mid] && mid == low || mid > low && mid - 1 == numbers[mid - 1]) {
+                return mid - 1;
+            }
+            else {
+                high = mid - 1;
+            }
         }
         return -1;
     }
@@ -226,9 +256,13 @@ public class BinarySearch {
          * test timesOfNum
          */
         int[] nums = {1, 2, 3, 3, 3, 4, 5};
-        System.out.println(timesOfNum(nums,3));
+        System.out.println(timesOfNum(nums, 3));
         System.out.println("==============================");
-        System.out.println(getFirstK01(nums,0,nums.length-1,3));
+        System.out.println(getFirstK01(nums, 0, nums.length - 1, 3));
+
+        System.out.println("=====================");
+        int[] num1 = {0, 1, 2, 3, 3, 3, 4, 5};
+        System.out.println(duplicate(num1));
 
 
     }

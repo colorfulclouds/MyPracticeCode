@@ -12,10 +12,10 @@ public class nextPermutation {
     public static void main(String[] args) {
         int[] nums = {1,2,3};
         int[] nums1 = {1,3,2};
-        nextPermutation(nums);
-        for(int c : nums){
-            System.out.print(c + " "); //1 3 2
-        }
+//        nextPermutation(nums);
+//        for(int c : nums){
+//            System.out.print(c + " "); //1 3 2
+//        }
         System.out.println("++++++++++++++++++");
         nextPermutation(nums1);
         for(int c : nums1){
@@ -25,13 +25,15 @@ public class nextPermutation {
 
 
     public static void nextPermutation(int[] nums) {
-        int i = nums.length - 2;
-//        while(i > 0 && nums[i] < nums[i-1])
+
+//        int i = nums.length - 1; //此法找到的时从右到左升序的最后一个 需要多一句 i--
+//        while(i >0  && nums[i] <= nums[i-1])
 //            i--;
-        while (i > 0 && nums[i] >= nums[i+1]) {
+
+        int i = nums.length - 2; //此法找到的时从右到左升序的最后一个 的下一个
+        while (i >= 0 && nums[i] >= nums[i+1]) {
             i--;
         }
-
         if(i >= 0){
             int j = nums.length-1;
             while(j >= 0 && nums[j] <= nums[i])

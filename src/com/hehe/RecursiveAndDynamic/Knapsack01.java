@@ -7,7 +7,7 @@ package com.hehe.RecursiveAndDynamic;
  * i（物品编号）	1	2	3	4
  * w（体积）	2	3	4	5
  * v（价值）	3	4	5	6
- *
+ * <p>
  * 思路：
  * 要到达V(i,j)这一个状态有两种方式
  * 1、第i件商品没有装进去，没有装进去，就是V(i-1,j)
@@ -21,15 +21,14 @@ public class Knapsack01 {
         int[][] dp = new int[5][9];                    //动态规划表
 
         for (int i = 1; i <= 4; i++) {
-            for (int j = 1; j <= bagV; j++) {
+            for (int j = 0; j <= bagV; j++) {
                 if (j < w[i])
                     dp[i][j] = dp[i - 1][j];
                 else
                     dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i]);
             }
         }
-
-        //动态规划表的输出
+//        动态规划表的输出
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 System.out.print(dp[i][j] + " ");
@@ -37,6 +36,84 @@ public class Knapsack01 {
             System.out.println();
 
         }
+        System.out.println("==================================");
+
+        int[] w1 = {2, 3, 4, 5};            //商品的体积2、3、4、5
+        int[] v1 = {3, 4, 5, 6};            //商品的价值3、4、5、6
+        int size = w1.length;
+        int bagV1 = 8;                            //背包大小
+        int[][] dp1 = new int[size][bagV1 + 1];                    //动态规划表
+
+        //初始化第一行
+        //仅考虑容量为C的背包放第0个物品的情况
+        for (int i = 0; i <= bagV1; i++) {
+            dp1[0][i] = w1[0] <= i ? v1[0] : 0;
+        }
+
+        for (int i = 1; i < size; i++) {
+            for (int j = 0; j <= bagV1; j++){
+                dp1[i][j] = dp1[i - 1][j];
+                if (w1[i] <= j)
+                    dp1[i][j] = Math.max(dp1[i][j], dp1[i - 1][j - w1[i]] + v1[i]);
+            }
+        }
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j <= bagV1; j++) {
+                System.out.print(dp1[i][j] + " ");
+            }
+            System.out.println();
+
+        }
+
+        /**
+         * 3 15
+         *  5 16
+         *  9 1
+         *  8 15
+         *  三种能量值 对应的愉悦值
+         *  15能量值下能得到的最大愉悦值
+         */
+        int num = 3;
+        int value = 15;
+        int[] energy = {5, 9, 8};
+        int[] pleasure_value = {16, 1, 15};
+        int dp2[] = new int[value + 1];
+        for (int i = 1; i < num + 1; i++) {
+            for (int j = value; j >= energy[i - 1]; j--) {
+                dp2[j] = Math.max(dp2[j], dp2[j - energy[i - 1]] + pleasure_value[i - 1]);
+            }
+        }
+
+        for (int i = 0; i < dp2.length; i++) {
+            System.out.print(dp2[i] + " ");
+        }
+
+
+        System.out.println();
+        System.out.println("=================改编的二维数组==================");
+
+        int[][] dp3 = new int[num][value+1];
+
+
+        for (int i = 0; i <= value; i++) {
+            dp3[0][i] = energy[0] <= i ? pleasure_value[0] : 0;
+        }
+
+        for (int i = 1; i < num; i++) {
+            for (int j = 0; j <= value; j++){
+                dp3[i][j] = dp3[i - 1][j];
+                if (energy[i] <= j)
+                    dp3[i][j] = Math.max(dp3[i][j], dp3[i - 1][j - energy[i]] + pleasure_value[i]);
+            }
+        }
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j <= value; j++) {
+                System.out.print(dp3[i][j] + " ");
+            }
+            System.out.println();
+
+        }
+
     }
 
 }

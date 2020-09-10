@@ -61,57 +61,57 @@ public class LowestLexicography_zs {
      * @param nums
      * @return
      */
-    public static String lowestNum01(int[] nums) {
+    public static int lowestNum01(int[] nums) {
         String[] strs = new String[nums.length];  //只能用 比较字符串的 MyComparator，比较整型的MyComparator01不能用？？？
         int i = 0;
         for (int s : nums) {
             strs[i++] = String.valueOf(s);
         }
         if (nums == null || nums.length == 0)
-            return "";
+            return 0;
         Arrays.sort(strs, new MyComparator());
         String res = "";
         for (int j = 0; j < strs.length; j++) {
             res += strs[j];
         }
         if (res != null)
-            return String.valueOf(res);
+            return Integer.valueOf(res);
         else
-            return "";
+            return 0;
 
     }
 
     /**
      * 2-1 数组组成的最小的数字
      * 网友
+     *
      * @param numbers
      * @return
      */
-    public String PrintMinNumber(int [] numbers) {
+    public String PrintMinNumber(int[] numbers) {
         int n;
-        String s="";
-        ArrayList<Integer> list= new ArrayList<Integer>();
-        n=numbers.length;
-        for(int i=0;i<n;i++){
+        String s = "";
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        n = numbers.length;
+        for (int i = 0; i < n; i++) {
             list.add(numbers[i]);
 
         }
-        Collections.sort(list, new Comparator<Integer>(){
+        Collections.sort(list, new Comparator<Integer>() {
 
-            public int compare(Integer str1,Integer str2){
-                String s1=str1+""+str2;
-                String s2=str2+""+str1;
+            public int compare(Integer str1, Integer str2) {
+                String s1 = str1 + "" + str2;
+                String s2 = str2 + "" + str1;
                 return s1.compareTo(s2);
             }
         });
 
-        for(int j:list){
-            s+=j;
+        for (int j : list) {
+            s += j;
         }
         return s;
 
     }
-
 
 
     public static void main(String[] args) {

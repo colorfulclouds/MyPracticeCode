@@ -51,7 +51,7 @@ public class BinarySearch {
         int mid = (start + end) >> 1;
 
         if (nums[mid] == k) {
-            if ((nums[mid - 1] != k && mid > 0) || mid == 0)
+            if ((mid > 0 && nums[mid - 1] != k) || mid == 0) //mid > 0 需要在&& 的前面
                 return mid;
             else
                 end = mid - 1;
@@ -80,14 +80,15 @@ public class BinarySearch {
         int mid = (start + end) >> 1;
 
         if (nums[mid] == k) {
-            if ((nums[mid + 1] != k && mid < nums.length) || mid == nums.length)
+            if ((mid < nums.length-1 && nums[mid + 1] != k) || mid == nums.length -1)  //mid < nums.length-1 需要在&& 的前面
                 return mid;
             else
                 start = mid + 1;
-        } else if (nums[mid] > k)
-            end = mid - 1;
-        else
+        } else if (nums[mid] < k)
             start = mid + 1;
+        else
+            end = mid - 1;
+
 
         return getLastK(nums, start, end, k);
     }

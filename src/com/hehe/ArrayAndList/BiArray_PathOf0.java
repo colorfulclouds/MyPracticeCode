@@ -1,9 +1,9 @@
-package com.hehe.Classic;
+package com.hehe.ArrayAndList;
 
 /**
- * 判断二维数组中是否有全为0的路径
+ * 从（0，0）开始 判断二维数组中是否有全为0的路径 到最后一个位置
  */
-public class HasPathOf0 {
+public class BiArray_PathOf0 {
     public static void main(String[] args) {
         int[][] arr = {{0,1,0,0},{0,0,1,0},{1,1,1,0},{1,1,1,0}};
         System.out.println(HasPathOf0(arr));

@@ -27,6 +27,21 @@ public class ___16To10Binary {
         }
     }
 
+
+    /**
+     * 十进制转二进制
+     * @param num
+     * @return
+     */
+    public static String MethodBinary(int num) {
+        String a = "";//用字符串拼接
+        while (num != 0) {//利用十进制转二进制除2法
+            a = num % 2 + a;
+            num = num / 2;
+        }
+        return a;
+    }
+
     //进制转换：16 to 2(未看)
     public static int fun(String s){
         int n=0;

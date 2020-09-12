@@ -1,4 +1,4 @@
-package com.hehe.ArrayAndList;
+package com.hehe.QsSol;
 
 import java.util.ArrayList;
 import java.util.List;

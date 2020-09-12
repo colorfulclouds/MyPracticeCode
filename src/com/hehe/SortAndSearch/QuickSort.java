@@ -34,7 +34,6 @@ public class QuickSort {
     public static void QuickSort01(int[] a, int l, int r) {
         if (l < r) {
             int q = onePartition(a, l, r);
-            System.out.println("本次选取的中轴值是：" + q);
             QuickSort01(a, l, q - 1);
             QuickSort01(a, q + 1, r);
         }

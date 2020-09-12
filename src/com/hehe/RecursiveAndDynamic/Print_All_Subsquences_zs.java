@@ -36,7 +36,7 @@ public class Print_All_Subsquences_zs {
             return;  //返回类型是void的函数使用return语句是为了引起函数的强制结束，这种return的用法类似于循环结构中的break语句。
         }
         printAllSub(chars, i + 1, res);
-        printAllSub(chars, i + 1, res +chars[i]);
+        printAllSub(chars, i + 1, res + chars[i]);
     }
 
 

@@ -1,6 +1,5 @@
 package com.hehe.SortAndSearch;
 
-import com.sun.scenario.animation.shared.ClipEnvelope;
 
 import java.util.Arrays;
 
@@ -253,16 +252,17 @@ public class BinarySearch {
 //        System.out.println(MissingNumInSortedArray(arr01));
 //        System.out.println(MissingNumInSortedArray(arr02));
 
-        /**
-         * test timesOfNum
-         */
+
+        System.out.println("==========test timesOfNum===================");
         int[] nums = {1, 2, 3, 3, 3, 4, 5};
         System.out.println(timesOfNum(nums, 3));
-        System.out.println("==============================");
-        System.out.println(getFirstK01(nums, 0, nums.length - 1, 3));
 
-        System.out.println("=====================");
-        int[] num1 = {0, 1, 2, 3, 3, 3, 4, 5};
+
+//        System.out.println("==============getFirstK01================");
+//        System.out.println(getFirstK01(nums, 0, nums.length - 1, 3));
+
+        System.out.println("=========0-n-1 的数字 第一个重复的那个数字============");
+        int[] num1 = {0, 1, 2, 3, 4, 4, 4, 5};
         System.out.println(duplicate(num1));
 
 

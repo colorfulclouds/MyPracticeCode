@@ -20,7 +20,7 @@ import java.util.Scanner;
 //              先处理匹配到最后一个字符且最后一个字符也匹配
 //    父循环继续
 
-public class StringPattern_easy {
+public class PatternMatch_easy {
 
     //求解字符串内含有多少模式串
     public static int strPattern(String s1,String s2){

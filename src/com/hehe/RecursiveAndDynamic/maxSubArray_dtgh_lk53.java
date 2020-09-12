@@ -1,7 +1,7 @@
 package com.hehe.RecursiveAndDynamic;
 
 /**
- * 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+ * 整数数组 nums ，最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
  * *
  * * 子序列（原序列中不连在一起的）
  * * 子串（原序列中连在一起的）------连续子数组
@@ -46,7 +46,6 @@ public class maxSubArray_dtgh_lk53 {
 
 
 //        System.out.println(maxSubArray(nums5));
-        System.out.println(maxSubArray01(nums5));
 //        System.out.println(Sum(nums4));
     }
 
@@ -97,23 +96,6 @@ public class maxSubArray_dtgh_lk53 {
         for (int i = start; i <= end; i++) {
             list.add(nums[i]);
         }
-        return list;
-    }
-
-    public static List maxSubArray01(int[] nums) {
-        List<Integer> list = new LinkedList<>();
-//        int res_max = nums[0];
-//        int cur_max = nums[0];
-//        list.add(nums[0]);
-//        for (int i = 1; i < nums.length; i++) {
-//            if(nums[i] >= nums[i] + cur_max)
-//                list.clear();
-//            cur_max = Math.max(nums[i],nums[i] + cur_max);
-//            res_max = Math.max(cur_max,res_max);
-//            list.add(nums[i]);
-//            if(cur_max >= res_max)
-//                break;
-//        }
         return list;
     }
 

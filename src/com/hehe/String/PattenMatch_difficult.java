@@ -7,13 +7,16 @@ package com.hehe.String;
  * 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但与"aa.a"和"ab*a"均不匹配。
  *
  */
-public class RegularMatch {
+public class PattenMatch_difficult {
     public static void main(String[] args) {
 //        System.out.println(isMatch("aaa", "a.a"));
 //        System.out.println(isMatch("aaa", "ab*ac*a"));
 //        System.out.println(isMatch("aaa", "aa.a"));
 //        System.out.println(isMatch("aaa", "ab*a"));
 //        System.out.println(isMatch("aaa", ".*"));
+        System.out.println(isMatch("a", "ab*"));
+        System.out.println(isMatch("ab", ".*c"));
+        System.out.println("=====================");
 
 //        true
 //        true
@@ -72,25 +75,25 @@ public class RegularMatch {
 
 
     private static boolean MatchCore(String str, String patten) {
-        if (str.isEmpty())
-            return patten.isEmpty();
-        if(patten.isEmpty())
-            return str.isEmpty();
+            if (str.isEmpty() && patten.isEmpty())
+                return true;
+            if(!str.isEmpty() && patten.isEmpty())
+                return str.isEmpty();
 
-        if (patten.length() > 1 && patten.charAt(1) == '*' && str.length() >= 1) { //patten 至少为 q*样子
+        if (patten.length() > 1 && patten.charAt(1) == '*' ) { //patten 至少为 q*样子
 
-            if (str.charAt(0) == patten.charAt(0) || patten.charAt(0) == '.')
+            if (str.length() > 0 && (str.charAt(0) == patten.charAt(0) || patten.charAt(0) == '.'))
                 return MatchCore(str, patten.substring(2)) //patten后面可能有 x* 去匹配 0+ 个str中的字符
                         || MatchCore(str.substring(1), patten)
                         || MatchCore(str.substring(1), patten.substring(2));
             else
                 return MatchCore(str, patten.substring(2));
         }
-        if ((str.charAt(0) == patten.charAt(0) && str.length() >= 1 && patten.length() >= 1)
-                || (patten.charAt(0) == '.' && str.length() >= 1))
+        if (str.length() >= 1 && patten.length() >= 1 && (str.charAt(0) == patten.charAt(0)
+                || patten.charAt(0) == '.' ) && str.length() >= 1 && patten.length() >= 1 )
             return MatchCore(str.substring(1), patten.substring(1));
-        return false;
-
+        else
+            return false;
     }
 
 

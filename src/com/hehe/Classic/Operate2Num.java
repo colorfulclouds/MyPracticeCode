@@ -12,7 +12,7 @@ public class Operate2Num {
         int tmp = num1 ^ num2;
         num1 = tmp ^ num1;
         num2 = tmp ^ num2;
-        System.out.println(num1);
+        System.out.print(num1 + " ");
         System.out.println(num2);
     }
 

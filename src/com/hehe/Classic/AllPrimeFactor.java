@@ -12,10 +12,29 @@ import java.util.Scanner;
 public class AllPrimeFactor {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        long sLong = sc.nextLong();
-        String res = getResult(sLong);
-        System.out.println(res);
+//        Scanner sc = new Scanner(System.in);
+//        long sLong = sc.nextLong();
+//        String res = getResult(sLong);
+//        System.out.println(res);
+        System.out.println(getResult(100));
+        System.out.println(getResult(1800));
+        getResult01(100);
+        System.out.println();
+        getResult01(1800);
+    }
+
+    /**
+     * 简
+     * @param slong
+     */
+    public static void getResult01(long slong) {
+        for (int i = 2; i <= slong ; i++) {
+            while(slong % i == 0){
+                System.out.print(i + " ");
+                slong /= i;
+            }
+        }
+
     }
 
     public static String getResult(long slong) {

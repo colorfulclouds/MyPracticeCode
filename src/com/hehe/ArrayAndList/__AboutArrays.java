@@ -1,8 +1,11 @@
 package com.hehe.ArrayAndList;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-public class AboutArrays {
+public class __AboutArrays {
 
 //    Arrays的常用方法：
 //
@@ -38,12 +41,24 @@ public class AboutArrays {
 
     public static void main(String[] args){
         int[] arr={9,8,3,5,2};
-        int[] copied= Arrays.copyOfRange(arr, 1, 7);//复制数组
+        int[] copied= Arrays.copyOfRange(arr, 1, 3); //复制数组
         System.out.println("复制数组："+Arrays.toString(copied));
+
+        int[] arr2 = Arrays.copyOf(arr,4);
+        System.out.println(Arrays.toString(arr2));
+
+
         Arrays.sort(arr);                          //排序数组
         System.out.println("排序后："+Arrays.toString(arr));
         Arrays.fill(arr,8);                        //填充数组
         System.out.println("填充数组："+Arrays.toString(arr));
+
+
+
+        List<Integer> list1 = new ArrayList<Integer>();
+        List<Integer> list2 = new ArrayList<Integer>();
+
+        Collections.sort(list2);  //List的排序
     }
 
 }

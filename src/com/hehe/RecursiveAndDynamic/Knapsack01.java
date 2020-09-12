@@ -15,28 +15,30 @@ package com.hehe.RecursiveAndDynamic;
  */
 public class Knapsack01 {
     public static void main(String[] args) {
-        int[] w = {0, 2, 3, 4, 5};            //商品的体积2、3、4、5
-        int[] v = {0, 3, 4, 5, 6};            //商品的价值3、4、5、6
-        int bagV = 8;                            //背包大小
-        int[][] dp = new int[5][9];                    //动态规划表
 
-        for (int i = 1; i <= 4; i++) {
-            for (int j = 0; j <= bagV; j++) {
-                if (j < w[i])
-                    dp[i][j] = dp[i - 1][j];
-                else
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i]);
-            }
-        }
-//        动态规划表的输出
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(dp[i][j] + " ");
-            }
-            System.out.println();
-
-        }
-        System.out.println("==================================");
+        System.out.println("================经典背包问题 二维数组==================");
+//        int[] w = {0, 2, 3, 4, 5};            //商品的体积2、3、4、5
+//        int[] v = {0, 3, 4, 5, 6};            //商品的价值3、4、5、6
+//        int bagV = 8;                            //背包大小
+//        int[][] dp = new int[5][9];                    //动态规划表
+//
+//        for (int i = 1; i <= 4; i++) {
+//            for (int j = 0; j <= bagV; j++) {
+//                if (j < w[i])
+//                    dp[i][j] = dp[i - 1][j];
+//                else
+//                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i]);
+//            }
+//        }
+////        动态规划表的输出
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 9; j++) {
+//                System.out.print(dp[i][j] + " ");
+//            }
+//            System.out.println();
+//
+//        }
+        System.out.println("===============经典背包问题 二维数组===================");
 
         int[] w1 = {2, 3, 4, 5};            //商品的体积2、3、4、5
         int[] v1 = {3, 4, 5, 6};            //商品的价值3、4、5、6
@@ -51,7 +53,7 @@ public class Knapsack01 {
         }
 
         for (int i = 1; i < size; i++) {
-            for (int j = 0; j <= bagV1; j++){
+            for (int j = 0; j <= bagV1; j++) {
                 dp1[i][j] = dp1[i - 1][j];
                 if (w1[i] <= j)
                     dp1[i][j] = Math.max(dp1[i][j], dp1[i - 1][j - w1[i]] + v1[i]);
@@ -64,6 +66,29 @@ public class Knapsack01 {
             System.out.println();
 
         }
+        System.out.println("===============经典背包问题 一维数组===================");
+
+        int[] w = {2, 3, 4, 5};            //商品的体积2、3、4、5
+        int[] v = {3, 4, 5, 6};            //商品的价值3、4、5、6
+        int bagV = 8;                            //背包大小
+        int[] dp = new int[bagV + 1];                    //动态规划表
+
+        // i是第几件物品 j是物品的价值
+        for (int i = 1; i <= 4; i++) {
+            for (int j = bagV; j >= w[i - 1]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - w[i - 1]] + v[i - 1]);  //装入某件物品 体积减少 价值增加
+            }
+        }
+
+        System.out.print(dp[bagV]);
+        System.out.println();
+//        动态规划表的输出
+        for (int i = 0; i < dp.length; i++)
+            System.out.print(dp[i] + " ");
+        System.out.println();
+
+
+        System.out.println("=================一维数组==================");
 
         /**
          * 3 15
@@ -92,7 +117,7 @@ public class Knapsack01 {
         System.out.println();
         System.out.println("=================改编的二维数组==================");
 
-        int[][] dp3 = new int[num][value+1];
+        int[][] dp3 = new int[num][value + 1];
 
 
         for (int i = 0; i <= value; i++) {
@@ -100,7 +125,7 @@ public class Knapsack01 {
         }
 
         for (int i = 1; i < num; i++) {
-            for (int j = 0; j <= value; j++){
+            for (int j = 0; j <= value; j++) {
                 dp3[i][j] = dp3[i - 1][j];
                 if (energy[i] <= j)
                     dp3[i][j] = Math.max(dp3[i][j], dp3[i - 1][j - energy[i]] + pleasure_value[i]);

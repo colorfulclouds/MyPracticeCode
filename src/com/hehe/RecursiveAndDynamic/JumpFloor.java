@@ -8,6 +8,15 @@ public class JumpFloor {
         // 假设现在6个台阶，我们可以从第5跳一步到6，这样的话有多少种方案跳到5就有多少种方案跳到6，另外我们也可以从4跳两步跳到6，跳到4有多少种方案的话，就有多少种方案跳到6，
         // 其他的不能从3跳到6什么的啦，所以最后就是f(6) = f(5) + f(4)；这样子也很好理解变态跳台阶的问题了
         System.out.println(jumpFloor(3));
+        System.out.println(climbStairs(3));
+
+        System.out.println(jumpFloor(5));
+        System.out.println(climbStairs(5));
+
+        System.out.println(jumpFloor(10));
+        System.out.println(climbStairs(10));
+        System.out.println("=========================================");
+
         System.out.println(jumpFloorII(3));
 
         System.out.println(jumpFloorIII(10));
@@ -17,21 +26,33 @@ public class JumpFloor {
 
     /**
      * 初级跳台阶
+     *
      * @param n
      * @return
      */
-    public static long jumpFloor(int n){
-        if(n<=0)
+    public static long jumpFloor(int n) {
+        if (n <= 0)
             return 0;
-        if(n<=2)
+        if (n <= 2)
             return n;
-        long[] f = {1,2,0};
+        long[] f = {1, 2, 0};
         for (int i = 2; i < n; i++) {
             f[2] = f[1] + f[0];
             f[0] = f[1];
             f[1] = f[2];
         }
         return f[2];
+    }
+
+    /**
+     * 初级跳台阶 (斐波那契公式求解)
+     * @param n
+     * @return
+     */
+    public static int climbStairs(int n) {
+        double sqrt_5 = Math.sqrt(5);
+        double fib_n = Math.pow((1 + sqrt_5) / 2, n + 1) - Math.pow((1 - sqrt_5) / 2, n + 1);
+        return (int) (fib_n / sqrt_5);
     }
 
 
@@ -42,24 +63,26 @@ public class JumpFloor {
 
     /**
      * 变态跳台阶
+     *
      * @param target
      * @return
      */
     public static int jumpFloorII(int target) {
 
-        return 1<<(target-1);
+        return 1 << (target - 1);
     }
 
     /**
      * 跳台阶 每次一步或者两步 且要求不能有连续的两步
+     *
      * @param n
      * @return
      */
-    public static int jumpFloorIII(int n){
-        if(n <= 4)
+    public static int jumpFloorIII(int n) {
+        if (n <= 4)
             return n;
-        int[] arr= {1,2,3,4};
-        while(n > 0){
+        int[] arr = {1, 2, 3, 4};
+        while (n > 0) {
             int tmp = arr[0] + arr[1] + arr[2];
             arr[0] = arr[1];
             arr[1] = arr[2];
@@ -72,11 +95,12 @@ public class JumpFloor {
 
     /**
      * 复杂度高 没通过字节的笔试
+     *
      * @param n
      * @return
      */
-    public static int jumpFloorIIII(int n){
-        if(n <= 4)
+    public static int jumpFloorIIII(int n) {
+        if (n <= 4)
             return n;
         ArrayList<Integer> list = new ArrayList<>();
         list.add(1);
@@ -84,9 +108,9 @@ public class JumpFloor {
         list.add(3);
         list.add(4);
         int size = 0;
-        while(n > 0){
+        while (n > 0) {
             size = list.size();
-            int tmp = list.get(size-2) + list.get(size-3) + list.get(size -4);
+            int tmp = list.get(size - 2) + list.get(size - 3) + list.get(size - 4);
             list.add(tmp);
             n -= 1;
         }

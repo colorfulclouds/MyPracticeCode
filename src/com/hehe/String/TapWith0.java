@@ -1,4 +1,4 @@
-package com.hehe.ArrayAndList;
+package com.hehe.String;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,7 +29,7 @@ public class TapWith0 {
         for (int i = 0; i < str.length; i++) {
             String s = str[i];
             if (s.length() % 8 != 0)
-                s = s + "00000000";
+                s = s + "0000000";
             while (s.length() >= 8) {
                 res.add(s.substring(0,8));
                 s = s.substring(8);

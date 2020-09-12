@@ -1,4 +1,4 @@
-package com.hehe.ArrayAndList;
+package com.hehe.QsSol;
 
 public class BuyBeerDrink {
     /**

@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * ArrayList循环遍历删除 因为其删除的方法里面使用的是删除后 将后续元素往前复制，故对于连续的两个元素，删除第一个，
- * 第二个会被移动到当前位置，导致第二个元素删除失败，倒序删除可以解决该问题
+ * 第二个会被移动到当前位置，导致第二个元素删除失败，倒序删除可以解决该问题，迭代器删除也可以
  */
 
 public class ArrayListRemove {
@@ -29,7 +29,7 @@ public class ArrayListRemove {
 
 
     /**
-     * 倒序遍历删除 ，可以删除所有为 b 的元素
+     * 1、倒序遍历删除 ，可以删除所有为 b 的元素
      * @param list
      */
     public static void remove(ArrayList<String> list) {
@@ -55,7 +55,7 @@ public class ArrayListRemove {
 
 
     /**
-     * 迭代方法删除指定元素
+     * 2、迭代方法删除指定元素
      * @param list
      */
     public static void remove2(ArrayList<String> list){

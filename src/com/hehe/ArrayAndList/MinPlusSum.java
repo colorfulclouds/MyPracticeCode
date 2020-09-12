@@ -1,9 +1,4 @@
 package com.hehe.ArrayAndList;
-
-import java.util.Scanner;
-//您的代码已保存
-//答案正确:恭喜！您提交的程序通过了所有的测试用例
-
 /*
  * 数组切片  求切片（所有子数组中） 最小值和总和的乘积 的最大值
  * */
@@ -43,13 +38,7 @@ public class MinPlusSum {
             }
         }
         System.out.println(curMax);
-
-//		Collections.sort(array);
-//		for (int i = 0; i < num; i++) {
-//			System.out.println(array.get(i));
-//		}
     }
-
 }
 
 //3

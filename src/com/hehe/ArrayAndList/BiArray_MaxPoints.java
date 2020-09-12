@@ -22,7 +22,7 @@ case通过率为70.00%
 // 输出
 //        3 4
 
-public class MaxPoints {
+public class BiArray_MaxPoints {
     //功能：找出一组点的所有的最大点，在坐标中若右上方无其他点则为
     //最大点定义：在坐标中若右上方无其他点则为
     public static void findMaxPoints(int num,Point[] points){

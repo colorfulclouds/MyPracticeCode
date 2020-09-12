@@ -4,7 +4,22 @@ package com.hehe.ArrayAndList;
 /**
  * 二维数组中查找是否存在某个数字
  */
-public class FindInBiArray {
+public class BiArray_FindIn {
+
+    public static void main(String[] args) {
+        BiArray_FindIn s = new BiArray_FindIn();
+        int[][] array = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+//        boolean b = Find(12, array);
+        boolean b = FindInBiArray(array,9);
+        System.out.println(b);
+    }
+
+    /**
+     * 一般二维数组中 查找某数
+     * @param target
+     * @param array
+     * @return
+     */
     public static boolean Find(int target, int[][] array) {
         boolean b = false;
 
@@ -18,16 +33,7 @@ public class FindInBiArray {
 
     }
 
-    public static void main(String[] args) {
-        FindInBiArray s = new FindInBiArray();
-        int[][] array = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
-//        boolean b = Find(12, array);
-        boolean b = FindInBiArray(array,9);
-        System.out.println(b);
-    }
-
-    /*
-     * 判断二维数组中是否有该整数
+    /** 判断排序二维数组中是否有该整数
      * 思路：从右上角数字开始，若该数字大于所要查找的数字，剔除该数字所在的列，相反，剔除该数字所在行
      *       最后该数字在剩余数组的右上角
      * */
@@ -36,6 +42,8 @@ public class FindInBiArray {
         int columns = a[0].length;
         boolean found = false;
         if (a != null && rows > 0 && columns > 0) {
+
+            //右上角为起点开始寻找
             int p_row = 0;
             int p_column = columns - 1;
 
@@ -55,4 +63,6 @@ public class FindInBiArray {
         }
         return found;
     }
+
+
 }

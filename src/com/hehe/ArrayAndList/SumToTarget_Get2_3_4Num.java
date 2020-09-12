@@ -4,11 +4,80 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*1、输出数组中三个数字之和等于0，的所有组合
+/*
+ * 1、两数之和等于target
+ * 2、输出数组中三个数字之和等于0，的所有组合
+ * 3、输出数组中四个数字之和等于0，的所有组合
  *
- *2、输出数组中四个数字之和等于0，的所有组合
+ * 4、给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合
+ * package com.hehe.RecursiveAndDynamic.CombinationSum;
  * */
-public class get3Num {
+public class SumToTarget_Get2_3_4Num {
+    /**
+     * 无序数组中两数之和等于target，并输出两数下标（数组类型）
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum(int[] nums, int target) {
+
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target)
+                    return new int[]{i, j};
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 求排序数组中的两个数等于既定的target值
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSumInOrdered(int[] nums, int target) {
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+            if (nums[i] + nums[j] == target)
+                return new int[]{nums[i], nums[j]};
+            else if (nums[i] + nums[j] > target)
+                j--;
+            else
+                i++;
+        }
+        return null;
+
+    }
+
+    /**
+     * 递增排序数组和为S的两个数，如果有多对结果，输出两个数的乘积最小的
+     *
+     * 注意：乘积最小的，递增的序列，外层的乘积小于内层
+     *       故，夹逼找到的第一个就可以返回了 即为最小的那对
+     * @param array
+     * @param sum
+     * @return
+     */
+    public List<Integer> FindNumbersWithSum(int[] array, int sum) {
+        int a = 0;
+        int b = array.length - 1;
+        List<Integer> list = new ArrayList<>();
+        while (a < b) {
+            if (array[a] + array[b] == sum) {
+                list.add(array[a]);
+                list.add(array[b]);
+            } else if (array[a] + array[b] > sum) {
+                b--;
+            } else
+                a++;
+        }
+        return list;
+    }
+
+
 
     /**
      * 输出数组中四个数字之和等于0，的所有组合
@@ -122,9 +191,29 @@ public class get3Num {
     }
 
     public static void main(String[] args) {
-        int nums[] = {-4, -2, 1, 0, 0, -2, 3, 1, -5, 0};
 
-        List<List<Integer>> ends = threeSum(nums);
+        //1、任意数组中的两个数等于既定的target值：暴力O（n^2）
+        int[] nums = {3, 9, 8, 1};
+        int target = 9;
+        int[] rst = twoSum(nums, target);
+//		for(int i:rst){
+//			System.out.print(i);
+//		}
+        System.out.print("[" + rst[0] + "," + rst[1] + "]");
+        System.out.println();
+
+        //2、排序数组中的两个数等于既定的target值 :双指针 O（n）
+        int[] nums1 = {1, 2, 4, 7, 11, 15};
+        int[] res = twoSumInOrdered(nums1, 15);
+        for (int i : res)
+            System.out.print(i + " ");
+
+        System.out.println();
+
+
+        int nums2[] = {-4, -2, 1, 0, 0, -2, 3, 1, -5, 0};
+
+        List<List<Integer>> ends = threeSum(nums2);
         for (List<Integer> i : ends) {
             System.out.println(i);
         }

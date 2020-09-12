@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.QsSol;
 import java.util.*;
 //5 2
 //5 10  //a = 5  b=10  订单编号 1

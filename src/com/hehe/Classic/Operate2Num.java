@@ -8,6 +8,11 @@ public class Operate2Num {
 
     }
 
+    /**
+     * 交换两个数
+     * @param num1
+     * @param num2
+     */
     public static void exchange(int num1, int num2) {
         int tmp = num1 ^ num2;
         num1 = tmp ^ num1;

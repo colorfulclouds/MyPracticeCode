@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.LRU;
 
 import java.util.*;
 

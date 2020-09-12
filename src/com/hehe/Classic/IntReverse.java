@@ -33,10 +33,24 @@ public class IntReverse {
         return res;
     }
 
+    public static int reverse01(int x) {
+        int res = 0;
+        while (x != 0) {
+            res = res * 10 + (x % 10);
+            x /= 10;
+        }
+        if ((res > Math.pow(2, 31) - 1) || (res < (-1) * Math.pow(2, 31)))
+            return 0;
+        return res;
+    }
+
     public static void main(String[] args) {
         System.out.println(reverse(-123));
         System.out.println(reverse(123));
         System.out.println(reverse(120));
+        System.out.println(reverse01(-123));
+        System.out.println(reverse01(123));
+        System.out.println(reverse01(120));
 
     }
 }

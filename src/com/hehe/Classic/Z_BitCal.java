@@ -8,7 +8,7 @@ import java.util.*;
  *  1、每个整数 每两个bit位交换位置
  *  2、每个整数向右移动两位 移出的两位 移到下一个数的最高位 没有下一个数 移到自己的最高位上 最后一个数的溢出两位 移到第一个数的最高两位
  */
-public class BitCal {
+public class Z_BitCal {
 
     static long[] b = new long[32 * 1020];
 

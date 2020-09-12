@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.Heap;
 
 public class Top_K_BFPRT {
 

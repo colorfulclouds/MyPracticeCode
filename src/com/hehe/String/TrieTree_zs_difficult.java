@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.String;
 /**前缀树
  * 前缀树原型：可以查找是否有某个字符串前缀
  * 改进前缀树：是否添加过某字符串或有少个字符串以它为前缀 && 某个字符串的词频

@@ -1,14 +1,12 @@
-package com.hehe.Classic;
+package com.hehe.ArrayAndList;
 
 
 /**.下一个排列
  * 实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
- *
  * 如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
- *
  * 必须原地修改，只允许使用额外常数空间。
  */
-public class nextPermutation {
+public class NextPermutation {
     public static void main(String[] args) {
         int[] nums = {1,2,3};
         int[] nums1 = {1,3,2};

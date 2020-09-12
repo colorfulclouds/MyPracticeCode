@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 /**
  * 正整数n的阶乘(n!)中的末尾有多少个0?
- *
  * 例如：n = 5, n! = 120.末尾有1个0
  *
- * 实现：int CountZero(int n);
+ *对于阶乘中的数字 含因子5的个数就是结果
  */
 public class CountZero_afterjiecheng {
     public static void main(String[] args) {

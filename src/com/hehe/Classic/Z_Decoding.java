@@ -1,6 +1,6 @@
 package com.hehe.Classic;
 
-public class _Decoding {
+public class Z_Decoding {
 
     public static int numDecodings(String s) {
         // 解题思路:

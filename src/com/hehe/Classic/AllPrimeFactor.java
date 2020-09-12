@@ -36,7 +36,7 @@ public class AllPrimeFactor {
         }
 
     }
-
+//======================================================================================================================
     public static String getResult(long slong) {
         StringBuilder sb = new StringBuilder();
         int first = 2;

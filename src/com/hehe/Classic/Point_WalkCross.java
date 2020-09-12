@@ -25,7 +25,7 @@ import java.util.Set;
  * T20200823_aiqy2
  * java.awt.Point;
  */
-public class WalkCross {
+public class Point_WalkCross {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         char[] char_array = sc.nextLine().toCharArray();

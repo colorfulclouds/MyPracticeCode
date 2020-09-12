@@ -1,4 +1,4 @@
-package com.hehe.Classic;
+package com.hehe.String;
 
 public class StrToInt {
     public static void main(String[] args) {

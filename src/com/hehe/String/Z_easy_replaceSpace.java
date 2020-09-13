@@ -4,7 +4,7 @@ package com.hehe.String;
  * 字符串中的空格替换成  "%20"
  *
  */
-public class replaceSpace_easy {
+public class Z_easy_replaceSpace {
     public static void main(String[] args) {
         System.out.println(replaceSpace(new StringBuffer("we are family.")));
     }

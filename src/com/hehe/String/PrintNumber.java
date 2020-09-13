@@ -14,6 +14,14 @@ public class PrintNumber {
 
         for (int x : res)
             System.out.print(x + " ");
+
+
+
+        //==============================递归回溯法  ======================================
+        int[] dfs = printNumbers01(2);
+        for(int r : dfs){
+            System.out.print(r+ " ");
+        }
     }
 
     public static int[] printNumbers(int n) {
@@ -61,6 +69,44 @@ public class PrintNumber {
         }
         return isOverflow;
     }
+
+//===============================================================================================================
+    static int[] res;
+    static int nine = 0, count = 0, start;
+    static char[] num, loop = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+    /**
+     * 递归回溯法  【不懂！！！】
+     * @param n
+     * @return
+     */
+    public static int[] printNumbers01(int n) {
+//        this.n = n;
+        res = new int[(int) Math.pow(10, n) - 1];
+        num = new char[n];
+        start = n - 1;
+        dfs(0, n);
+        return res;
+    }
+
+    static void dfs(int x, int n) {
+        if (x == n) {
+            String s = String.valueOf(num).substring(start);
+            if (!s.equals("0"))
+                res[count++] = Integer.parseInt(s);
+            if (n - start == nine)
+                start--;
+            return;
+        }
+        for (char i : loop) {
+            if (i == '9')
+                nine++;
+            num[x] = i;
+            dfs(x + 1, 2);
+        }
+        nine--;
+    }
+
 
 
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
  *   将每个字符串按8位切割
  *   不足8位的补0
  */
-public class TapWith0 {
+public class Z_easy_TapWith0 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 //        int num = Integer.parseInt(sc.nextLine());

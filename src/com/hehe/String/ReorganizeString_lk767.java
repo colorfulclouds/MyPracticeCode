@@ -2,8 +2,20 @@ package com.hehe.String;
 
 /**
  *重组字符串 若能相同元素的不相邻 即为可重组字符串
+ *
+ * *给定一个字符串S，检查是否能重新排布其中的字母，使得两相邻的字符不同。
+ *  * 若可行，输出任意可行的结果。若不可行，返回空字符串。
+ *  *zzzzaabbb
+ *  * zazbzbzba
+ *  *
+ *  * 思路：
+ *  * 1 new 一个26个长的int数组, 讲所有字符放入数组中
+ *  * 2 找出数量最多的字符
+ *  * 3 将最多的字符放在偶数为
+ *  * 4 将其与字符补位在偶数位后,在补齐所有奇数位
+ *  * 5 输出结果
  */
-public class ReorganizeString {
+public class ReorganizeString_lk767 {
     public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
         String s = "zzzzaabbb";

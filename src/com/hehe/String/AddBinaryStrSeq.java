@@ -22,6 +22,9 @@ public class AddBinaryStrSeq {
         int carry = 0;
         int sum = 0;
         StringBuilder sb = new StringBuilder();
+//        String[] tmp = new String[6];  短串填零
+//        Arrays.fill(tmp,"0");
+//        sb.append(tmp);
         for (int i = a.length()-1,j = b.length()-1; i >= 0 || j >= 0; i--,j--) {
             sum = carry;
             sum += i >= 0 ? a.charAt(i) - '0' : 0;

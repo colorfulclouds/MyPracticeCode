@@ -1,5 +1,12 @@
 package com.hehe.String;
 
+/**
+ * "+1230"
+ * 1230
+ *
+ * "-12"
+ * -12
+ */
 public class StrToInt {
     public static void main(String[] args) {
         System.out.println(StrToInt("+123"));

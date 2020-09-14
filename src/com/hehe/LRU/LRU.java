@@ -24,12 +24,12 @@ public class LRU {
 
         //put函数
         public  void put(int key, int val) {
-            if (maps.containsKey(key)) { //是否已包含元素
+            if (maps.containsKey(key)) { //包含该元素
                 maps.put(key, val);
                 queue.remove(key); //====queue双操作=====
                 queue.add(key);
                 System.out.println("包含该元素，重新添加: " + key);
-            } else {
+            } else { //不包含该元素
                 if (maps.size() < size) { //判断是否超过容量 否
                     maps.put(key,val);
                     //queue.remove(key);  //====queue双操作=====
@@ -37,9 +37,8 @@ public class LRU {
                     System.out.println("不包含该元素，有位置，直接添加: " + key);
                 } else {//超出缓存容量,选择最近最久未使用的
                     Integer k = queue.poll();
-                    //maps.remove(k);
-                    //maps.put(key, val);
-                    maps.put(key,val);
+                    maps.remove(k);
+                    maps.put(key, val);
                     queue.add(key);
                     System.out.println("不包含该元素，超容移除,并放置新元素: " + key);
                 }

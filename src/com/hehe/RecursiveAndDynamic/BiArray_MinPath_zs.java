@@ -7,7 +7,7 @@ package com.hehe.RecursiveAndDynamic;
  * --》改编
  * 动态规划
  */
-public class MinPath_zs {
+public class BiArray_MinPath_zs {
     /**
      * 递归版本的最短路径
      *

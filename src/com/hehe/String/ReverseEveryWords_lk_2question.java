@@ -44,9 +44,9 @@ public class ReverseEveryWords_lk_2question {
 //        }
 //        return sb.toString().trim();  //trim() 去掉字符换两端多余的空格
         for (String w : words){
-            sb.append(w + " ");
+            sb.append(new StringBuilder(w).reverse() + " ");
         }
-        return sb.reverse().toString().trim();
+        return sb.toString().trim();
     }
 
     /**

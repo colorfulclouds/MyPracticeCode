@@ -3,7 +3,7 @@ package com.hehe.Heap;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class PriorityQueueMedian {
+public class MedianNum {
     public static void main(String[] args) {
 
         Insert(1);

@@ -2,7 +2,7 @@ package com.hehe.BiTree;
 
 //福利函数：用于直观地打印二叉树
 
-public class PrintBinaryTree {
+public class __PrintBinaryTree {
 
 
 

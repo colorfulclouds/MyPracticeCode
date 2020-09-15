@@ -39,23 +39,23 @@ public class BiArray_FindIn {
      * */
     public static boolean FindInBiArray(int a[][], int num) {
         int rows = a.length;
-        int columns = a[0].length;
+        int col = a[0].length;
         boolean found = false;
-        if (a != null && rows > 0 && columns > 0) {
+        if (a != null && rows > 0 && col > 0) {
 
             //右上角为起点开始寻找
             int p_row = 0;
-            int p_column = columns - 1;
+            int p_col = col - 1;
 
             //p_row是递增 [0-row]的角标都能满足
             //p_column是递减 p_column=0时要能进循环
 
-            while (p_row < rows && p_column >= 0) {
-                if (a[p_row][p_column] == num) {
+            while (p_row < rows && p_col >= 0) {
+                if (a[p_row][p_col] == num) {
                     found = true;
                     break;
-                } else if (a[p_row][p_column] > num)
-                    --p_column;
+                } else if (num < a[p_row][p_col])
+                    --p_col;
                 else
                     ++p_row;
             }

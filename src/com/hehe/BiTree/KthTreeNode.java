@@ -64,7 +64,7 @@ public class KthTreeNode {
     }
 
     /**
-     * 中序遍历的第k大的数字
+     * 中序遍历的第k大的数字 (中序遍历的逆应用)
      * @param head
      * @param k
      * @return

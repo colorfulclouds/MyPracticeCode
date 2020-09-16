@@ -45,7 +45,7 @@ public class maxSubArray_dtgh_lk53 {
 //        System.out.println(maxSubArrayPlus_dtgh_lk53(nums3));
 
 
-//        System.out.println(maxSubArray(nums5));
+        System.out.println(maxSubArray(nums5));
 //        System.out.println(Sum(nums4));
     }
 
@@ -100,32 +100,7 @@ public class maxSubArray_dtgh_lk53 {
     }
 
 
-    /**
-     * 【错误的】求最大连续子序列和的连续子序列
-     * zf
-     *
-     * @param nums
-     * @return
-     */
-    public static List<Integer> Sum(int[] nums) {
-        if (nums == null || nums.length < 1)
-            return new LinkedList<>();
-        int res = nums[0];
-        List<Integer> list = new LinkedList<>();
-        list.add(nums[0]);
-        for (int i = 1; i < nums.length; i++) {
-            if (res > 0) {
-                res += nums[i];
-                list.add(nums[i]);
-            } else {
-                res = Math.max(res, nums[i]);
-                if (res == nums[i]) {
-                    list.clear();
-                }
-            }
-        }
-        return list;
-    }
+
 
 
 }

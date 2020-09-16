@@ -74,7 +74,8 @@ public class TraversalBinaryTree_easy {
      * @return
      */
     public List<Integer> postorderTraversal(TreeNode root) {
-        if (root == null) return Collections.emptyList();
+        if (root == null)
+            return Collections.emptyList();
         List<Integer> res = new ArrayList<>();  //保存结果
         Stack<TreeNode> stack = new Stack<>();   //调用栈
         stack.push(root);    //先将根结点入栈

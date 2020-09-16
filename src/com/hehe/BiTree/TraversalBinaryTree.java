@@ -66,9 +66,9 @@ public class TraversalBinaryTree {
      * @param head
      * @return hehe
      */
-    public static ArrayList<ArrayList<Integer>> levelOrder02(TreeNode head) {
+    public static List<List<Integer>> levelOrder02(TreeNode head) {
         Queue<TreeNode> queue = new ArrayDeque<>(); //new LinkedList<>();
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         if (head != null)
             queue.add(head);
         int n = 0;  //判断奇偶层标志变量
@@ -87,11 +87,7 @@ public class TraversalBinaryTree {
                 if (peek.right != null)
                     queue.add(peek.right);
             }
-            ArrayList<Integer> res_tmp = new ArrayList<>();
-            while (tmp.peekFirst() != null) {
-                res_tmp.add(tmp.pollFirst());
-            }
-            res.add(res_tmp);
+            res.add(tmp);
             n = (n == 0) ? 1 : 0;
         }
         return res;
@@ -99,7 +95,7 @@ public class TraversalBinaryTree {
 
 
     /**
-     * 之字形打印树
+     * 之字形打印树 (满二叉树时可用)
      *
      * @param head
      * @return 网友答案
@@ -113,8 +109,10 @@ public class TraversalBinaryTree {
             LinkedList<Integer> tmp = new LinkedList<>();
             for (int i = queue.size(); i > 0; i--) {
                 TreeNode node = queue.poll();
-                if (res.size() % 2 == 0) tmp.addLast(node.val); // 偶数层 -> 队列头部
-                else tmp.addFirst(node.val); // 奇数层 -> 队列尾部
+                if (res.size() % 2 == 0)  //满二叉树时可用
+                    tmp.addLast(node.val); // 偶数层 -> 队列头部
+                else
+                    tmp.addFirst(node.val); // 奇数层 -> 队列尾部
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
             }
@@ -340,25 +338,7 @@ public class TraversalBinaryTree {
         }
     }
 
-    public static List<Integer> postorderTraversal(TreeNode root) {
-        if (root == null) return Collections.emptyList();
-        List<Integer> res = new ArrayList<>();  //保存结果
-        Stack<TreeNode> stack = new Stack<>();   //调用栈
-        stack.push(root);    //先将根结点入栈
 
-        while (!stack.isEmpty()) {
-            TreeNode t = stack.pop();
-            if (t != null) {
-                stack.push(t);   //完全模拟递归，真的是秒杀全场
-                stack.push(null);    //！完美
-                if (t.right != null) stack.push(t.right);
-                if (t.left != null) stack.push(t.left);
-            } else {
-                res.add(stack.pop().val);
-            }
-        }
-        return res;
-    }
     /**
      * can not understand 后序遍历 炫技版
      *
@@ -411,13 +391,6 @@ public class TraversalBinaryTree {
         System.out.print("pos-order: ");
 //		posOrderRecur(head);
 
-        List<Integer> list11 = postorderTraversal(head);
-        for(int i : list11){
-            System.out.print(i + " ");
-        }
-        System.out.println();
-
-
         // un recursive
         System.out.println("============unrecursive=============");
 //        preOrderUnRecur(head);
@@ -438,7 +411,7 @@ public class TraversalBinaryTree {
 //        levelOrder(head);
         List<List<Integer>> list = levelOrder01(head);
         System.out.println(list.toString());
-        ArrayList<ArrayList<Integer>> list1 = levelOrder02(head);
+        List<List<Integer>> list1 = levelOrder02(head);
         System.out.println(list1.toString());
         List<List<Integer>> list2 = levelOrder03(head);
         System.out.println(list2.toString());

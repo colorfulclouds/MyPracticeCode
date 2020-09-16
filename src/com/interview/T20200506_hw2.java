@@ -1,13 +1,12 @@
-package com.hehe.GreedAlgrithom;
+package com.interview;
 
 import java.util.*;
-
 /**
  * M机器数 N请求数
  * 请求结构体（需要内存大小，收益）
  * 求最大收益
  */
-public class ResourceRequest_hw {
+public class T20200506_hw2 {
     public static class Request {
         int size;
         int cost;
@@ -17,23 +16,9 @@ public class ResourceRequest_hw {
             this.cost = cost;
         }
 
-        @Override
-        public boolean equals(Object o) {   // 复习一下重写equals方法
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Request request = (Request) o;
-            return size == request.size &&
-                    cost == request.cost;
-        }
+
 
     }
-
-//    public static class MinComp implements Comparator<Request> {
-//        @Override
-//        public int compare(Request o1, Request o2) {
-//            return o1.size - o2.size;
-//        }
-//    }
 
     public static class MaxComp implements Comparator<Request> {
         @Override

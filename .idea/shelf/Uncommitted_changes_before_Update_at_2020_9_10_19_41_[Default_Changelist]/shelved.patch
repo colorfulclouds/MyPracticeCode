@@ -1,0 +1,643 @@
+Index: src/com/hehe/Classic/minNumberInRotateArray.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.Classic;\r\n\r\npublic class minNumberInRotateArray {\r\n\r\n    public static void main(String[] args) {\r\n        int[] array = {3, 4, 5, 1, 2};\r\n        int[] array1 = {1, 1, 1, 0, 1, 1};\r\n        int[] array2 = {1, 2, 3, 4, 5};\r\n\r\n        System.out.println(minNumberInRotateArray(array));\r\n        System.out.println(minNumberInRotateArray(array1));\r\n        System.out.println(minNumberInRotateArray(array2));\r\n\r\n    }\r\n\r\n    public static int minNumberInRotateArray(int[] array) {\r\n        if (array.length <= 0 && array == null)\r\n            return 0;\r\n\r\n        int a = 0, b = array.length - 1;\r\n        int mid = a;\r\n        while (array[a] >= array[b]) {\r\n            if (b - a == 1) {\r\n                mid = b;\r\n                break;\r\n            }\r\n            mid = (a + b) / 2;\r\n            if (array[a] == array[b] && array[mid] == array[b])\r\n                return minInArray(array, a, b);\r\n\r\n            if (array[mid] >= array[a])\r\n                a = mid;\r\n            else if (array[mid] <= array[b])\r\n                b = mid;\r\n\r\n\r\n        }\r\n        return array[mid];\r\n    }\r\n\r\n    private static int minInArray(int[] array, int a, int b) {\r\n        int res = array[a];\r\n        for (int i = a + 1; i <= b; i++) {\r\n            if (array[i] < res)\r\n                res = array[i];\r\n        }\r\n        return res;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/Classic/minNumberInRotateArray.java	(revision 4bff55c853c05780f69e46faa4552aa187ce83f4)
++++ src/com/hehe/Classic/minNumberInRotateArray.java	(date 1599722116420)
+@@ -6,10 +6,12 @@
+         int[] array = {3, 4, 5, 1, 2};
+         int[] array1 = {1, 1, 1, 0, 1, 1};
+         int[] array2 = {1, 2, 3, 4, 5};
++        int[] array3 = {1, 1, 1, 1, 1};
+ 
+         System.out.println(minNumberInRotateArray(array));
+         System.out.println(minNumberInRotateArray(array1));
+         System.out.println(minNumberInRotateArray(array2));
++        System.out.println(minNumberInRotateArray(array3));
+ 
+     }
+ 
+Index: src/com/hehe/RecursiveAndDynamic/Print_All_Permutations_zs.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.RecursiveAndDynamic;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.HashSet;\r\nimport java.util.List;\r\n\r\n/**\r\n * 递归\r\n * 打印 串 的所有排列组合\r\n * <p>\r\n * 将串中所有的位置上两两交换 就能得到全排列\r\n */\r\npublic class Print_All_Permutations_zs {\r\n    /**\r\n     * 串的所有排列组合 - ArrayList<String>\r\n     *\r\n     * @param str\r\n     * @return\r\n     */\r\n    public static ArrayList<String> Permutation(String str) {\r\n        List<String> res = new ArrayList<>();\r\n        if (str != null && str.length() > 0) {\r\n            PermutationHelper(str.toCharArray(), 0, res);\r\n            Collections.sort(res);\r\n        }\r\n        return (ArrayList) res;\r\n    }\r\n\r\n    public static void PermutationHelper(char[] cs, int i, List<String> list) {\r\n        if (i == cs.length - 1) {\r\n            String val = String.valueOf(cs);\r\n            if (!list.contains(val))\r\n                list.add(val);\r\n        }\r\n        for (int j = i; j < cs.length; j++) {\r\n            swap(cs, i, j);\r\n            PermutationHelper(cs, i + 1, list);\r\n            swap(cs, i, j);\r\n\r\n        }\r\n    }\r\n\r\n    /**\r\n     * 串的所有排列组合 - void\r\n     *\r\n     * @param str\r\n     */\r\n    public static void printAllPermutations1(String str) {\r\n        char[] chs = str.toCharArray();\r\n        process1(chs, 0);\r\n    }\r\n\r\n    public static void process1(char[] chs, int i) {\r\n        if (i == chs.length - 1) {\r\n            System.out.println(String.valueOf(chs));\r\n        }\r\n        for (int j = i; j < chs.length; j++) {\r\n            swap(chs, i, j);\r\n            process1(chs, i + 1);\r\n            swap(chs, i, j);\r\n        }\r\n    }\r\n\r\n    public static void swap(char[] chs, int i, int j) {\r\n        char tmp = chs[i];\r\n        chs[i] = chs[j];\r\n        chs[j] = tmp;\r\n    }\r\n\r\n    //===============================================未看=================================================\r\n    public static void printAllPermutations2(String str) {\r\n        char[] chs = str.toCharArray();\r\n        process2(chs, 0);\r\n    }\r\n\r\n    public static void process2(char[] chs, int i) {\r\n        if (i == chs.length) {\r\n            System.out.println(String.valueOf(chs));\r\n        }\r\n        HashSet<Character> set = new HashSet<>();\r\n        for (int j = i; j < chs.length; j++) {\r\n            if (!set.contains(chs[j])) {\r\n                set.add(chs[j]);\r\n                swap(chs, i, j);\r\n                process2(chs, i + 1);\r\n                swap(chs, i, j);\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    public static void main(String[] args) {\r\n        String test1 = \"abc\";\r\n        printAllPermutations1(test1);\r\n        System.out.println(\"======\");\r\n//        printAllPermutations2(test1);\r\n//        System.out.println(\"======\");\r\n\r\n        String test2 = \"acc\";\r\n        printAllPermutations1(test2);\r\n        System.out.println(\"======\");\r\n//        printAllPermutations2(test2);\r\n//        System.out.println(\"======\");\r\n\r\n\r\n        System.out.println(\"===========================\");\r\n        List<String> list = Permutation(\"abc\");\r\n        for (String s : list) {\r\n            System.out.println(s);\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/RecursiveAndDynamic/Print_All_Permutations_zs.java	(revision 4bff55c853c05780f69e46faa4552aa187ce83f4)
++++ src/com/hehe/RecursiveAndDynamic/Print_All_Permutations_zs.java	(date 1599667024848)
+@@ -1,9 +1,6 @@
+ package com.hehe.RecursiveAndDynamic;
+ 
+-import java.util.ArrayList;
+-import java.util.Collections;
+-import java.util.HashSet;
+-import java.util.List;
++import java.util.*;
+ 
+ /**
+  * 递归
+@@ -109,6 +106,10 @@
+         for (String s : list) {
+             System.out.println(s);
+         }
++
++        Integer[] num = {1,2,3};
++        List<List<Integer>> list11 = new ArrayList<>();
++        list11.add(Arrays.asList(num));
+     }
+ 
+ }
+Index: src/com/hehe/Classic/Z_ShapeChange.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.Classic;\r\n/*题目描述：Z字形排列变换\r\n * 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。\r\n * Z字形排列：\r\n *\r\n * L   C   I   R\r\n   E T O E S I I G\r\n   E   D   H   N\r\n *\r\n * 示例 1:\r\n\r\n\t输入: s = \"LEETCODEISHIRING\", numRows = 3\r\n\t输出: \"LCIRETOESIIGEDHN\"\r\n   示例 2:\r\n\r\n\t输入: s = \"LEETCODEISHIRING\", numRows = 4\r\n\t输出: \"LDREOEIIECIHNTSG\"\r\n *\r\n * L     D     R\r\n   E   O E   I I\r\n   E C   I H   N\r\n   T     S     G\r\n * */\r\n\r\npublic class Z_ShapeChange {\r\n\r\n    public static void main(String[] args) {\r\n        String s =\"LEETCODEISHIRING\";\r\n        int numRows = 3;\r\n        String ret = convert(s, numRows);\r\n        System.out.println(ret);\r\n\r\n    }\r\n\r\n    /**\r\n     * 将之字形字符串按行打印出来\r\n     * @param s\r\n     * @param numRows\r\n     * @return\r\n     */\r\n    public static String convert(String s, int numRows) {\r\n\r\n        if (numRows == 1) return s;\r\n\r\n        StringBuilder ret = new StringBuilder();\r\n        int n = s.length();\r\n        //循环长度：\r\n        int cycleLen = 2 * numRows - 2;\r\n\r\n        //按行访问\r\n        for (int i = 0; i < numRows; i++) {\r\n            for (int j = 0; j + i < n; j += cycleLen) {\r\n\r\n                ret.append(s.charAt(j + i));\r\n                //非第一行和非最后一行时 s 的下标\r\n                if (i != 0 && i != numRows - 1 && j + cycleLen - i < n)\r\n                    ret.append(s.charAt(j + cycleLen - i));\r\n            }\r\n        }\r\n        return ret.toString();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/Classic/Z_ShapeChange.java	(revision 4bff55c853c05780f69e46faa4552aa187ce83f4)
++++ src/com/hehe/Classic/Z_ShapeChange.java	(date 1599656168802)
+@@ -22,6 +22,9 @@
+    T     S     G
+  * */
+ 
++import java.util.ArrayList;
++import java.util.List;
++
+ public class Z_ShapeChange {
+ 
+     public static void main(String[] args) {
+@@ -60,4 +63,25 @@
+         return ret.toString();
+     }
+ 
++    public String convert01(String s, int numRows) {
++        if(numRows < 2)
++            return s;
++        List<StringBuilder> rows = new ArrayList<StringBuilder>();
++
++        for(int i = 0; i < numRows; i++)
++            rows.add(new StringBuilder());
++
++        int i = 0, flag = -1;
++        for(char c : s.toCharArray()) {
++            rows.get(i).append(c);
++            if(i == 0 || i == numRows -1)
++                flag = - flag;
++            i += flag;
++        }
++        StringBuilder res = new StringBuilder();
++        for(StringBuilder row : rows) res.append(row);
++        return res.toString();
++    }
++
++
+ }
+Index: src/com/hehe/SetMap/GroupAnagrams.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/SetMap/GroupAnagrams.java	(date 1599724661589)
++++ src/com/hehe/SetMap/GroupAnagrams.java	(date 1599724661589)
+@@ -0,0 +1,40 @@
++package com.hehe.SetMap;
++
++import java.util.*;
++
++/**
++ * 给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。
++ *
++ * 示例:
++ *
++ * 输入: ["eat", "tea", "tan", "ate", "nat", "bat"]
++ * 输出:
++ * [
++ *   ["ate","eat","tea"],
++ *   ["nat","tan"],
++ *   ["bat"]
++ * ]
++ *
++ */
++public class GroupAnagrams {
++    public static void main(String[] args) {
++        String s = "123";
++        char[] c = s.toCharArray();
++        System.out.println(c.toString());
++        System.out.println(String.valueOf(c));
++
++    }
++
++    public static List<List<String>> groupAnagrams(String[] strs){
++        Map<String,List<String>> map = new HashMap<>();
++        for(String s: strs){
++            char[] c = s.toCharArray();
++            Arrays.sort(c);
++            String tmp = c.toString();
++            if(!map.containsKey(tmp))  //String.valueOf(c)
++                map.put(tmp,new ArrayList<>());
++            map.get(tmp).add(s);
++        }
++        return new ArrayList(map.values());
++    }
++}
+Index: src/com/hehe/SortAndSearch/BinarySearch.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.SortAndSearch;\r\n\r\nimport com.sun.scenario.animation.shared.ClipEnvelope;\r\n\r\nimport java.util.Arrays;\r\n\r\n/**\r\n * 二分查找最多只与 [log2 n] + 1个元素比较   //下界\r\n * 完全二叉树的高度\r\n */\r\npublic class BinarySearch {\r\n\r\n    /**\r\n     * 输入排序数组：{1，2，3，3，3，4} 3\r\n     * 输出：3\r\n     * 3的个数有三个\r\n     * <p>\r\n     * 二分查找思想\r\n     *\r\n     * @param nums\r\n     * @param k\r\n     * @return\r\n     */\r\n    public static int timesOfNum(int[] nums, int k) {\r\n        int len = nums.length;\r\n        int res = 0;\r\n        if (len > 0) {\r\n            int first = getFirstK(nums, 0, len - 1, k);\r\n            int last = getLastK(nums, 0, len - 1, k);\r\n\r\n            if (first > -1 && last > -1)\r\n                res = last - first + 1;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    /**\r\n     * 查找第一个k的位置\r\n     * 递归\r\n     *\r\n     * @param nums\r\n     * @param start\r\n     * @param end\r\n     * @param k\r\n     * @return\r\n     */\r\n    public static int getFirstK(int[] nums, int start, int end, int k) {\r\n        if (start > end)\r\n            return -1;\r\n\r\n        int mid = (start + end) >> 1;\r\n\r\n        if (nums[mid] == k) {\r\n            if ((nums[mid - 1] != k && mid > 0) || mid == 0)\r\n                return mid;\r\n            else\r\n                end = mid - 1;\r\n        } else if (nums[mid] > k)\r\n            end = mid - 1;\r\n        else\r\n            start = mid + 1;\r\n\r\n        return getFirstK(nums, start, end, k);\r\n    }\r\n\r\n    /**\r\n     * 查找最后一个k的位置\r\n     * 递归\r\n     *\r\n     * @param nums\r\n     * @param start\r\n     * @param end\r\n     * @param k\r\n     * @return\r\n     */\r\n    public static int getLastK(int[] nums, int start, int end, int k) {\r\n        if (start > end)\r\n            return -1;\r\n\r\n        int mid = (start + end) >> 1;\r\n\r\n        if (nums[mid] == k) {\r\n            if ((nums[mid + 1] != k && mid < nums.length) || mid == nums.length)\r\n                return mid;\r\n            else\r\n                start = mid + 1;\r\n        } else if (nums[mid] > k)\r\n            end = mid - 1;\r\n        else\r\n            start = mid + 1;\r\n\r\n        return getLastK(nums, start, end, k);\r\n    }\r\n\r\n\r\n    /**\r\n     * 查找递增排序的数组中缺失的数\r\n     * <p>\r\n     * <p>\r\n     * 二分查找：middle下标和元素相等时 继续右半部分的搜索\r\n     * 如果不等 但前一个下标和元素相等 当前middle 即为所求 否则继续左半部分的查找\r\n     *\r\n     * @param nums\r\n     * @return\r\n     */\r\n    public static int MissingNumInSortedArray(int[] nums) {\r\n        if (nums.length <= 0)\r\n            return -1;\r\n        int left = 0;\r\n        int right = nums.length - 1;\r\n        while (left <= right) {\r\n            int middle = (left + right) >> 1;\r\n            if (nums[middle] != middle) {\r\n                if (middle == 0 || middle - 1 == nums[middle - 1] || middle == nums.length)\r\n                    return middle;\r\n                right = middle - 1;\r\n            } else\r\n                left = middle + 1;\r\n\r\n        }\r\n//        if(left == nums.length)\r\n//            return nums.length;\r\n        return -1;\r\n    }\r\n\r\n\r\n    /**\r\n     * 递归二分查找\r\n     *\r\n     * @param arr\r\n     * @param key\r\n     * @param low\r\n     * @param high\r\n     * @return\r\n     */\r\n    public static int recursionBinarySearch(int[] arr, int key, int low, int high) {\r\n        if (key < arr[low] || key > arr[high] || low > high) {\r\n            return -1;\r\n        }\r\n        int mid = (low + high) / 2;\r\n\r\n        if (key > arr[mid]) {\r\n            return recursionBinarySearch(arr, key, mid + 1, high);\r\n        } else if (key < arr[mid]) {\r\n            return recursionBinarySearch(arr, key, low, mid - 1);\r\n        } else {\r\n            return mid;\r\n        }\r\n    }\r\n\r\n    /**\r\n     * 非递归二分查找\r\n     *\r\n     * @param arr\r\n     * @param key\r\n     * @return\r\n     */\r\n    public static int commonBinarySearch(int[] arr, int key) {\r\n        int low = 0, high = arr.length - 1, mid = 0; //初始化\r\n\r\n        if (key < arr[low] || key > arr[high] || low > high) {\r\n            return -1;\r\n        }\r\n        while (low <= high) {\r\n            mid = (high + low) / 2;\r\n            if (key < arr[mid]) {\r\n                high = mid - 1;\r\n            } else if (key > arr[mid]) {\r\n                low = mid + 1;\r\n            } else {\r\n                return mid;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n\r\n    /**\r\n     * 查找第一个k的位置\r\n     * 非递归\r\n     *\r\n     * @param arr\r\n     * @param low\r\n     * @param high\r\n     * @param key\r\n     * @return\r\n     */\r\n    public static int getFirstK01(int[] arr, int low, int high, int key) {\r\n        if (key < arr[low] || key > arr[high] || low > high) {\r\n            return -1;\r\n        }\r\n        int mid = 0;\r\n        while (low <= high) {\r\n            mid = (high + low) / 2;\r\n            if (key < arr[mid])\r\n                high = mid - 1;\r\n            else if (key > arr[mid])\r\n                low = mid + 1;\r\n            else if (arr[mid - 1] != key && mid > 0 && arr[mid] == key || mid == 0)\r\n                return mid;\r\n            else\r\n                high = mid - 1;\r\n        }\r\n        return -1;\r\n    }\r\n\r\n    /**\r\n     * 0-n-1 的数字 第一个重复的那个数字\r\n     *\r\n     * @param numbers\r\n     * @return\r\n     */\r\n    public static int duplicate(int numbers[]) {\r\n        Arrays.sort(numbers);\r\n        int low = 0;\r\n        int high = numbers.length - 1;\r\n        int mid = 0;\r\n        while (low <= high) {\r\n            mid = (low + high) / 2;\r\n            if (mid == numbers[mid]) {\r\n                low = mid + 1;\r\n            } else if (mid > numbers[mid] && mid == low || mid > low && mid - 1 == numbers[mid - 1]) {\r\n                return mid - 1;\r\n            }\r\n            else {\r\n                high = mid - 1;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n\r\n\r\n    public static void main(String[] args) {\r\n        int[] arr = {1, 3, 5, 7, 9, 11};\r\n        int key = 3;\r\n//        System.out.println(recursionBinarySearch(arr, key, 0, arr.length - 1));\r\n//        System.out.println(commonBinarySearch(arr, key));\r\n\r\n\r\n//        int position = commonBinarySearch(arr, key);\r\n//\r\n//        if (position == -1) {\r\n//            System.out.println(\"查找的是\" + key + \",序列中没有该数！\");\r\n//        } else {\r\n//            System.out.println(\"查找的是\" + key + \",找到位置为：\" + position);\r\n//        }\r\n\r\n        /**\r\n         * MissingNumInSortedArray的测试用例\r\n         */\r\n        int[] arr01 = {0, 1, 2, 3, 5, 6};\r\n        int[] arr02 = {1, 2, 3, 4, 5};\r\n//        System.out.println(MissingNumInSortedArray(arr01));\r\n//        System.out.println(MissingNumInSortedArray(arr02));\r\n\r\n        /**\r\n         * test timesOfNum\r\n         */\r\n        int[] nums = {1, 2, 3, 3, 3, 4, 5};\r\n        System.out.println(timesOfNum(nums, 3));\r\n        System.out.println(\"==============================\");\r\n        System.out.println(getFirstK01(nums, 0, nums.length - 1, 3));\r\n\r\n        System.out.println(\"=====================\");\r\n        int[] num1 = {0, 1, 2, 3, 3, 3, 4, 5};\r\n        System.out.println(duplicate(num1));\r\n\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/SortAndSearch/BinarySearch.java	(revision 4bff55c853c05780f69e46faa4552aa187ce83f4)
++++ src/com/hehe/SortAndSearch/BinarySearch.java	(date 1599665594890)
+@@ -51,7 +51,7 @@
+         int mid = (start + end) >> 1;
+ 
+         if (nums[mid] == k) {
+-            if ((nums[mid - 1] != k && mid > 0) || mid == 0)
++            if ((mid > 0 && nums[mid - 1] != k) || mid == 0) //mid > 0 需要在&& 的前面
+                 return mid;
+             else
+                 end = mid - 1;
+@@ -80,14 +80,15 @@
+         int mid = (start + end) >> 1;
+ 
+         if (nums[mid] == k) {
+-            if ((nums[mid + 1] != k && mid < nums.length) || mid == nums.length)
++            if ((mid < nums.length-1 && nums[mid + 1] != k) || mid == nums.length -1)  //mid < nums.length-1 需要在&& 的前面
+                 return mid;
+             else
+                 start = mid + 1;
+-        } else if (nums[mid] > k)
++        } else if (nums[mid] < k)
++            start = mid + 1;
++        else
+             end = mid - 1;
+-        else
+-            start = mid + 1;
++
+ 
+         return getLastK(nums, start, end, k);
+     }
+Index: src/com/hehe/String/RegularMatch.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.String;\r\n\r\n\r\n\r\n/**\r\n *请实现一个函数用来匹配包含'. '和'*'的正则表达式。模式中的字符'.'表示任意一个字符，而'*'表示它前面的字符可以出现任意次（含0次）。\r\n * 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串\"aaa\"与模式\"a.a\"和\"ab*ac*a\"匹配，但与\"aa.a\"和\"ab*a\"均不匹配。\r\n *\r\n */\r\npublic class RegularMatch {\r\n    public static void main(String[] args) {\r\n//        System.out.println(isMatch(\"aaa\", \"a.a\"));\r\n//        System.out.println(isMatch(\"aaa\", \"ab*ac*a\"));\r\n//        System.out.println(isMatch(\"aaa\", \"aa.a\"));\r\n//        System.out.println(isMatch(\"aaa\", \"ab*a\"));\r\n//        System.out.println(isMatch(\"aaa\", \".*\"));\r\n\r\n//        true\r\n//        true\r\n//        false\r\n//        false\r\n//        true\r\n\r\n        System.out.println(match(\"aaa\".toCharArray(), \"a.a\".toCharArray()));\r\n        System.out.println(match(\"aaa\".toCharArray(), \"ab*ac*a\".toCharArray()));\r\n        System.out.println(match(\"aaa\".toCharArray(), \"aa.a\".toCharArray()));\r\n        System.out.println(match(\"aaa\".toCharArray(), \"ab*a\".toCharArray()));\r\n        System.out.println(match(\"aaa\".toCharArray(), \".*\".toCharArray()));\r\n\r\n    }\r\n\r\n    public static boolean match(char[] str, char[] pattern) {\r\n        if (str == null || pattern == null) {\r\n            return false;\r\n        }\r\n        int strIndex = 0;\r\n        int patternIndex = 0;\r\n        return matchCore(str, strIndex, pattern, patternIndex);\r\n    }\r\n\r\n    public static boolean matchCore(char[] str, int strIndex, char[] pattern, int patternIndex) {\r\n        //有效性检验：str到尾，pattern到尾，匹配成功\r\n        if (strIndex == str.length && patternIndex == pattern.length) {\r\n            return true;\r\n        }\r\n        //pattern先到尾，匹配失败\r\n        if (strIndex != str.length && patternIndex == pattern.length) {\r\n            return false;\r\n        }\r\n        //模式第2个是*，且字符串第1个跟模式第1个匹配,分3种匹配模式；如不匹配，模式后移2位\r\n        if (patternIndex + 1 < pattern.length && pattern[patternIndex + 1] == '*') {\r\n            if ((strIndex != str.length && pattern[patternIndex] == str[strIndex]) || (pattern[patternIndex] == '.' && strIndex != str.length)) {\r\n                return matchCore(str, strIndex, pattern, patternIndex + 2)//模式后移2，视为x*匹配0个字符\r\n                        || matchCore(str, strIndex + 1, pattern, patternIndex + 2)//视为模式匹配1个字符\r\n                        || matchCore(str, strIndex + 1, pattern, patternIndex);//*匹配1个，再匹配str中的下一个\r\n            } else {\r\n                return matchCore(str, strIndex, pattern, patternIndex + 2);\r\n            }\r\n        }\r\n        //模式第2个不是*，且字符串第1个跟模式第1个匹配，则都后移1位，否则直接返回false\r\n        if ((strIndex != str.length && pattern[patternIndex] == str[strIndex]) || (pattern[patternIndex] == '.' && strIndex != str.length)) {\r\n            return matchCore(str, strIndex + 1, pattern, patternIndex + 1);\r\n        }\r\n        return false;\r\n    }\r\n\r\n    static boolean isMatch(String str, String patten) {\r\n        if (str.isEmpty() && patten.isEmpty())\r\n            return true;\r\n        return MatchCore(str, patten);\r\n    }\r\n\r\n\r\n    private static boolean MatchCore(String str, String patten) {\r\n        if (str.isEmpty())\r\n            return patten.isEmpty();\r\n        if(patten.isEmpty())\r\n            return str.isEmpty();\r\n\r\n        if (patten.length() > 1 && patten.charAt(1) == '*' && str.length() >= 1) { //patten 至少为 q*样子\r\n\r\n            if (str.charAt(0) == patten.charAt(0) || patten.charAt(0) == '.')\r\n                return MatchCore(str, patten.substring(2)) //patten后面可能有 x* 去匹配 0+ 个str中的字符\r\n                        || MatchCore(str.substring(1), patten)\r\n                        || MatchCore(str.substring(1), patten.substring(2));\r\n            else\r\n                return MatchCore(str, patten.substring(2));\r\n        }\r\n        if ((str.charAt(0) == patten.charAt(0) && str.length() >= 1 && patten.length() >= 1)\r\n                || (patten.charAt(0) == '.' && str.length() >= 1))\r\n            return MatchCore(str.substring(1), patten.substring(1));\r\n        return false;\r\n\r\n    }\r\n\r\n\r\n    public boolean isMatch01(String s, String p) {\r\n        //如果正则串p为空字符串s也为空这匹配成功，如果正则串p为空但是s不是空则说明匹配失败\r\n        if (p.isEmpty()) return s.isEmpty();\r\n        //判断s和p的首字符是否匹配，注意要先判断s不为空\r\n        boolean headMatched = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');\r\n        if (p.length() >= 2 && p.charAt(1) == '*') {//如果p的第一个元素的下一个元素是*\r\n            //则分别对两种情况进行判断\r\n            return isMatch01(s, p.substring(2)) ||\r\n                    (headMatched && isMatch(s.substring(1), p));\r\n        } else if (headMatched) {//否则，如果s和p的首字符相等\r\n            return isMatch01(s.substring(1), p.substring(1));\r\n        } else {\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/String/RegularMatch.java	(revision 4bff55c853c05780f69e46faa4552aa187ce83f4)
++++ src/com/hehe/String/RegularMatch.java	(date 1599709274412)
+@@ -14,6 +14,9 @@
+ //        System.out.println(isMatch("aaa", "aa.a"));
+ //        System.out.println(isMatch("aaa", "ab*a"));
+ //        System.out.println(isMatch("aaa", ".*"));
++        System.out.println(isMatch("a", "ab*"));
++        System.out.println(isMatch("ab", ".*c"));
++        System.out.println("=====================");
+ 
+ //        true
+ //        true
+@@ -72,25 +75,25 @@
+ 
+ 
+     private static boolean MatchCore(String str, String patten) {
+-        if (str.isEmpty())
+-            return patten.isEmpty();
+-        if(patten.isEmpty())
+-            return str.isEmpty();
++            if (str.isEmpty() && patten.isEmpty())
++                return true;
++            if(!str.isEmpty() && patten.isEmpty())
++                return str.isEmpty();
+ 
+-        if (patten.length() > 1 && patten.charAt(1) == '*' && str.length() >= 1) { //patten 至少为 q*样子
++        if (patten.length() > 1 && patten.charAt(1) == '*' ) { //patten 至少为 q*样子
+ 
+-            if (str.charAt(0) == patten.charAt(0) || patten.charAt(0) == '.')
++            if (str.length() > 0 && (str.charAt(0) == patten.charAt(0) || patten.charAt(0) == '.'))
+                 return MatchCore(str, patten.substring(2)) //patten后面可能有 x* 去匹配 0+ 个str中的字符
+                         || MatchCore(str.substring(1), patten)
+                         || MatchCore(str.substring(1), patten.substring(2));
+             else
+                 return MatchCore(str, patten.substring(2));
+         }
+-        if ((str.charAt(0) == patten.charAt(0) && str.length() >= 1 && patten.length() >= 1)
+-                || (patten.charAt(0) == '.' && str.length() >= 1))
++        if (str.length() >= 1 && patten.length() >= 1 && (str.charAt(0) == patten.charAt(0)
++                || patten.charAt(0) == '.' ) && str.length() >= 1 && patten.length() >= 1 )
+             return MatchCore(str.substring(1), patten.substring(1));
+-        return false;
+-
++        else
++            return false;
+     }
+ 
+ 
+Index: src/com/hehe/RecursiveAndDynamic/CombinationSum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/RecursiveAndDynamic/CombinationSum.java	(date 1599716864809)
++++ src/com/hehe/RecursiveAndDynamic/CombinationSum.java	(date 1599716864809)
+@@ -0,0 +1,135 @@
++package com.hehe.RecursiveAndDynamic;
++
++import java.util.*;
++
++/**
++ * 1、组合总和
++ * 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
++ * candidates 中的数字可以无限制重复被选取。
++ *
++ * 说明：
++ * 所有数字（包括 target）都是正整数。
++ * 解集不能包含重复的组合。 
++ *
++ * 输入：candidates = [2,3,6,7], target = 7,
++ * 所求解集为：
++ * [
++ *   [7],
++ *   [2,2,3]
++ * ]
++ *
++ * 2、candidates 中的数字只能使用一次。
++ */
++public class CombinationSum {
++
++    public List<List<Integer>> combinationSum(int[] candidates, int target) {
++        int len = candidates.length;
++        List<List<Integer>> res = new ArrayList<>();
++        if (len == 0) {
++            return res;
++        }
++
++        Deque<Integer> path = new ArrayDeque<>();
++        dfs(candidates, 0, len, target, path, res);
++        return res;
++    }
++
++    /**
++     * @param candidates 候选数组
++     * @param begin      搜索起点
++     * @param len        冗余变量，是 candidates 里的属性，可以不传
++     * @param target     每减去一个元素，目标值变小
++     * @param path       从根结点到叶子结点的路径，是一个栈
++     * @param res        结果集列表
++     */
++    private void dfs(int[] candidates, int begin, int len, int target, Deque<Integer> path, List<List<Integer>> res) {
++        // target 为负数和 0 的时候不再产生新的孩子结点
++        if (target < 0) {
++            return;
++        }
++        if (target == 0) {
++            res.add(new ArrayList<>(path));
++            return;
++        }
++
++        // 重点理解这里从 begin 开始搜索的语意
++        for (int i = begin; i < len; i++) {
++            path.addLast(candidates[i]);
++
++            // 注意：由于每一个元素可以重复使用，下一轮搜索的起点依然是 i，这里非常容易弄错
++            dfs(candidates, i, len, target - candidates[i], path, res);
++
++            // 状态重置
++            path.removeLast();
++        }
++    }
++
++
++    /**
++     * 2、candidates 中的数字只能使用一次。
++     * @param candidates
++     * @param target
++     * @return
++     */
++    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
++        int len = candidates.length;
++        List<List<Integer>> res = new ArrayList<>();
++        if (len == 0) {
++            return res;
++        }
++
++        Arrays.sort(candidates);
++        Deque<Integer> path = new ArrayDeque<>();
++        dfs(candidates, 0, len, target, path, res);
++        return res;
++    }
++
++    /**
++     * @param candidates 候选数组
++     * @param begin      搜索起点
++     * @param len        冗余变量，是 candidates 里的属性，可以不传
++     * @param target     每减去一个元素，目标值变小
++     * @param path       从根结点到叶子结点的路径，是一个栈
++     * @param res        结果集列表
++     */
++    private void dfs2(int[] candidates, int begin, int len, int target, Deque<Integer> path, List<List<Integer>> res) {
++        // target 为负数和 0 的时候不再产生新的孩子结点
++        if (target < 0) {
++            return;
++        }
++        if (target == 0) {
++            res.add(new ArrayList<>(path));
++            return;
++        }
++
++        // 重点理解这里从 begin 开始搜索的语意
++        for (int i = begin; i < len; i++) {
++            // 大剪枝：减去 candidates[i] 小于 0，减去后面的 candidates[i + 1]、candidates[i + 2] 肯定也小于 0，因此用 break
++            if(target - candidates[i] < 0)
++                break;
++//            while(i > begin && i < len && candidates[i] == candidates[i-1])
++//                i++;
++
++            // 小剪枝：同一层相同数值的结点，从第 2 个开始，候选数更少，结果一定发生重复，因此跳过，用 continue
++            if(i > begin && candidates[i] == candidates[i-1])
++                continue;
++
++            path.addLast(candidates[i]);
++
++            // 注意：由于每一个元素可以重复使用，下一轮搜索的起点依然是 i，这里非常容易弄错
++            dfs(candidates, i, len, target - candidates[i], path, res);
++
++            // 状态重置
++            path.removeLast();
++        }
++    }
++
++    public static void main(String[] args) {
++        int[] candidates = new int[]{1,1};
++        int target = 1;
++        CombinationSum solution = new CombinationSum();
++        List<List<Integer>> res = solution.combinationSum2(candidates, target);
++        System.out.println("输出 => " + res);
++
++    }
++}
+\ No newline at end of file
+Index: src/com/hehe/RecursiveAndDynamic/PathIn2Arr.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/RecursiveAndDynamic/PathIn2Arr.java	(date 1599656168971)
++++ src/com/hehe/RecursiveAndDynamic/PathIn2Arr.java	(date 1599656168971)
+@@ -0,0 +1,42 @@
++package com.hehe.RecursiveAndDynamic;
++
++import java.util.HashSet;
++import java.util.LinkedList;
++import java.util.List;
++import java.util.Set;
++
++public class PathIn2Arr {
++    Set<List<Integer>> res = new HashSet<>();
++    public Set<List<Integer>> path(boolean[][] map, int x, int y){
++        int count = 0;
++        for (int i = 0; i < map.length; i++) {
++            for (int j = 0; j < map[0].length; j++) {
++                if(map[i][j] == true)
++                    count++;
++            }
++        }
++        dfs(map,x,y,count);
++        return res;
++    }
++
++    private boolean dfs(boolean[][] map, int x, int y, int count) {
++        if(x < 0 || y < 0 || x >= map.length || y >= map[0].length
++                || map[x][y] == false){
++            return false;}
++        if (res.size() == count)
++            return true;
++        List<Integer> path = new LinkedList<>();
++        path.add(x);
++        path.add(y);
++        if(res.contains(path))
++            return false;
++        res.add(path);
++        if(dfs(map,x-1,y,count) || dfs(map,x+1,y,count)||
++                dfs(map,x,y-1,count)|| dfs(map,x,y+1,count))
++            return true;
++        else {
++            res.clear();
++            return false;
++        }
++    }
++}
+Index: src/com/interview/T20200823_zijie1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/interview/T20200823_zijie1.java	(date 1599656168981)
++++ src/com/interview/T20200823_zijie1.java	(date 1599656168981)
+@@ -0,0 +1,63 @@
++package com.interview;
++
++import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
++
++import java.security.spec.RSAOtherPrimeInfo;
++import java.util.*;
++
++/**
++ * 生成序列
++ */
++public class T20200823_zijie1 {
++    public static void main(String[] args) {
++        Scanner sc = new Scanner(System.in);
++        int n = sc.nextInt();
++        int l = sc.nextInt();
++        int r = sc.nextInt();
++
++        int[] arr = new int[r - l + 1];
++        int num = r - l + 1;
++        for (int i = 0; i < num; i++) {
++            arr[i] = l;
++            l++;
++        }
++
++        int count = 0;
++        int[] arr2 = Arrays.copyOf(arr, arr.length);
++        ArrayList<Integer> list = new ArrayList<>();
++        List<List<Integer>> llist = new ArrayList<>();
++        while (n >= 1) {
++            list.add(selectOne(arr2));
++            n--;
++        }
++        if(sumAll(arr2) % 3 == 0 && isOk(llist,list))
++            count++;
++        System.out.println(count);
++
++
++    }
++
++    private static boolean isOk(List<List<Integer>> llist, ArrayList<Integer> list) {
++
++
++        return false;
++    }
++
++    private static int sumAll(int[] arr) {
++        int sum = 0;
++        for (int i = 0; i < arr.length; i++)
++            sum+=arr[i];
++        return sum;
++    }
++
++    private static int selectOne(int[] arr) {
++        int res = 0;
++        for (int i = 0; i < arr.length; i++) {
++            if (arr[i] != -1){
++                res = arr[i];
++                break;
++            }
++        }
++        return res;
++    }
++}
+Index: src/com/hehe/Test/T1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/Test/T1.java	(date 1599656169067)
++++ src/com/hehe/Test/T1.java	(date 1599656169067)
+@@ -0,0 +1,13 @@
++package com.hehe.Test;
++
++public class T1 {
++    public static void main(String[] args) {
++        Integer i = 1,j = 1;
++        System.out.println(i == j);
++        System.out.println(i.equals(j));
++
++        Integer m = 200,n = 200;
++        System.out.println(m == n);
++        System.out.println(m.equals(n));
++    }
++}
+Index: src/com/hehe/GreedAlgrithom/LowestLexicography_zs.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.GreedAlgrithom;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Collections;\r\nimport java.util.Comparator;\r\n\r\n/**\r\n * 贪心策略的比较器\r\n * 多个字符串 拼接成最小的 字典序字符串\r\n */\r\n\r\npublic class LowestLexicography_zs {\r\n\r\n    /**\r\n     * 公共的比较方法1\r\n     */\r\n    public static class MyComparator implements Comparator<String> {\r\n        @Override\r\n        public int compare(String a, String b) {\r\n            return (a + b).compareTo(b + a);\r\n        }\r\n    }\r\n\r\n    /**\r\n     * 公共的比较方法2\r\n     * Arrays.sort(strs, new MyComparator01()); 不能用？？？？？\r\n     */\r\n    public static class MyComparator01 implements Comparator<Integer> {\r\n\r\n        @Override\r\n        public int compare(Integer o1, Integer o2) {\r\n            String s1 = o1 + \"\" + o2;\r\n            String s2 = o2 + \"\" + o1;\r\n            return s1.compareTo(s2);\r\n        }\r\n    }\r\n\r\n    /**\r\n     * 1、最小的字典序字符串\r\n     *\r\n     * @param strs\r\n     * @return\r\n     */\r\n    public static String lowestString(String[] strs) {\r\n        if (strs == null || strs.length == 0) {\r\n            return \"\";\r\n        }\r\n        Arrays.sort(strs, new MyComparator());\r\n//        Arrays.sort(strs, new MyComparator01());\r\n        String res = \"\";\r\n        for (int i = 0; i < strs.length; i++) {\r\n            res += strs[i];\r\n        }\r\n        return res;\r\n    }\r\n\r\n    /**\r\n     * 2、数字组成的最小的数字\r\n     * hehe\r\n     * @param nums\r\n     * @return\r\n     */\r\n    public static String lowestNum01(int[] nums) {\r\n        String[] strs = new String[nums.length];  //只能用 比较字符串的 MyComparator，比较整型的MyComparator01不能用？？？\r\n        int i = 0;\r\n        for (int s : nums) {\r\n            strs[i++] = String.valueOf(s);\r\n        }\r\n        if (nums == null || nums.length == 0)\r\n            return \"\";\r\n        Arrays.sort(strs, new MyComparator());\r\n        String res = \"\";\r\n        for (int j = 0; j < strs.length; j++) {\r\n            res += strs[j];\r\n        }\r\n        if (res != null)\r\n            return String.valueOf(res);\r\n        else\r\n            return \"\";\r\n\r\n    }\r\n\r\n    /**\r\n     * 2-1 数组组成的最小的数字\r\n     * 网友\r\n     * @param numbers\r\n     * @return\r\n     */\r\n    public String PrintMinNumber(int [] numbers) {\r\n        int n;\r\n        String s=\"\";\r\n        ArrayList<Integer> list= new ArrayList<Integer>();\r\n        n=numbers.length;\r\n        for(int i=0;i<n;i++){\r\n            list.add(numbers[i]);\r\n\r\n        }\r\n        Collections.sort(list, new Comparator<Integer>(){\r\n\r\n            public int compare(Integer str1,Integer str2){\r\n                String s1=str1+\"\"+str2;\r\n                String s2=str2+\"\"+str1;\r\n                return s1.compareTo(s2);\r\n            }\r\n        });\r\n\r\n        for(int j:list){\r\n            s+=j;\r\n        }\r\n        return s;\r\n\r\n    }\r\n\r\n\r\n\r\n    public static void main(String[] args) {\r\n        String[] strs1 = {\"jibw\", \"ji\", \"jp\", \"bw\", \"jibw\"};\r\n        System.out.println(lowestString(strs1));\r\n\r\n        String[] strs2 = {\"ba\", \"b\"};\r\n        System.out.println(lowestString(strs2));\r\n\r\n    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/GreedAlgrithom/LowestLexicography_zs.java	(revision 4bff55c853c05780f69e46faa4552aa187ce83f4)
++++ src/com/hehe/GreedAlgrithom/LowestLexicography_zs.java	(date 1599713218944)
+@@ -58,62 +58,63 @@
+     /**
+      * 2、数字组成的最小的数字
+      * hehe
++     *
+      * @param nums
+      * @return
+      */
+-    public static String lowestNum01(int[] nums) {
++    public static int lowestNum01(int[] nums) {
+         String[] strs = new String[nums.length];  //只能用 比较字符串的 MyComparator，比较整型的MyComparator01不能用？？？
+         int i = 0;
+         for (int s : nums) {
+             strs[i++] = String.valueOf(s);
+         }
+         if (nums == null || nums.length == 0)
+-            return "";
++            return 0;
+         Arrays.sort(strs, new MyComparator());
+         String res = "";
+         for (int j = 0; j < strs.length; j++) {
+             res += strs[j];
+         }
+         if (res != null)
+-            return String.valueOf(res);
++            return Integer.valueOf(res);
+         else
+-            return "";
++            return 0;
+ 
+     }
+ 
+     /**
+      * 2-1 数组组成的最小的数字
+      * 网友
++     *
+      * @param numbers
+      * @return
+      */
+-    public String PrintMinNumber(int [] numbers) {
++    public String PrintMinNumber(int[] numbers) {
+         int n;
+-        String s="";
+-        ArrayList<Integer> list= new ArrayList<Integer>();
+-        n=numbers.length;
+-        for(int i=0;i<n;i++){
++        String s = "";
++        ArrayList<Integer> list = new ArrayList<Integer>();
++        n = numbers.length;
++        for (int i = 0; i < n; i++) {
+             list.add(numbers[i]);
+ 
+         }
+-        Collections.sort(list, new Comparator<Integer>(){
++        Collections.sort(list, new Comparator<Integer>() {
+ 
+-            public int compare(Integer str1,Integer str2){
+-                String s1=str1+""+str2;
+-                String s2=str2+""+str1;
++            public int compare(Integer str1, Integer str2) {
++                String s1 = str1 + "" + str2;
++                String s2 = str2 + "" + str1;
+                 return s1.compareTo(s2);
+             }
+         });
+ 
+-        for(int j:list){
+-            s+=j;
++        for (int j : list) {
++            s += j;
+         }
+         return s;
+ 
+     }
+ 
+ 
+-
+     public static void main(String[] args) {
+         String[] strs1 = {"jibw", "ji", "jp", "bw", "jibw"};
+         System.out.println(lowestString(strs1));
+Index: src/com/interview/T20200717_niuke2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/interview/T20200717_niuke2.java	(date 1599656169128)
++++ src/com/interview/T20200717_niuke2.java	(date 1599656169128)
+@@ -0,0 +1,21 @@
++package com.interview;
++
++public class T20200717_niuke2 {
++    public static void main(String[] args) {
++
++
++    }
++
++    //【牛牛吃雪糕】最近天气太热了，牛牛每天都要吃雪糕。雪糕有一盒一份、一盒两份、一盒三份这三种包装，牛牛一天可以吃多盒雪糕，但是只能吃六份，吃多了就会肚子疼，吃少了就会中暑。
++    // 而且贪吃的牛牛一旦打开一盒雪糕，就一定会把它吃完。请问牛牛能健康地度过这段高温期么？
++    // 每个输入包含多个测试用例。输入的第一行包括一个正整数，表示数据组数T(1<=T<=100)。
++    // 接下来N行，每行包含四个正整数，表示高温期持续的天数N(1<=N<=10000)，一盒一份包装的雪糕数量A(1<=A<=100000)，一盒两份包装的雪糕数量B(1<=B<=100000)，一盒三份包装的雪糕数量C(1<=A<=100000)。
++    // 对于每个用例，在单独的一行中输出结果。如果牛牛可以健康地度过高温期则输出"Yes"，否则输出"No"。
++    // 4
++    // 1 1 1 1
++    // 2 0 0 4
++    // 3 0 2 5
++    // 4 24 0 0
++    // Yes Yes No Yes
++
++}

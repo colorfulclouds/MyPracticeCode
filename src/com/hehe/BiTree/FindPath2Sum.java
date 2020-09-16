@@ -11,7 +11,7 @@ import java.util.Stack;
  * 路径：从根节点到叶子结点
  * 路段：路径上某一段
  */
-public class FindPath {
+public class FindPath2Sum {
     public static void main(String[] args) {
         Node head = new Node(10);
         head.left = new Node(5);
@@ -42,6 +42,7 @@ public class FindPath {
         target -= head.value;
         if (target == 0 && head.left == null && head.right == null)
             res.add(new LinkedList<>(path));   //需要new 一个LinkedList结点 将path转型放进去
+
         findPath01(head.left, target);
         findPath01(head.right, target);
         path.removeLast();   // !
@@ -66,45 +67,6 @@ public class FindPath {
         return res01;
     }
 
-    /**
-     * 错误的！！！
-     *
-     * @param head
-     * @param target
-     */
-    public static void findPath(Node head, int target) {
-        System.out.print("pre-order: ");
-        if (head != null) {
-            Stack<Node> stack = new Stack<>();
-            Stack<Node> res = new Stack<>();
-            stack.add(head);
-            int sum = 0;
-            while (!stack.isEmpty()) { //
-                head = stack.pop();  //使用了head变量
-//                System.out.print(head.value + " ");
-                res.push(head);
-                sum += head.value;
-                if (head.left == null && head.right == null && sum == target) {
-                    while (!res.isEmpty()) {
-                        System.out.print(res.pop().value + " ");
-                    }
-                    System.out.println();
-
-                } else if (head.left == null && head.right == null && sum != target) {
-                    Node node = res.pop();
-                    sum -= node.value;
-                }
-
-                if (head.right != null) {
-                    stack.push(head.right); // 先右再左 保证是先序遍历
-                }
-                if (head.left != null) {
-                    stack.push(head.left);
-                }
-            }
-        }
-        System.out.println();
-    }
 
     // Node 结构体
     public static class Node {

@@ -11,7 +11,6 @@ public class GenerateParenthesis {
 
     public List<String> generateParenthesis(int n) {
         List<String> list = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
         if (n == 0)
             return list;
 
@@ -20,12 +19,12 @@ public class GenerateParenthesis {
     }
 
     private void generateCore(List<String> list, int left, int right, String curStr) {
+        if (left > right)  //已经有的字符串序列 左括号剩余一定要比右括号少 否则不是有效括号序列
+            return;
         if (left == 0 && right == 0) {
             list.add(curStr);
             return;
         }
-        if (left > right)  //已经有的字符串序列 左括号剩余一定要比右括号少 否则不是有效括号序列
-            return;
         if (left > 0)
             generateCore(list, left - 1, right, curStr + "(");
         if (right > 0)

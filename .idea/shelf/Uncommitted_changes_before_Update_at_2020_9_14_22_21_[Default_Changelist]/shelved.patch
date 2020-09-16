@@ -1,0 +1,179 @@
+Index: src/com/hehe/RecursiveAndDynamic/PathIn2Arr.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/RecursiveAndDynamic/PathIn2Arr.java	(date 1599822353851)
++++ src/com/hehe/RecursiveAndDynamic/PathIn2Arr.java	(date 1599822353851)
+@@ -0,0 +1,43 @@
++package com.hehe.RecursiveAndDynamic;
++
++import java.util.HashSet;
++import java.util.LinkedList;
++import java.util.List;
++import java.util.Set;
++
++public class PathIn2Arr {
++    Set<List<Integer>> res = new HashSet<>();
++
++    public Set<List<Integer>> path(boolean[][] map, int x, int y){
++        int count = 0;
++        for (int i = 0; i < map.length; i++) {
++            for (int j = 0; j < map[0].length; j++) {
++                if(map[i][j] == true)
++                    count++;
++            }
++        }
++        dfs(map,x,y,count);
++        return res;
++    }
++
++    private boolean dfs(boolean[][] map, int x, int y, int count) {
++        if(x < 0 || y < 0 || x >= map.length || y >= map[0].length
++                || map[x][y] == false){
++            return false;}
++        if (res.size() == count)
++            return true;
++        List<Integer> path = new LinkedList<>();
++        path.add(x);
++        path.add(y);
++        if(res.contains(path))
++            return false;
++        res.add(path);
++        if(dfs(map,x-1,y,count) || dfs(map,x+1,y,count)||
++                dfs(map,x,y-1,count)|| dfs(map,x,y+1,count))
++            return true;
++        else {
++            res.clear();
++            return false;
++        }
++    }
++}
+Index: src/com/hehe/String/ReverseEveryWords_lk_2question.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hehe.String;\r\n\r\nimport com.sun.org.apache.xpath.internal.objects.XString;\r\n\r\n/**\r\n * lk557\r\n * Let's take LeetCode contest\r\n * s'teL ekat edoCteeL tsetnoc\r\n *\r\n *\r\n * lk151\r\n * the sky is blue\r\n * blue is sky the\r\n */\r\npublic class ReverseEveryWords_lk_2question {\r\n\r\n    public static void main(String[] args) {\r\n        System.out.println(reverseWords_557(new String(\"Let's take LeetCode contest\")));\r\n        // s'teL ekat edoCteeL tsetnoc\r\n        System.out.println(reverseWords_151(new String(\"example   good a\")));\r\n        //a good example\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n        sb.append(\"a \");\r\n        sb.append(\"bc \");\r\n        sb.append(\"cd \");\r\n        System.out.println(sb);\r\n        System.out.println(sb.reverse());\r\n\r\n        String s = \"abcdefg\";\r\n        System.out.println(leftRotate(s,2));\r\n    }\r\n\r\n    /**\r\n     * 反转每一个单词内部\r\n     * @param s\r\n     * @return\r\n     */\r\n    public static String reverseWords_557(String s) {\r\n        String[] words = s.split(\" \");\r\n        StringBuilder sb = new StringBuilder();\r\n//        for (String w : words) {\r\n//            sb.append(new StringBuilder(w).reverse().toString() + \" \");\r\n//        }\r\n//        return sb.toString().trim();  //trim() 去掉字符换两端多余的空格\r\n        for (String w : words){\r\n            sb.append(w + \" \");\r\n        }\r\n        return sb.reverse().toString().trim();\r\n    }\r\n\r\n    /**\r\n     * 反转所有单词\r\n     * jz_58-1\r\n     * @param s\r\n     * @return\r\n     */\r\n    public static String reverseWords_151(String s) {\r\n        String[] words = s.split(\"\\\\s+\");\r\n        StringBuilder sb = new StringBuilder();\r\n        for (int i = words.length - 1; i >= 0; i--) {\r\n            sb.append(words[i]+\" \");\r\n        }\r\n        return sb.toString().trim();\r\n    }\r\n\r\n    //正则匹配所有空白\r\n//[\\s]表示，只要出现空白就匹配\r\n//[\\S]表示，非空白就匹配\r\n\r\n    /**\r\n     * jz_58-2\r\n     * 输入 abcdefg 2\r\n     * 输出 cdefgab\r\n     * 左旋2个字母\r\n     * 另一种思路：1、先前两个反转，剩余反转，结果为：bagfedc 2、再全部反转，结果为cdefgab\r\n     * @param s\r\n     * @param k\r\n     * @return\r\n     */\r\n    public static String leftRotate(String s, int k) {\r\n        StringBuilder sb = new StringBuilder();\r\n        sb.append(s.substring(2));\r\n        sb.append(s.substring(0,2));\r\n        return sb.toString();\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/String/ReverseEveryWords_lk_2question.java	(revision 87653192fb7e9b56f7cfa849c5f58d161b850ece)
++++ src/com/hehe/String/ReverseEveryWords_lk_2question.java	(date 1600092912608)
+@@ -44,9 +44,9 @@
+ //        }
+ //        return sb.toString().trim();  //trim() 去掉字符换两端多余的空格
+         for (String w : words){
+-            sb.append(w + " ");
++            sb.append(new StringBuilder(w).reverse() + " ");
+         }
+-        return sb.reverse().toString().trim();
++        return sb.toString().trim();
+     }
+ 
+     /**
+Index: src/com/hehe/String/liu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/String/liu.java	(date 1600086956958)
++++ src/com/hehe/String/liu.java	(date 1600086956958)
+@@ -0,0 +1,51 @@
++package com.hehe.String;
++import java.util.*;
++public class liu {
++    public static void main(String[] args) {
++        Scanner sc = new Scanner(System.in);
++        int n = sc.nextInt();
++        String[] str = new String[n];
++        sc.nextLine();
++        for(int i=0; i<n; i++) {
++            str[i] = sc.nextLine();
++        }
++        int res[][] = new int[n][n];
++        for(int i=0; i<n; i++){
++            for(int j=0; j<n; j++){
++                res[i][j] = Integer.parseInt(str[i].substring(j,j+1));
++            }
++        }
++        for(int i=0; i<n; i++){
++            for(int j=0; j<n; j++){
++                System.out.print(res[i][j]);
++            }
++            System.out.println();
++        }
++        int num = 0;
++        for(int i=0; i<n; i++){
++            for(int j=0; j<n; j++){
++                if(res[i][j] == 1){
++                    changeIsLands(res,i,j);
++                }
++            }
++        }
++
++        for(int i=0; i<n; i++){
++            for(int j=0; j<n; j++){
++                System.out.print(res[i][j]);
++            }
++            System.out.println();
++        }
++    }
++
++    public static void changeIsLands(int[][] res,int i,int j){
++        if(i<0 || j<0 || i>=res.length ||j>=res[i].length || res[i][j] != 1){
++            return;
++        }
++        res[i][j] = 0;
++        changeIsLands(res,i+1,j);
++        changeIsLands(res,i-1,j);
++        changeIsLands(res,i,j+1);
++        changeIsLands(res,i,j-1);
++    }
++}
+Index: src/com/hehe/String/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/String/Main.java	(date 1600002897774)
++++ src/com/hehe/String/Main.java	(date 1600002897774)
+@@ -0,0 +1,17 @@
++package com.hehe.String;
++
++import java.util.*;
++
++public class Main{
++    public static void main(String[] args) {
++        Scanner scan = new Scanner(System.in);
++        int n = scan.nextInt();
++        int m = scan.nextInt();
++        int res = 0;
++
++        for(int i=1; i<=n*3; i++){
++            res += m*i;
++        }
++        System.out.println(res);
++    }
++}
+Index: src/com/hehe/Test/T1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/hehe/Test/T1.java	(date 1599887835879)
++++ src/com/hehe/Test/T1.java	(date 1599887835879)
+@@ -0,0 +1,15 @@
++package com.hehe.Test;
++
++public class T1 {
++    public static void main(String[] args) {
++//        Integer i = 1,j = 1;
++//        System.out.println(i == j);
++//        System.out.println(i.equals(j));
++//
++//        Integer m = 200,n = 200;
++//        System.out.println(m == n);
++//        System.out.println(m.equals(n));
++        int x = 1,y = 1,z = 6;
++        System.out.println((y+=z--/++x));
++    }
++}

@@ -1,0 +1,4 @@
+能够很好地实现同步的几种方法：
+1、使用 volatile 关键字
+2、使用JUC工具类 CountDownLatch
+3、基本LockSupport实现线程间的阻塞和唤醒

@@ -1,5 +1,7 @@
 package com.hehe.Classic;
 
+import java.util.regex.Pattern;
+
 /**判断一个字符串是否表示的是数值
  *
  *请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串"+100"、"5e2"、"-123"、"3.1416"、"0123"都表示数值，
@@ -8,16 +10,18 @@ package com.hehe.Classic;
  */
 public class IsNumber {
     public static void main(String[] args) {
-        System.out.println(isNumber("+100"));
-        System.out.println(isNumber("5e2"));
-        System.out.println(isNumber("-123"));
-        System.out.println(isNumber("3.1416"));
-        System.out.println(isNumber("-1E-16"));
-        System.out.println(isNumber("12e"));
-        System.out.println(isNumber("1a3.14"));
-        System.out.println(isNumber("1.2.3"));
-        System.out.println(isNumber("+-5"));
-        System.out.println(isNumber("12e+5.4"));
+//        System.out.println(isNumber("+100"));
+//        System.out.println(isNumber("5e2"));
+//        System.out.println(isNumber("-123"));
+//        System.out.println(isNumber("3.1416"));
+//        System.out.println(isNumber("-1E-16"));
+//        System.out.println(isNumber("12e"));
+//        System.out.println(isNumber("1a3.14"));
+//        System.out.println(isNumber("1.2.3"));
+//        System.out.println(isNumber("+-5"));
+//        System.out.println(isNumber("12e+5.4"));
+
+        System.out.println(isNumeric("+2342"));
 
     }
 
@@ -57,5 +61,17 @@ public class IsNumber {
             }
         }
         return numSeen;
+    }
+
+
+
+    /*
+     * 判断是否为整数
+     * @param str 传入的字符串
+     * @return 是整数返回true,否则返回false
+     */
+    public static boolean isNumeric(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(str).matches();
     }
 }

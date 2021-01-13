@@ -123,7 +123,8 @@ public class SubStr_Qs {
         int historyCharMax = 0;
 
 //        int res = 0; //可以定义结果变量 方便理解
-
+//153 4398 2960
+        //ws941016
         for (right = 0; right < chars.length; right++) { //窗口右侧一直往右移
             int index = chars[right] - 'a';
             map[index]++;

@@ -12,18 +12,21 @@ public class SumToTarget {
 
         //3、和为 s 的连续正数序列
         System.out.println("=====3-1=====");
-        List<int[]> res1 = sumTos(9);
+        List<int[]> res1 = sumToS(10);
         for (int[] i : res1) {
             System.out.print(i[0] + "~" + i[1]);
             System.out.println();
         }
         System.out.println("=====3-2=====");
-        List<int[]> res2 = sumTos01(9);
+        List<int[]> res2 = sumToS01(10);
         for (int[] i : res2) {
             System.out.print(i[0] + "~" + i[1]);
             System.out.println();
         }
 
+        System.out.println("sum");
+        int[] arr = {1,2,3,4,5};
+        System.out.println(is(arr,7));
     }
 
     /**
@@ -32,7 +35,7 @@ public class SumToTarget {
      * @param s
      * @return
      */
-    public static List<int[]> sumTos(int s) {
+    public static List<int[]> sumToS(int s) {
         int i = 1, j = 2;
         List<int[]> list = new ArrayList<>(); //List<List<Integer>> result = new ArrayList<>();
 
@@ -57,7 +60,7 @@ public class SumToTarget {
      * @param s
      * @return
      */
-    public static List<int[]> sumTos01(int s) {
+    public static List<int[]> sumToS01(int s) {
         int i = 1, j = 2;
         List<int[]> list = new ArrayList<>();
         int curSum = i + j;
@@ -66,15 +69,31 @@ public class SumToTarget {
                 list.add(new int[]{i, j});
                 j++;
                 curSum += j;
-            } else if (curSum < s && i < (1 + s) / 2) {
+            } else if (curSum < s ) { //&& i < (1 + s) / 2
                 j++;
                 curSum += j;
-            } else if (curSum > s && i < (1 + s) / 2) {
+            } else if (curSum > s ) { //&& i < (1 + s) / 2
                 curSum -= i;
                 i++;
             }
         }
         return list;
+    }
+    public static boolean is(int[] a,int tar){
+        int sum = 0;
+        int i = 0;
+        boolean b = isExist(a,i,sum,tar);
+        return b;
+    }
+
+    public static boolean isExist(int[] arr,int i,int sum,int tar){
+        while(i < arr.length){
+            if(sum == tar)
+                return true;
+            return isExist(arr,i+1,sum,tar) || isExist(arr,i+1,sum + arr[i],tar);
+        }
+        return false;
+
     }
 
 

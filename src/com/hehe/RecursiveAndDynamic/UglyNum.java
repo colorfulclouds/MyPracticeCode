@@ -1,5 +1,7 @@
 package com.hehe.RecursiveAndDynamic;
 
+import java.util.TreeSet;
+
 /**
  * 因子只有2,3,5的数称为丑数,习惯把 1 称为丑数
  * eg:1, 2, 3, 4, 5, 6, 8, 9
@@ -9,30 +11,33 @@ package com.hehe.RecursiveAndDynamic;
  * x5:5,10,15,20,25,30,40,45
  * <p>
  * dp[i] = min{dp[a]*2 , dp[b]*3 , dp[c]*5 }
- *
  */
 public class UglyNum {
     public static void main(String[] args) {
         System.out.println(UglyNum_Xth(5));
         System.out.println(UglyNum_Xth(8));
         System.out.println(UglyNum_Xth(1500));
+        System.out.println(Num(5));
+        System.out.println(Num(8));
+        System.out.println(Num(1500));
 
 
-        int[] aa = UglyNum_Xth01(10);
-        for (int a : aa) {
-            System.out.println(a);
-        }
+//        int[] aa = UglyNum_Xth01(10);
+//        for (int a : aa) {
+//            System.out.println(a);
+//        }
 
     }
 
 
     /**
-     *用数组返回丑数的全部
+     * 用数组返回丑数的全部
+     *
      * @param n
      * @return
      */
     public static int[] UglyNum_Xth01(int n) {
-        if(n == 0)
+        if (n == 0)
             return new int[0];
 
         int[] dp = new int[n];
@@ -74,5 +79,24 @@ public class UglyNum {
             if (cur == n4) c += 1;
         }
         return dp[n - 1];
+    }
+
+    public static long Num(int n) {
+        TreeSet<Long> set = new TreeSet<>();
+        set.add(1L);
+//        set.add(3L);
+//        set.add(5L);
+        long res = 1;
+        for (int i = 1; i < n; i++) {
+            long tmp = set.pollFirst();
+//            res = tmp;
+            set.add(tmp * 2);
+            set.add(tmp * 3);
+            set.add(tmp * 5);
+            res = set.first();
+
+        }
+        return res;
+
     }
 }

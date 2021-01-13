@@ -74,9 +74,9 @@ public class BubbleSort {
             System.out.print(arr[i] + "   ");
         }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//        bubbleSort(arr);
+        bubbleSort(arr);
 
-         sort(arr);
+//         sort(arr);
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

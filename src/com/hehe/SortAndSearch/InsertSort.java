@@ -145,29 +145,45 @@ public class InsertSort {
         int maxSize = 100;
         int maxValue = 100;
         boolean succeed = true;
-        for (int i = 0; i < testTime; i++) {
-            int[] arr1 = generateRandomArray(maxSize, maxValue);
-            int[] arr2 = copyArray(arr1);
-
-            InsertSort02(arr1);
-            Right(arr2);
-
-            if (!isEqual(arr1, arr2)) {
-                succeed = false;
-                break;
-            }
+//        for (int i = 0; i < testTime; i++) {
+//            int[] arr1 = generateRandomArray(maxSize, maxValue);
+//            int[] arr2 = copyArray(arr1);
+//
+//
+//            //InsertSort02(arr1);
+//            InsertSort01(arr1);
+//            Right(arr2);
+//            if (!isEqual(arr1, arr2)) {
+//                succeed = false;
+//                break;
+//            }
+//            printArray(arr1);
+//            System.out.println();
+//            printArray(arr2);
+//
+//        }
+        int[] arr1 = {3,2,1,6,5};
+        int[] arr2 =copyArray(arr1) ;
+        InsertSort01(arr1);
+        Right(arr2);
+        if (!isEqual(arr1, arr2)) {
+            succeed = false;
         }
+        printArray(arr1);
+        System.out.println();
+        printArray(arr2);
         System.out.println(succeed ? "Nice!" : "Fuck!");
 
-        int[] arr = generateRandomArray(maxSize, maxValue);
-        System.out.println("排列前的顺序为：");
-        printArray(arr);
 
-//        InsertSort01(arr);
-        InsertSort02(arr);
-
-        System.out.println("排列后的顺序为：");
-        printArray(arr);
+//        int[] arr = generateRandomArray(maxSize, maxValue);
+//        System.out.println("排列前的顺序为：");
+//        printArray(arr);
+//
+////        InsertSort01(arr);
+//        InsertSort02(arr);
+//
+//        System.out.println("排列后的顺序为：");
+        //printArray(arr);
     }
 
 }

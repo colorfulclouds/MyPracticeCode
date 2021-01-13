@@ -119,7 +119,7 @@ public class SortCodePra {
         int p2 = center + 1;
 
         int res = 0;
-        int count = 0;
+        //int count = 0;
         while (p1 <= center && p2 <= right) {
             //原：help[i++] = data[p1] < data[p2] ? data[p1++] : data[p2++];
             //改编代码，可用于求小和问题
@@ -204,7 +204,7 @@ public class SortCodePra {
         merge(arr, left, center, right);
     }
 
-    public static void merge(int[] arr, int left, int center, int right) {
+        public static void merge(int[] arr, int left, int center, int right) {
 
         int[] help = new int[right - left + 1];
         int p1 = left;

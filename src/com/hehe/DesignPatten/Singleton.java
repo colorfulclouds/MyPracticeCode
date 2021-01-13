@@ -23,6 +23,7 @@ public class Singleton {
 // (1）为 singleton 分配内存空间
 //（2）初始化 singleton 对象
 //（3）将 singleton 指向分配好的内存空间
+    //volatile能让三步操作顺序执行！
 
 
     private Singleton(){}

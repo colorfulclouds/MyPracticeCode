@@ -56,37 +56,39 @@ public class Less_Money_zs {
         // solution
         int[] arr = {6, 7, 8, 9};
         System.out.println(lessMoney(arr));
-
-        int[] arrForHeap = {3, 5, 2, 7, 0, 1, 6, 4};
-
-        // min heap
-        PriorityQueue<Integer> minQ1 = new PriorityQueue<>();
-        for (int i = 0; i < arrForHeap.length; i++) {
-            minQ1.add(arrForHeap[i]);
-        }
-        while (!minQ1.isEmpty()) {
-            System.out.print(minQ1.poll() + " ");
-        }
-        System.out.println();
-
-        // min heap use Comparator
-        PriorityQueue<Integer> minQ2 = new PriorityQueue<>(new MinheapComparator());
-        for (int i = 0; i < arrForHeap.length; i++) {
-            minQ2.add(arrForHeap[i]);
-        }
-        while (!minQ2.isEmpty()) {
-            System.out.print(minQ2.poll() + " ");
-        }
-        System.out.println();
-
-        // max heap use Comparator
-        PriorityQueue<Integer> maxQ = new PriorityQueue<>(new MaxheapComparator());
-        for (int i = 0; i < arrForHeap.length; i++) {
-            maxQ.add(arrForHeap[i]);
-        }
-        while (!maxQ.isEmpty()) {
-            System.out.print(maxQ.poll() + " ");
-        }
+//        int[] arr1 = {10,20,30};
+//        System.out.println(lessMoney(arr1));
+//
+//        int[] arrForHeap = {3, 5, 2, 7, 0, 1, 6, 4};
+//
+//        // min heap
+//        PriorityQueue<Integer> minQ1 = new PriorityQueue<>();
+//        for (int i = 0; i < arrForHeap.length; i++) {
+//            minQ1.add(arrForHeap[i]);
+//        }
+//        while (!minQ1.isEmpty()) {
+//            System.out.print(minQ1.poll() + " ");
+//        }
+//        System.out.println();
+//
+//        // min heap use Comparator
+//        PriorityQueue<Integer> minQ2 = new PriorityQueue<>(new MinheapComparator());
+//        for (int i = 0; i < arrForHeap.length; i++) {
+//            minQ2.add(arrForHeap[i]);
+//        }
+//        while (!minQ2.isEmpty()) {
+//            System.out.print(minQ2.poll() + " ");
+//        }
+//        System.out.println();
+//
+//        // max heap use Comparator
+//        PriorityQueue<Integer> maxQ = new PriorityQueue<>(new MaxheapComparator());
+//        for (int i = 0; i < arrForHeap.length; i++) {
+//            maxQ.add(arrForHeap[i]);
+//        }
+//        while (!maxQ.isEmpty()) {
+//            System.out.print(maxQ.poll() + " ");
+//        }
 
     }
 

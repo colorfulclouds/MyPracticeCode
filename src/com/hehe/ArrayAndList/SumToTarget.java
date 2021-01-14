@@ -12,13 +12,13 @@ public class SumToTarget {
 
         //3、和为 s 的连续正数序列
         System.out.println("=====3-1=====");
-        List<int[]> res1 = sumToS(10);
+        List<int[]> res1 = sumToS(9);
         for (int[] i : res1) {
             System.out.print(i[0] + "~" + i[1]);
             System.out.println();
         }
         System.out.println("=====3-2=====");
-        List<int[]> res2 = sumToS01(10);
+        List<int[]> res2 = sumToS01(9);
         for (int[] i : res2) {
             System.out.print(i[0] + "~" + i[1]);
             System.out.println();

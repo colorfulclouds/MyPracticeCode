@@ -37,7 +37,6 @@ public class Print_All_Permutations_zs {
             swap(cs, i, j);
             PermutationHelper(cs, i + 1, list);
             swap(cs, i, j);
-
         }
     }
 

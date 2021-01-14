@@ -1,4 +1,4 @@
-package com.tmp;
+package com.interview;
 
 import java.util.HashSet;
 
@@ -52,7 +52,6 @@ public class kuaishou {
 
 
     public static void Sort(int[] arr, int l, int r) {
-
         if (l < r) {
             int p = onePartition(arr, l, r);
             Sort(arr, l, p - 1);

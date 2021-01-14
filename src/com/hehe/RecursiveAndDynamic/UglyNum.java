@@ -60,6 +60,11 @@ public class UglyNum {
         return dp;
     }
 
+    /**
+     * 1、No.x个丑数
+     * @param n
+     * @return
+     */
     public static int UglyNum_Xth(int n) {
         int[] dp = new int[n];
         dp[0] = 1;
@@ -81,12 +86,16 @@ public class UglyNum {
         return dp[n - 1];
     }
 
+    /**
+     * 2、No.x个丑数（易）
+     * @param n
+     * @return
+     */
     public static long Num(int n) {
         TreeSet<Long> set = new TreeSet<>();
         set.add(1L);
-//        set.add(3L);
-//        set.add(5L);
         long res = 1;
+
         for (int i = 1; i < n; i++) {
             long tmp = set.pollFirst();
 //            res = tmp;

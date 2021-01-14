@@ -21,7 +21,7 @@ public class TheLastNum {
     }
 
     /**
-     * 1、
+     * 1、递归
      * @param n
      * @param m
      * @return
@@ -38,7 +38,7 @@ public class TheLastNum {
     }
 
     /**
-     * 2、
+     * 2、逆推
      * @param n
      * @param m
      * @return

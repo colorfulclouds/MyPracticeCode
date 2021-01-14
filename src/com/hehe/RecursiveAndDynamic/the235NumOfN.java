@@ -9,7 +9,7 @@ import java.util.TreeSet;
 public class the235NumOfN {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int n = sc.nextInt();  //组合的所有数排序的第 n个
 
         TreeSet<Long> set = new TreeSet<>();
         set.add(2L);
@@ -22,7 +22,6 @@ public class the235NumOfN {
             set.add(tmp*10+2);
             set.add(tmp*10+3);
             set.add(tmp*10+5);
-
         }
         System.out.println(res);
     }

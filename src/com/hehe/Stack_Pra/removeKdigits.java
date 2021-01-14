@@ -6,16 +6,6 @@ import java.util.LinkedList;
 /**
  *去掉K位数字  使剩下的数字组合的值最小
  */
-
-
-/*
- * 成功
-显示详情
-执行用时 : 4 ms, 在Remove K Digits的Java提交中击败了98.25% 的用户
-内存消耗 : 38.1 PMB, 在Remove K Digits的Java提交中击败了15.38% 的用户
- *
- *
- * */
 public class removeKdigits {
 
     public static void main(String[] args) {

@@ -57,7 +57,7 @@ public class QueueBasic {
 
         public Queue(int size){
 //            this.size = size;
-            front = 0;
+//            front = 0;
             rear = -1;
             data = new int[size];
             count = 0;
@@ -80,11 +80,12 @@ public class QueueBasic {
             if(isEmpty()){
                 return -1;
             }
+            count--;
             return data[rear--];
         }
 
         public void Clear(){
-            front = 0;
+//            front = 0;
             rear = -1;
             count = 0;
         }

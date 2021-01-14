@@ -5,7 +5,7 @@ package com.hehe.RecursiveAndDynamic;
 //int b = rec_opt(arr, i-1);
 //return Math.max(a, b);
 
-public class numMax {
+public class _numMax {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub

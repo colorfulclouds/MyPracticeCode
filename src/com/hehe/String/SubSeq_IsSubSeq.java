@@ -44,10 +44,6 @@ public class SubSeq_IsSubSeq {
                 j++;
             i++;
         }
-//        if(j == t.length())
-//            return true;
-//        else
-//            return false;
         return j == t.length();
 
     }

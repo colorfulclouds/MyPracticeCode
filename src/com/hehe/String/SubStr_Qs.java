@@ -67,7 +67,6 @@ public class SubStr_Qs {
     public static int lengthOfLongestSubstring(String s) {
         int res = 0, tmp = 0;
         Map<Character, Integer> map = new HashMap<>();
-
         for (int i = 0; i < s.length(); i++) {
             int index = map.getOrDefault(s.charAt(i), -1);
 
@@ -129,13 +128,11 @@ public class SubStr_Qs {
             int index = chars[right] - 'a';
             map[index]++;
             historyCharMax = Math.max(historyCharMax, map[index]);
-            if (right - left + 1 > historyCharMax + k) { //窗口内替换后仍无法达到历史最大完美子串长度 故窗口左侧边界收缩
+            if (right - left + 1 > historyCharMax + k) {
+                //窗口内替换后仍无法达到历史最大完美子串长度 故窗口左侧边界收缩
                 map[chars[left] - 'a']--;
                 left++;
             }
-//            else
-//                res = Math.max(right - left + 1, res);
-
         }
         return chars.length - left;  //返回的是历史最大的窗口大小
 //        return res;

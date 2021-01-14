@@ -1,4 +1,4 @@
-package com.hehe.LinkedList;
+package com.hehe.RecursiveAndDynamic;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;

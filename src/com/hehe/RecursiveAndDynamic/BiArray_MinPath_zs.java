@@ -178,6 +178,6 @@ public class BiArray_MinPath_zs {
 //                    System.out.println();
 //            }
 //        }
-        System.out.println(getMaxValue(m1,rows,cols));
+        System.out.println(getMaxValue(m1, rows, cols));
     }
 }

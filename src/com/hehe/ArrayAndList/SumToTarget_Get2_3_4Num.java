@@ -13,6 +13,7 @@ import java.util.List;
  * package com.hehe.RecursiveAndDynamic.CombinationSum;
  * */
 public class SumToTarget_Get2_3_4Num {
+
     /**
      * 无序数组中两数之和等于target，并输出两数下标（数组类型）
      *
@@ -39,14 +40,14 @@ public class SumToTarget_Get2_3_4Num {
      * @return
      */
     public static int[] twoSumInOrdered(int[] nums, int target) {
-        int i = 0, j = nums.length - 1;
-        while (i < j) {
-            if (nums[i] + nums[j] == target)
-                return new int[]{nums[i], nums[j]};
-            else if (nums[i] + nums[j] > target)
-                j--;
+        int a = 0, b = nums.length - 1;
+        while (a < b) {
+            if (nums[a] + nums[b] == target)
+                return new int[]{nums[a], nums[b]};
+            else if (nums[a] + nums[b] > target)
+                b--;
             else
-                i++;
+                a++;
         }
         return null;
 

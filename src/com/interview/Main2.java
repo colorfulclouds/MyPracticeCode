@@ -1,4 +1,4 @@
-package com.tmp;
+package com.interview;
 
 import java.util.HashMap;
 

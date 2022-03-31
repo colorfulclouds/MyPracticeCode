@@ -1,0 +1,61 @@
+def deleteDuplication(self, pHead):
+    def transf(head):  //链表转数组
+        arr = []
+        p = head
+
+        while p:
+            arr.append(p.val)
+            p = p.next
+
+        return arr
+    
+    def find(arr , idx , value):  //idx查找的起始位置
+        for i in range(idx , len(arr)):
+            if arr[i] != value:
+                return i
+
+        return len(arr)
+    
+    def set_v(arr , start , end):  //3，3全置为-1
+        for i in range(start , end):
+            arr[i] = -1
+
+        return arr
+    
+    arr = transf(pHead)
+    
+    for i in range(len(arr)):
+        pos = find(arr , i+1 , arr[i])
+        if pos == i+1:
+            continue
+
+        arr = set_v(arr , i , pos)
+
+        i = pos
+        
+    def find_f(arr):   //数组转链表
+        for i in range(len(arr)):
+            if arr[i] != -1:
+                return i
+
+        return len(arr)
+
+    def sol(arr):
+        fir = find_f(arr)
+
+        if fir != len(arr):
+            head = ListNode(arr[fir])
+            p = head
+            for i in range(fir+1 , len(arr)):
+                if arr[i] != -1:
+                    node = ListNode(arr[i])
+                    p.next = node
+                    p = node
+        else:
+            head = None
+
+        return head
+
+    head = sol(arr)
+    
+    return head

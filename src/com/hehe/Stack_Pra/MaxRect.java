@@ -2,8 +2,6 @@ package com.hehe.Stack_Pra;
 
 import java.util.*;
 
-import static javafx.scene.input.KeyCode.R;
-
 /**
  * n个矩形箱子宽度、高度均在【1，100】之间
  * 就n个矩形块的最大矩形面积

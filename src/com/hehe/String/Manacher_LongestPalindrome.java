@@ -5,7 +5,7 @@ package com.hehe.String;
  * <p>
  * 暴力--》马拉车
  */
-public class Manacher {
+public class Manacher_LongestPalindrome {
 
     /**
      * 最长回文子串 --暴力

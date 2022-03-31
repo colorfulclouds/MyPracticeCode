@@ -1,7 +1,7 @@
 package com.hehe.Comparable;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
+//import org.junit.Test;
 /**
  * @Test注解与TestCase的区别
  *
@@ -18,7 +18,7 @@ import org.junit.Test;
 
 //@RunWith(JUnit4.class)
 public class TestCompare {  //extends TestCase
-    @Test
+//    @Test
     public void test1(){
         List<PersonComparable> list = new ArrayList<PersonComparable>();
         PersonComparable test1=new PersonComparable(66,"????");

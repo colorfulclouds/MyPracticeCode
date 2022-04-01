@@ -8,7 +8,7 @@ import java.util.Scanner;
  * >>运算规则：bai按二进制形式把所有的数字du向右移动对应位数，低位移出（zhi舍弃），高位的空位补符号dao位，即正数补零，负数补1.
  * >>>运算规则：按二进制形式把所有的数字向右移动对应位数，低位移出（舍弃），高位的空位补零。对于正数来说和带符号右移相同，对于负数来说不同。
  */
-public class hw01_Count_101 {
+public class Binary_NumberOf101 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

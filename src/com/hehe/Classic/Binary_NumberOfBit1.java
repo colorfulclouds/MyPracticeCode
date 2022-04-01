@@ -1,8 +1,5 @@
 package com.hehe.Classic;
 
-
-import java.util.Scanner;
-
 /**
  * 有疑问！！！
  * -10 运行结果为30！！！！
@@ -14,7 +11,7 @@ import java.util.Scanner;
  * 二进制中1的个数，其中负数用补码表示。
  * 注意：有负数！！！
  */
-public class NumOfBinary_1 {
+public class Binary_NumberOfBit1 {
 
     public static void main(String[] args) {
 //            System.out.println(nums1(11));

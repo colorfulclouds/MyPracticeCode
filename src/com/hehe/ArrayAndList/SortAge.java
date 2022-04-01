@@ -1,7 +1,5 @@
 package com.hehe.ArrayAndList;
 
-//package Jianzhi_Offer;
-
 import java.util.Scanner;
 
 public class SortAge {

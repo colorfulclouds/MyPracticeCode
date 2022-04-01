@@ -2,13 +2,45 @@ package com.hehe.String;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
-public class FirstOnceChar_easy {
+/**
+ * 找出字符串中 第一次只出现一次的字符
+ */
+public class FirstOnceChar {
     public static void main(String[] args) {
-
-        System.out.println(firstOnceChar("ababac"));
-        System.out.println(firstOnceChar01("ababac"));
+        Scanner sc = new Scanner(System.in);
+        //设置信号量
+        int signal = 0;
+        //读取输入内容
+        String str = sc.nextLine();
+        //遍历输入内容
+        for (int i = 0; i < str.length(); i++) {
+//            int i1 = str.lastIndexOf(str.charAt(i));
+//            int i2 = str.indexOf(str.charAt(i));
+            //判断每个字符是否出现第二次，如果存在，设置信号量signal为1
+            if (str.indexOf(str.charAt(i)) == str.lastIndexOf(str.charAt(i))) {
+                System.out.print(str.charAt(i));
+                signal = 1;
+                break;
+            }
+        }
+        //如果信号量为零，证明全部为重复字符
+        if (signal == 0) {
+            System.out.println(-1);
+        }
+        //每读取一行输出一个回车
     }
+
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     * @param args
+     */
+//    public static void main(String[] args) {
+//
+//        System.out.println(firstOnceChar("ababac"));
+//        System.out.println(firstOnceChar01("ababac"));
+//    }
 
 
     /**
@@ -33,6 +65,7 @@ public class FirstOnceChar_easy {
 
     /**
      * 找字符串里第一次出现的字符
+     *
      * @param s
      * @return
      */

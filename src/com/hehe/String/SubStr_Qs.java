@@ -5,48 +5,64 @@ import java.util.*;
 public class SubStr_Qs {
 
     public static void main(String[] args) {
-
         System.out.println("+++++++++++ 最长不重复子串++++++++++++++");
         System.out.println(lengthOfLongestSubstring("arabcacfr"));
         System.out.println(lengthOfLongestSubstring("awwke"));
         System.out.println(lengthOfLongestSubstring("bbbbb"));
         System.out.println(lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(repeatedSubstringPattern("abaababaab"));
+        //System.out.println(repeatedSubstringPattern("abaababaab"));
 
 
-//        System.out.println("==========最长完美字串===========================");
-//        int res = characterReplacement(s, 2);
-//        String s = "aabbaabaa";
-//        int res1 = characterReplacement(s, 1);
-//        System.out.println(res);
-//        System.out.println(res1);
+        System.out.println("==========最长完美字串===========================");
+        String s = "aabbaabaa";
+        int res = characterReplacement(s, 2);
+        int res1 = characterReplacement(s, 1);
+        System.out.println(res);
+        System.out.println(res1);
 
-//        System.out.println("==========一串字符能组成的 最长回文串============");
-//        String ss = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth";
-//        System.out.println(longestPalindrome(ss));
-//        System.out.println(longestPalindrome("abccccdd"));
+        System.out.println("==========一串字符能组成的 最长回文串============");
+        String ss = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth";
+        System.out.println(longestPalindrome(ss));
+        System.out.println(longestPalindrome("abaaccccddd"));
 
 
         System.out.println("=====================最长公共子串===========================");
         String a = "abcdefg";
         String b = "cdefg";
-        String res = getLCS(a, b);
-        System.out.println(res);
+        String res2 = getLCS(a, b);
+        int res3 = getLCS01(a, b);
+        System.out.println(res2);
+        System.out.println(res3);
+        System.out.println("===============================================");
+        String c = "cdeg";
+        String res4 = getLCS(a, c);
+        int res5 = getLCS01(a, c);
+        System.out.println(res4);
+        System.out.println(res5);
+        System.out.println("===============================================");
+        String d = "";
+        String res6 = getLCS(a, d);
+        int res7 = getLCS01(a, d);
+        System.out.println(res6);
+        System.out.println(res7);
 
-        System.out.println("+++++++++++++++++++");
-        System.out.println(getLCS01(a, b));
+        System.out.println("+++++++++++++++++++++参数顺序测试+++++++++++++++++++++++++++");
+        System.out.println(getLCS(b, a));
         System.out.println(getLCS01(b, a));
-
-        System.out.println("==============================");
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        int n = sc.nextInt();
-        System.out.println(left(line,n));
-//        System.out.println(left("helloword", 5));
+//
+        System.out.println("=====================循环左移======================");
+        System.out.println(leftCycleMoveStrings("helloword", 5));
+        System.out.println(leftCycleMoveStrings("helloword", 6));
 
     }
 
-    public static String left(String s, int n) {
+    /**
+     * 字符串循环左移 n个字符
+     * @param s
+     * @param n
+     * @return
+     */
+    public static String leftCycleMoveStrings(String s, int n) {
         int len = s.length();
         if (len < 2)
             return s;
@@ -92,14 +108,14 @@ public class SubStr_Qs {
             map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
         }
         Set<Character> set = map.keySet();
-        int res = 0;
+        int totalLen = 0;
         for (Character c : set) {
             int num = map.get(c);
-            res += num / 2 * 2;
-            if (res % 2 == 0 && num % 2 != 0)
-                res++;
+            totalLen += num / 2 * 2;
+            if (totalLen % 2 == 0 && num % 2 != 0)
+                totalLen++;
         }
-        return res;
+        return totalLen;
 
     }
 
@@ -122,8 +138,6 @@ public class SubStr_Qs {
         int historyCharMax = 0;
 
 //        int res = 0; //可以定义结果变量 方便理解
-//153 4398 2960
-        //ws941016
         for (right = 0; right < chars.length; right++) { //窗口右侧一直往右移
             int index = chars[right] - 'a';
             map[index]++;
@@ -178,7 +192,7 @@ public class SubStr_Qs {
      * @return
      */
     public static int getLCS01(String s, String t) {
-        if (s == null || t == null) {
+        if (s == null || t == null || s.length() == 0 || t.length() == 0) {
             return 0;
         }
         int result = 0;
@@ -219,7 +233,6 @@ public class SubStr_Qs {
         return str.substring(1, str.length() - 1).contains(s);
 
 //        return (s + s).indexOf(s, 1) != s.length();
-
     }
 
 

@@ -6,7 +6,49 @@ import java.util.Scanner;
 import java.util.Set;
 
 
+/**
+ * 求最大公约数 也即最大公因子
+ *
+ * 最大公约数 * 最小公倍数 = 原两数乘积
+ * 互质的两个数 相乘等于最小公倍数
+ * 大数翻倍法
+ */
 public class Gongyueshu {
+
+    public static void main(String[] args) {
+//		Scanner sc = new Scanner(System.in);
+
+//		String nm = "12";
+//		System.out.println(System.getProperties());
+//		System.out.println(Integer.getInteger("os.name"));
+
+        System.out.println("============辗转相减法求最大公约数=================");
+        System.out.println(equalGCD(376868962, 378787860));
+        System.out.println(equalGCD(4, 2));
+        System.out.println(equalGCD(8, 12));
+        System.out.println(equalGCD(18, 12));
+
+        System.out.println("============暴力找约数=======long time==========");
+        System.out.println(getFactor(376868962));
+        System.out.println(getFactor(4));
+        System.out.println(getFactor(8));
+        System.out.println(getFactor(18));
+
+        System.out.println(188434481*2);
+//
+        System.out.println("============通过暴力找约数的方法，求出两数的所有约数，求交集，再求最大值=====longer time=======");
+        System.out.println(PrimeGCD(376868962, 378787860));
+        System.out.println(PrimeGCD(4, 2));
+        System.out.println(PrimeGCD(8, 12));
+        System.out.println(PrimeGCD(18, 12));
+
+        System.out.println("============辗转相减法求最大公约数=================");
+        System.out.println(GCD(376868962, 378787860));
+        System.out.println(GCD(4, 2));
+        System.out.println(GCD(8, 12));
+        System.out.println(GCD(18, 12));
+
+    }
 
     //辗转取余法求最大公约数
     public static int GCD(int m, int n) {
@@ -54,40 +96,4 @@ public class Gongyueshu {
         }
         return (long) m;
     }
-
-    public static void main(String[] args) {
-//		Scanner sc = new Scanner(System.in);
-
-//		String nm = "12";
-//		System.out.println(System.getProperties());
-//		System.out.println(Integer.getInteger("os.name"));
-
-        System.out.println("============辗转相减法求最大公约数=================");
-        System.out.println(equalGCD(376868962, 378787860));
-        System.out.println(equalGCD(4, 2));
-        System.out.println(equalGCD(8, 12));
-        System.out.println(equalGCD(18, 12));
-
-        System.out.println("============暴力找约数=======long time==========");
-        System.out.println(getFactor(376868962));
-        System.out.println(getFactor(4));
-        System.out.println(getFactor(8));
-        System.out.println(getFactor(18));
-
-        System.out.println(188434481*2);
-//
-        System.out.println("============通过暴力找约数的方法，求出两数的所有约数，求交集，再求最大值=====longer time=======");
-        System.out.println(PrimeGCD(376868962, 378787860));
-        System.out.println(PrimeGCD(4, 2));
-        System.out.println(PrimeGCD(8, 12));
-        System.out.println(PrimeGCD(18, 12));
-
-        System.out.println("============辗转相减法求最大公约数=================");
-        System.out.println(GCD(376868962, 378787860));
-        System.out.println(GCD(4, 2));
-        System.out.println(GCD(8, 12));
-        System.out.println(GCD(18, 12));
-
-    }
-
 }

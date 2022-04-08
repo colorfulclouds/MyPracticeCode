@@ -33,22 +33,26 @@ public class SubStr_Qs {
         int res3 = getLCS01(a, b);
         System.out.println(res2);
         System.out.println(res3);
+        System.out.println(getLCS02(a,b));
         System.out.println("===============================================");
+
         String c = "cdeg";
         String res4 = getLCS(a, c);
         int res5 = getLCS01(a, c);
         System.out.println(res4);
         System.out.println(res5);
+        System.out.println(getLCS02(a,c));
         System.out.println("===============================================");
+
         String d = "";
-        String res6 = getLCS(a, d);
-        int res7 = getLCS01(a, d);
-        System.out.println(res6);
-        System.out.println(res7);
+        System.out.println(getLCS(a, d));
+        System.out.println(getLCS01(a, d));
+        System.out.println(getLCS02(a,d));
 
         System.out.println("+++++++++++++++++++++参数顺序测试+++++++++++++++++++++++++++");
         System.out.println(getLCS(b, a));
         System.out.println(getLCS01(b, a));
+        System.out.println(getLCS02(b, a));
 //
         System.out.println("=====================循环左移======================");
         System.out.println(leftCycleMoveStrings("helloword", 5));
@@ -218,6 +222,41 @@ public class SubStr_Qs {
         }
         //String res = t.substring(end - result + 1,end +1); //截取最长的公共子串
         return result;
+    }
+
+    /**
+     * LCS 最长公共子串 （经典解法）------截取字符串的解法
+     *
+     * @param s
+     * @param t
+     * @return
+     */
+    public static String getLCS02(String s, String t) {
+        if (s == null || t == null || s.length() == 0 || t.length() == 0) {
+            return "";
+        }
+        int result = 0;
+        int sLength = s.length();
+        int tLength = t.length();
+        int[][] dp = new int[sLength][tLength];
+        int end = 0;
+
+        for (int i = 0; i < sLength; i++) {
+            for (int k = 0; k < tLength; k++) {
+                if (s.charAt(i) == t.charAt(k)) {
+                    if (i == 0 || k == 0) {
+                        dp[i][k] = 1;
+                    } else {
+                        dp[i][k] = dp[i - 1][k - 1] + 1;
+                    }
+                    if(dp[i][k] > result) //记录最长公共子串的末位下标
+                        end = k;
+                    result = Math.max(dp[i][k], result);
+                }
+            }
+        }
+        String res = t.substring(end - result + 1,end +1); //截取最长的公共子串
+        return result + res;
     }
 
 

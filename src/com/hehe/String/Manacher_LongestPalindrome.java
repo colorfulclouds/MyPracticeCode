@@ -7,6 +7,12 @@ package com.hehe.String;
  */
 public class Manacher_LongestPalindrome {
 
+    public static void main(String[] args) {
+        String str1 = "abc1234321ab";
+        System.out.println(maxLcpsLength(str1));
+        System.out.println(LongeastPalindrome(str1));
+    }
+
     /**
      * 最长回文子串 --暴力
      * @param s
@@ -64,13 +70,5 @@ public class Manacher_LongestPalindrome {
         }
         return max - 1;
     }
-
-    public static void main(String[] args) {
-        String str1 = "abc1234321ab";
-//        System.out.println(maxLcpsLength(str1));
-        System.out.println(LongeastPalindrome(str1));
-    }
-
-
 }
 

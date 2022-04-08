@@ -1,15 +1,11 @@
 package com.hehe.ArrayAndList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SumToTarget {
 
     public static void main(String[] args) {
-
-
         //3、和为 s 的连续正数序列
         System.out.println("=====3-1=====");
         List<int[]> res1 = sumToS(9);
@@ -17,16 +13,24 @@ public class SumToTarget {
             System.out.print(i[0] + "~" + i[1]);
             System.out.println();
         }
-        System.out.println("=====3-2=====");
+        System.out.println("=====3-2 滑动窗口=====");
         List<int[]> res2 = sumToS01(9);
         for (int[] i : res2) {
-            System.out.print(i[0] + "~" + i[1]);
+            for (int j = 0; j < i.length; j++) {
+                System.out.print(i[j] + " ");
+            }
             System.out.println();
         }
+        System.out.println();
+        System.out.println("======================");
+//        for (int[] i : res2) {
+//            System.out.print(i[0] + "~" + i[1]);
+//            System.out.println();
+//        }
 
         System.out.println("sum");
-        int[] arr = {1,2,3,4,5};
-        System.out.println(is(arr,7));
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println(is(arr, 7));
     }
 
     /**
@@ -66,31 +70,40 @@ public class SumToTarget {
         int curSum = i + j;
         while (i < (1 + s) / 2) {
             if (curSum == s) {
-                list.add(new int[]{i, j});
+                // 也可以 记录结果 详细到数字是哪些
+                int[] arr = new int[j - i + 1];
+                for (int k = i; k <= j; k++) {
+                    arr[k - i] = k;
+                }
+                list.add(arr);
+
+                //可以是添加序列的区间
+                //list.add(new int[]{i, j});
                 j++;
                 curSum += j;
-            } else if (curSum < s ) { //&& i < (1 + s) / 2
+            } else if (curSum < s) { //&& i < (1 + s) / 2
                 j++;
                 curSum += j;
-            } else if (curSum > s ) { //&& i < (1 + s) / 2
+            } else if (curSum > s) { //&& i < (1 + s) / 2
                 curSum -= i;
                 i++;
             }
         }
         return list;
     }
-    public static boolean is(int[] a,int tar){
+
+    public static boolean is(int[] a, int tar) {
         int sum = 0;
         int i = 0;
-        boolean b = isExist(a,i,sum,tar);
+        boolean b = isExist(a, i, sum, tar);
         return b;
     }
 
-    public static boolean isExist(int[] arr,int i,int sum,int tar){
-        while(i < arr.length){
-            if(sum == tar)
+    public static boolean isExist(int[] arr, int i, int sum, int tar) {
+        while (i < arr.length) {
+            if (sum == tar)
                 return true;
-            return isExist(arr,i+1,sum,tar) || isExist(arr,i+1,sum + arr[i],tar);
+            return isExist(arr, i + 1, sum, tar) || isExist(arr, i + 1, sum + arr[i], tar);
         }
         return false;
 

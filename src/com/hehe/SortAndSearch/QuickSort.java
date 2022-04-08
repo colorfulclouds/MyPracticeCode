@@ -1,6 +1,33 @@
 package com.hehe.SortAndSearch;
 
 public class QuickSort {
+
+    public static void main(String[] args) {
+        int[] a = {8, 6, 4, 1, 3, 2, 2, 9, 9};
+
+        GetLeastKNumbers(a, 3);
+        System.out.println();
+//        QuickSort01(a, 0, a.length - 1);
+//        System.out.println(findMediaMethod2(a));;
+
+//        QuickSort02(a, 0, a.length - 1);
+
+
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+
+        // System.out.println();
+        //
+        // int[] b = {2,4,6,7,1,0};
+        // quicksort(b, 0, b.length-1);
+        //
+        // for (int i = 0 ; i < b.length; i++) {
+        // System.out.print(b[i]+" ");
+        // }
+
+    }
+
     /**
      * 一次划分
      *
@@ -106,6 +133,8 @@ public class QuickSort {
             isValid = false;
         return isValid;
     }
+
+
     // =============================快排应用 2==================================
 
     /**最小的 k 个数
@@ -134,7 +163,9 @@ public class QuickSort {
 
     }
 
-    // ==================================================================================
+
+
+    // ================================随机快排？？？？？==================================================
 
     private static void QuickSort02(int[] arr, int l, int r) {
         if (arr == null || arr.length < 2) {
@@ -168,35 +199,7 @@ public class QuickSort {
         return new int[]{less + 1, more};
     }
 
-    // ==================================================================================
-
     private static void swap(int[] a, int i, int r) {
-
-    }
-
-    public static void main(String[] args) {
-        int[] a = {8, 6, 4, 1, 3, 2, 9};
-
-        GetLeastKNumbers(a, 2);
-        System.out.println();
-//        QuickSort01(a, 0, a.length - 1);
-//        System.out.println(findMediaMethod2(a));;
-
-//        QuickSort02(a, 0, a.length - 1);
-
-
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
-        }
-
-        // System.out.println();
-        //
-        // int[] b = {2,4,6,7,1,0};
-        // quicksort(b, 0, b.length-1);
-        //
-        // for (int i = 0 ; i < b.length; i++) {
-        // System.out.print(b[i]+" ");
-        // }
 
     }
 

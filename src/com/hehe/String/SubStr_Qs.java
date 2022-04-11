@@ -33,7 +33,7 @@ public class SubStr_Qs {
         int res3 = getLCS01(a, b);
         System.out.println(res2);
         System.out.println(res3);
-        System.out.println(getLCS02(a,b));
+        System.out.println(getLCS02(a, b));
         System.out.println("===============================================");
 
         String c = "cdeg";
@@ -41,13 +41,13 @@ public class SubStr_Qs {
         int res5 = getLCS01(a, c);
         System.out.println(res4);
         System.out.println(res5);
-        System.out.println(getLCS02(a,c));
+        System.out.println(getLCS02(a, c));
         System.out.println("===============================================");
 
         String d = "";
         System.out.println(getLCS(a, d));
         System.out.println(getLCS01(a, d));
-        System.out.println(getLCS02(a,d));
+        System.out.println(getLCS02(a, d));
 
         System.out.println("+++++++++++++++++++++参数顺序测试+++++++++++++++++++++++++++");
         System.out.println(getLCS(b, a));
@@ -58,10 +58,14 @@ public class SubStr_Qs {
         System.out.println(leftCycleMoveStrings("helloword", 5));
         System.out.println(leftCycleMoveStrings("helloword", 6));
 
+        System.out.println("+========================LongestSerialString===============");
+        System.out.println(LongestSerialString("abxyz"));
+
     }
 
     /**
      * 字符串循环左移 n个字符
+     *
      * @param s
      * @param n
      * @return
@@ -138,7 +142,7 @@ public class SubStr_Qs {
         }
         char[] chars = s.toCharArray();
         int left = 0;
-        int right = 0;
+        int right;
         int historyCharMax = 0;
 
 //        int res = 0; //可以定义结果变量 方便理解
@@ -249,16 +253,36 @@ public class SubStr_Qs {
                     } else {
                         dp[i][k] = dp[i - 1][k - 1] + 1;
                     }
-                    if(dp[i][k] > result) //记录最长公共子串的末位下标
+                    if (dp[i][k] > result) //记录最长公共子串的末位下标
                         end = k;
                     result = Math.max(dp[i][k], result);
                 }
             }
         }
-        String res = t.substring(end - result + 1,end +1); //截取最长的公共子串
+        String res = t.substring(end - result + 1, end + 1); //截取最长的公共子串
         return result + res;
     }
 
+
+    public static int LongestSerialString(String string) {
+        if (string == null)
+            return 0;
+        int max = 0;
+        int i = 0;
+        int j = 1;
+        int p = i;
+        while (j < string.length()) {
+            while (j < string.length() && (string.charAt(j) - string.charAt(p)) == 1) {
+                p++;
+                j++;
+            }
+            max = Math.max(max, p - i + 1);
+            p = j;
+            j = p + 1;
+            i = p;
+        }
+        return max;
+    }
 
     /**
      * 判断字符串是否由重复的子串构成

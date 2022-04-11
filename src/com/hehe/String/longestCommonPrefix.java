@@ -12,6 +12,7 @@ class longestCommonPrefix {
         strs[1] = "tif";
         strs[2] = "tif";
         System.out.println(longestCommonPrefix(strs));
+        System.out.println(longestCommonPrefix01(strs));
     }
 
     public static String longestCommonPrefix(String[] strs) {
@@ -25,7 +26,7 @@ class longestCommonPrefix {
                     break;
             }
             ans = ans.substring(0, j);
-            if (ans.equals(""))
+            if (ans.equals("")) //若为空 直接返回空串 没必要再比了
                 return ans;
         }
         return ans;
@@ -33,6 +34,7 @@ class longestCommonPrefix {
 
     /**
      * 注释加优化版本
+     *
      * @param strs
      * @return
      */
@@ -49,6 +51,8 @@ class longestCommonPrefix {
             }
             // substring 是左闭右开的
             res = res.substring(0, j);
+            if (res.equals("")) //若为空 直接返回空串 没必要再比了
+                return res;
         }
         return res;
     }

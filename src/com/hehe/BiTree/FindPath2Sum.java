@@ -51,7 +51,6 @@ public class FindPath2Sum {
         if(null == node)
             return;
         list.add(node.val);
-
         if (node.left == null && node.right == null) {
             int sum = 0;
 
@@ -100,8 +99,10 @@ public class FindPath2Sum {
             return res01;
         list.add(root.val);
         target -= root.val;
+
         if (target == 0 && root.left == null && root.right == null)
             res01.add(new ArrayList<>(list));  // !!!
+
         FindPath(root.left, target);
         FindPath(root.right, target);
         list.remove(list.size() - 1);

@@ -13,6 +13,7 @@ public class HasSubTree {
         TreeNode root2 = new TreeNode(8);
         root2.left = new TreeNode(9);
         root2.right = new TreeNode(2);
+        root2.right.left = new TreeNode(4);
 
         System.out.println(hasSubTree(root1, root2));
 
@@ -27,18 +28,19 @@ public class HasSubTree {
      * @return
      */
     static boolean hasSubTree(TreeNode root1, TreeNode root2) {
-        boolean res = false;
-
+        boolean isSub = false;
+        if(root2 == null)
+            return true;
 //        if (root1 == null || root2 == null) //定义空树不是任何树的子树
 //            return false;
         if (root1 != null && root2 != null) {
             if (root1.val == root2.val)   //结点值的判断 需要改进 因为如果是float/double这些小数时，计算机表示有误差
-                res = DoseTree2InTree1(root1, root2); //根节点相等继续判断其它结点
-            if (!res)
+                isSub = DoseTree2InTree1(root1, root2); //根节点相等继续判断其它结点
+            if (!isSub)
                 return hasSubTree(root1.left, root2) || hasSubTree(root1.right, root2);  //依次判断左,右结点
         }
 
-        return res;
+        return isSub;
     }
 
     /**

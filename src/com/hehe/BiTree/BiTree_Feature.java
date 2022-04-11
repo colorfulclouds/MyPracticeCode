@@ -13,8 +13,8 @@ public class BiTree_Feature {
             return 0;
         int depth_left = max_depth(root.left);
         int depth_right = max_depth(root.right);
-//        return depth_left > depth_right ? depth_left + 1 : depth_right + 1;
         return Math.max(depth_left, depth_right) + 1;
+//        return depth_left > depth_right ? depth_left + 1 : depth_right + 1;    // 同上
     }
 
 
@@ -65,7 +65,6 @@ public class BiTree_Feature {
             return -1;
 
         return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
-
     }
 
     /**
@@ -155,16 +154,16 @@ public class BiTree_Feature {
         System.out.println("max_depth1： " + max_depth(root));
 
 
-        System.out.println("=====================后序递归判断是否是平衡二叉树=======================");
+        System.out.println("=====================3 后序递归判断是否是平衡二叉树=======================");
         TreeNode root1 = new TreeNode(3);
         System.out.println(IsBalance(root1));
 
         root1.left = new TreeNode(3);
-//        root1.right = new Node(4);  //注释便不平衡的树
+//        root1.right = new TreeNode(4);  //注释便不平衡的树
         root1.left.left = new TreeNode(4);
         System.out.println(IsBalance(root1));
 
-        System.out.println("===============================是否是镜像二叉树============================");
+        System.out.println("===============================4 是否是镜像二叉树============================");
         TreeNode root2 = new TreeNode(1);
         root2.left = new TreeNode(2);
         root2.right = new TreeNode(2);
@@ -174,17 +173,19 @@ public class BiTree_Feature {
         root2.right.right = new TreeNode(3);
 
         System.out.println(isSymmetricTree(root2));
-        System.out.println("=============================找镜像二叉树=====================");
+        System.out.println("=============================5 求一颗二叉树的镜面反转树=====================");
 
         TreeNode root3 = new TreeNode(1);
         root3.left = new TreeNode(2);
-        root3.right = new TreeNode(2);
+        root3.right = new TreeNode(3);
         root3.left.left = new TreeNode(3);
         root3.left.right = new TreeNode(4);
         root3.right.left = new TreeNode(4);
         root3.right.right = new TreeNode(3);
         TreeNode res = Mirror(root3);
         System.out.println(res.val);
+        System.out.println(res.left.val);
+        System.out.println(res.right.val);
 
 
         System.out.println("=============================叶子节点个数=====================");

@@ -17,5 +17,26 @@ public class JumpFloor_Monkey {
             dp[i + 3] += dp[i];
         }
         System.out.println(dp[n]);
+
+        System.out.println("====================2===========");
+        System.out.println(jumpFloor(n));
+    }
+
+    public static long jumpFloor(int n) {
+        if (n == 0)
+            return 0;
+        if(n < 2)
+            return 1;
+        if(n == 3)
+            return 2;
+
+        long[] f = {1, 1, 2, 0};
+        for (int i = 4; i <= n; i++) {
+            f[3] = f[2] + f[0];
+            f[0] = f[1];
+            f[1] = f[2];
+            f[2] = f[3];
+        }
+        return f[3];
     }
 }

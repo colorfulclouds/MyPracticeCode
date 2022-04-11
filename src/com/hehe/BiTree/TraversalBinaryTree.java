@@ -44,8 +44,9 @@ public class TraversalBinaryTree {
         if (head != null)
             queue.add(head);
         while (!queue.isEmpty()) {  //注意栈空的判断 不能用queue != null 判断
+            List<Integer> tmp = new ArrayList<>();  //非双端队列 数组列表即可
+
             int size = queue.size();  //当前层的结点数目
-            ArrayList<Integer> tmp = new ArrayList<>();  //非双端队列 数组列表即可
             for (int i = 0; i < size; i++) { //遍历一层的结点 并将下一层全部入队列
                 TreeNode peek = queue.poll();
                 tmp.add(peek.val);
@@ -143,8 +144,8 @@ public class TraversalBinaryTree {
 
     public static void posOrderRecur(TreeNode head) {
         if (head != null) {
-            inOrderRecur(head.left);
-            inOrderRecur(head.right);
+            posOrderRecur(head.left);
+            posOrderRecur(head.right);
             System.out.println(head.val + " ");
         }
 
@@ -381,15 +382,15 @@ public class TraversalBinaryTree {
         // recursive
         System.out.println("==============recursive  递归==============");
         System.out.print("pre-order: ");
-//		preOrderRecur(head);
+		preOrderRecur(head);
         System.out.println();
 
         System.out.print("in-order: ");
-//		inOrderRecur(head);
+		inOrderRecur(head);
         System.out.println();
 
         System.out.print("pos-order: ");
-//		posOrderRecur(head);
+		posOrderRecur(head);
 
         // un recursive
         System.out.println("============unrecursive=============");

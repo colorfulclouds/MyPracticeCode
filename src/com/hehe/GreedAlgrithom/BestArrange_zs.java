@@ -23,39 +23,39 @@ public class BestArrange_zs {
      * 会议按结束时间比较器
      */
     public static class ProgramComparator implements Comparator<Program> {
-
         @Override
         public int compare(Program o1, Program o2) {
             return o1.end - o2.end;
         }
-
     }
 
     /**
-     *数组实现最优会议安排
+     * 数组实现最优会议安排
+     *
      * @param programs
      * @return
      */
-    public static int BestArrange(Program[] programs) { //, int cur
+    public static int BestArrange(Program[] programs) {
         Arrays.sort(programs, new ProgramComparator());
-        int res = 0,cur = 0;
+        int count = 0, currentTime = 0;
         for (int i = 0; i < programs.length; i++) {
-            if (cur <= programs[i].start) {
-                res++;
-                cur = programs[i].end;
+            if (currentTime <= programs[i].start) {
+                count++;
+                currentTime = programs[i].end;
             }
         }
-        return res;
+        return count;
     }
 
     /**
      * 小根堆实现最优会议安排
      * 按最早结束时间排序时 结束时间小的会议在前 故用小根堆
+     *
      * @param programs
      * @return
      */
-    public static int BestArrange01(Program[] programs){ //,int cur
-        int res = 0,cur = 0;
+    public static int BestArrange01(Program[] programs) { //,int cur
+        int count = 0, currentTime = 0;
         PriorityQueue<Program> queue = new PriorityQueue<>(new Comparator<Program>() { //会议按结束时间比较器
             @Override
             public int compare(Program o1, Program o2) {
@@ -66,21 +66,21 @@ public class BestArrange_zs {
         for (int i = 0; i < programs.length; i++) {
             queue.add(programs[i]);
         }
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             Program cur_queue = queue.poll();
-            if(cur <= cur_queue.start) {
-                res++;
-                cur = cur_queue.end;
+            if (currentTime <= cur_queue.start) {
+                count++;
+                currentTime = cur_queue.end;
             }
         }
-        return res;
+        return count;
     }
 
     public static void main(String[] args) {
         Program[] programs = new Program[3];
-        programs[0] = new Program(1,3);
-        programs[1] = new Program(2,4);
-        programs[2] = new Program(5,6);
+        programs[0] = new Program(1, 3);
+        programs[1] = new Program(2, 4);
+        programs[2] = new Program(5, 6);
 
         System.out.println(BestArrange(programs));
         System.out.println(BestArrange01(programs));

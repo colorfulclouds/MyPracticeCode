@@ -15,6 +15,7 @@ public class ClosePrimeNum {
 
     /**
      * 1-n之间的孪生素数个数
+     *
      * @param n
      * @return
      */
@@ -39,7 +40,7 @@ public class ClosePrimeNum {
         //计算孪生素数的个数
         int count = 0;
         for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i + 1) - list.get(i) == 2){
+            if (list.get(i + 1) - list.get(i) == 2) {
 //                System.out.print(list.get(i + 1) + " ");
 //                System.out.println(list.get(i));
                 count++;

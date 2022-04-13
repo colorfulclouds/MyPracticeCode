@@ -2,14 +2,20 @@ package com.hehe.Classic;
 
 public class Operate2Num {
     public static void main(String[] args) {
-        exchange(1, 2);
 
-//        System.out.println(1^1^2);
+        int num1 = 1, num2 = 2;
+        exchange(num1, num2);
+        System.out.println("+++++++++++++实际外边的数字+++++++++");
+        System.out.println(num1);
+        System.out.println(num2);
+        System.out.println("==================aplusb===============");
+        System.out.println(aplusb(3, 5));
 
     }
 
     /**
      * 交换两个数
+     *
      * @param num1
      * @param num2
      */

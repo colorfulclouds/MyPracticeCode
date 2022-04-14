@@ -9,6 +9,55 @@ import java.util.Arrays;
  */
 public class BinarySearch {
 
+    public static void main(String[] args) {
+        int[] arr = {1, 3, 5, 7, 9, 11};
+        int key = 3;
+        System.out.println("============递归二分查找==================");
+        System.out.println(recursionBinarySearch(arr, key, 0, arr.length - 1));
+        System.out.println("============非递归二分查找==================");
+        System.out.println(commonBinarySearch(arr, key));
+
+
+        int position = commonBinarySearch(arr, key);
+
+        if (position == -1) {
+            System.out.println("查找的是" + key + ",序列中没有该数！");
+        } else {
+            System.out.println("查找的是" + key + ",找到位置为：" + position);
+        }
+
+        /**
+         * MissingNumInSortedArray的测试用例
+         */
+        int[] arr01 = {0, 1, 2, 3, 5, 6};
+        int[] arr02 = {1, 2, 3, 4, 5};
+//        System.out.println(MissingNumInSortedArray(arr01));
+//        System.out.println(MissingNumInSortedArray(arr02));
+
+
+        System.out.println("==========test timesOfNum===================");
+//        int[] nums = {1, 2, 3, 3, 3, 4, 5};
+        int[] nums = {3, 3, 3, 4, 5};
+        System.out.println(countNum(nums, 3));
+
+
+        System.out.print("getFirstK01:  ");
+        System.out.println(getFirstK01(nums, 0, nums.length - 1, 3));
+
+        System.out.print("getFirstK:  ");
+        System.out.println(getFirstK(nums, 0, nums.length - 1, 3));
+
+        System.out.print("getLastK:  ");
+        System.out.println(getLastK(nums, 0, nums.length - 1, 3));
+
+        System.out.println("=========0-n-1 的数字 第一个重复的那个数字============");
+        int[] num1 = {0, 1, 2, 3, 4, 4, 4, 5};
+        System.out.println(duplicate(num1));
+
+
+    }
+
+
     /**
      * 输入排序数组：{1，2，3，3，3，4} 3
      * 输出：3
@@ -20,7 +69,7 @@ public class BinarySearch {
      * @param k
      * @return
      */
-    public static int timesOfNum(int[] nums, int k) {
+    public static int countNum(int[] nums, int k) {
         int len = nums.length;
         int res = 0;
         if (len > 0) {
@@ -40,26 +89,26 @@ public class BinarySearch {
      * @param nums
      * @param start
      * @param end
-     * @param k
+     * @param key
      * @return
      */
-    public static int getFirstK(int[] nums, int start, int end, int k) {
-        if (start > end)
+    public static int getFirstK(int[] nums, int start, int end, int key) {
+        if (start > end || key < nums[start] || key > nums[end] )
             return -1;
 
         int mid = (start + end) >> 1;
 
-        if (nums[mid] == k) {
-            if ((mid > 0 && nums[mid - 1] != k) || mid == 0) //mid > 0 需要在&& 的前面
+        if (nums[mid] == key) {
+            if ((mid > 0 && nums[mid - 1] != key) || mid == 0) //mid > 0 需要在&& 的前面
                 return mid;
             else
                 end = mid - 1;
-        } else if (nums[mid] > k)
+        } else if (nums[mid] > key)
             end = mid - 1;
         else
             start = mid + 1;
 
-        return getFirstK(nums, start, end, k);
+        return getFirstK(nums, start, end, key);
     }
 
     /**
@@ -79,7 +128,7 @@ public class BinarySearch {
         int mid = (start + end) >> 1;
 
         if (nums[mid] == k) {
-            if ((mid < nums.length-1 && nums[mid + 1] != k) || mid == nums.length -1)  //mid < nums.length-1 需要在&& 的前面
+            if ((mid < nums.length - 1 && nums[mid + 1] != k) || mid == nums.length - 1)  //mid < nums.length-1 需要在&& 的前面
                 return mid;
             else
                 start = mid + 1;
@@ -156,13 +205,14 @@ public class BinarySearch {
      * @return
      */
     public static int commonBinarySearch(int[] arr, int key) {
-        int low = 0, high = arr.length - 1, mid = 0; //初始化
+//        int low = 0, high = arr.length - 1, mid = 0; //初始化
+        int low = 0, high = arr.length - 1; //初始化
 
         if (key < arr[low] || key > arr[high] || low > high) {
             return -1;
         }
         while (low <= high) {
-            mid = (high + low) / 2;
+            int mid = (high + low) / 2;
             if (key < arr[mid]) {
                 high = mid - 1;
             } else if (key > arr[mid]) {
@@ -188,17 +238,24 @@ public class BinarySearch {
         if (key < arr[low] || key > arr[high] || low > high) {
             return -1;
         }
-        int mid = 0;
         while (low <= high) {
-            mid = (high + low) / 2;
+            int mid = (high + low) / 2;
             if (key < arr[mid])
                 high = mid - 1;
             else if (key > arr[mid])
                 low = mid + 1;
-            else if (arr[mid - 1] != key && mid > 0 && arr[mid] == key || mid == 0)
+
+            else if ((mid > 0 && arr[mid - 1] != key || mid == 0) && arr[mid] == key)
                 return mid;
             else
                 high = mid - 1;
+            //另：
+//            else if (arr[mid] == key) {
+//                if ((mid > 0 && arr[mid - 1] != key) || mid == 0)
+//                    return mid;
+//                else
+//                    high = mid - 1;
+//            }
         }
         return -1;
     }
@@ -220,52 +277,12 @@ public class BinarySearch {
                 low = mid + 1;
             } else if (mid > numbers[mid] && mid == low || mid > low && mid - 1 == numbers[mid - 1]) {
                 return mid - 1;
-            }
-            else {
+            } else {
                 high = mid - 1;
             }
         }
         return -1;
     }
 
-
-    public static void main(String[] args) {
-        int[] arr = {1, 3, 5, 7, 9, 11};
-        int key = 3;
-//        System.out.println(recursionBinarySearch(arr, key, 0, arr.length - 1));
-//        System.out.println(commonBinarySearch(arr, key));
-
-
-//        int position = commonBinarySearch(arr, key);
-//
-//        if (position == -1) {
-//            System.out.println("查找的是" + key + ",序列中没有该数！");
-//        } else {
-//            System.out.println("查找的是" + key + ",找到位置为：" + position);
-//        }
-
-        /**
-         * MissingNumInSortedArray的测试用例
-         */
-        int[] arr01 = {0, 1, 2, 3, 5, 6};
-        int[] arr02 = {1, 2, 3, 4, 5};
-//        System.out.println(MissingNumInSortedArray(arr01));
-//        System.out.println(MissingNumInSortedArray(arr02));
-
-
-        System.out.println("==========test timesOfNum===================");
-        int[] nums = {1, 2, 3, 3, 3, 4, 5};
-        System.out.println(timesOfNum(nums, 3));
-
-
-//        System.out.println("==============getFirstK01================");
-//        System.out.println(getFirstK01(nums, 0, nums.length - 1, 3));
-
-        System.out.println("=========0-n-1 的数字 第一个重复的那个数字============");
-        int[] num1 = {0, 1, 2, 3, 4, 4, 4, 5};
-        System.out.println(duplicate(num1));
-
-
-    }
 
 }

@@ -1,9 +1,29 @@
 package com.hehe.SortAndSearch;
 
 public class MergeSort {
+    public static void main(String[] args) {
+        // 随机数生成
+        int arr[] = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            // 产生1-100之间的随机数
+            arr[i] = (int) (Math.random() * 100);
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + "   ");
+        }
+        System.out.println();
+        System.out.println("============================================== ");
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        mergeSort(arr, 0, arr.length - 1);
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // 排列后的顺序
+        SysOut(arr);
+    }
 
     /**
      * 归并排序
+     *
      * @param arr
      * @param left
      * @param right
@@ -23,6 +43,7 @@ public class MergeSort {
 
     /**
      * 归并排序的 merge 操作
+     *
      * @param arr
      * @param left
      * @param center
@@ -82,7 +103,7 @@ public class MergeSort {
      * @return
      */
     public static int mergeSortInSmallSort(int[] data, int left, int right) {
-        if (left == right || data.length<2 || data == null)
+        if (left == right || data.length < 2 || data == null)
             return -1;  // X
 
         int center = (left + right) / 2;
@@ -90,12 +111,13 @@ public class MergeSort {
 //		int center = left +(right-left>>1);
 
         return mergeSortInSmallSort(data, left, center)
-                +mergeSortInSmallSort(data, center + 1, right)
-                +mergeInSmallSum(data, left, center, right);
+                + mergeSortInSmallSort(data, center + 1, right)
+                + mergeInSmallSum(data, left, center, right);
     }
 
     /**
-     *  归并思想在小和问题上的应用 ： 原 merge
+     * 归并思想在小和问题上的应用 ： 原 merge
+     *
      * @param data
      * @param left
      * @param center
@@ -111,7 +133,7 @@ public class MergeSort {
         // 右数组第一个元素索引
         int p2 = center + 1;
 
-        int res=0;
+        int res = 0;
         while (p1 <= center && p2 <= right) {
             //原：help[i++] = data[p1] < data[p2] ? data[p1] : data[p2];
             //改编代码，可用于求小和问题
@@ -131,6 +153,11 @@ public class MergeSort {
         return res;
     }
 
-
+    public static void SysOut(int[] arr) {
+        System.out.println("排列后的顺序为：");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + "   ");
+        }
+    }
 
 }

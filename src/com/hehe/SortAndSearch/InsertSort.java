@@ -10,6 +10,67 @@ import java.util.Arrays;
 
 //!!  j >= 0
 public class InsertSort {
+    public static void main(String[] args) {
+        /**
+         * 随机数生成
+         */
+        // int[] sort = new int[10];
+        // for (int i = 0; i < sort.length; i++) {
+        // // 产生1-100之间的随机数
+        // sort[i] = (int) (Math.random() * 100);
+        // }
+        // for (int i = 0; i < sort.length; i++) {
+        // System.out.print(sort[i] + " ");
+        // }
+        // System.out.println();
+
+        int testTime = 500000;
+        int maxSize = 100;
+        int maxValue = 100;
+        boolean succeed = true;
+//        for (int i = 0; i < testTime; i++) {
+//            int[] arr1 = generateRandomArray(maxSize, maxValue);
+//            int[] arr2 = copyArray(arr1);
+//
+//
+//            //InsertSort02(arr1);
+//            InsertSort01(arr1);
+//            Right(arr2);
+//            if (!isEqual(arr1, arr2)) {
+//                succeed = false;
+//                break;
+//            }
+//            printArray(arr1);
+//            System.out.println();
+//            printArray(arr2);
+//
+//        }
+        int[] arr1 = {3, 2, 1, 6, 5};
+        int[] arr2 = copyArray(arr1);
+
+        InsertSort01(arr1);
+        Right(arr2);
+
+        if (!isEqual(arr1, arr2)) {
+            succeed = false;
+        }
+        printArray(arr1);
+        System.out.println();
+        printArray(arr2);
+        System.out.println(succeed ? "Nice!" : "Fuck!");
+
+
+//        int[] arr = generateRandomArray(maxSize, maxValue);
+//        System.out.println("排列前的顺序为：");
+//        printArray(arr);
+//
+////        InsertSort01(arr);
+//        InsertSort02(arr);
+//
+//        System.out.println("排列后的顺序为：");
+        //printArray(arr);
+    }
+
 
     public static void InsertSort01(int[] arr) {
         // 插入排序
@@ -30,7 +91,7 @@ public class InsertSort {
         }
     }
 
-
+//++++++++++++++++++++++++++++工具方法+++++++++++++++++++++++++++++
     // 交换方法
     public static void swap(int[] arr, int i, int j) {
         int tmp = arr[i];
@@ -127,64 +188,6 @@ public class InsertSort {
     }
 
 
-    public static void main(String[] args) {
-        /**
-         * 随机数生成
-         */
-        // int[] sort = new int[10];
-        // for (int i = 0; i < sort.length; i++) {
-        // // 产生1-100之间的随机数
-        // sort[i] = (int) (Math.random() * 100);
-        // }
-        // for (int i = 0; i < sort.length; i++) {
-        // System.out.print(sort[i] + " ");
-        // }
-        // System.out.println();
-
-        int testTime = 500000;
-        int maxSize = 100;
-        int maxValue = 100;
-        boolean succeed = true;
-//        for (int i = 0; i < testTime; i++) {
-//            int[] arr1 = generateRandomArray(maxSize, maxValue);
-//            int[] arr2 = copyArray(arr1);
-//
-//
-//            //InsertSort02(arr1);
-//            InsertSort01(arr1);
-//            Right(arr2);
-//            if (!isEqual(arr1, arr2)) {
-//                succeed = false;
-//                break;
-//            }
-//            printArray(arr1);
-//            System.out.println();
-//            printArray(arr2);
-//
-//        }
-        int[] arr1 = {3,2,1,6,5};
-        int[] arr2 =copyArray(arr1) ;
-        InsertSort01(arr1);
-        Right(arr2);
-        if (!isEqual(arr1, arr2)) {
-            succeed = false;
-        }
-        printArray(arr1);
-        System.out.println();
-        printArray(arr2);
-        System.out.println(succeed ? "Nice!" : "Fuck!");
-
-
-//        int[] arr = generateRandomArray(maxSize, maxValue);
-//        System.out.println("排列前的顺序为：");
-//        printArray(arr);
-//
-////        InsertSort01(arr);
-//        InsertSort02(arr);
-//
-//        System.out.println("排列后的顺序为：");
-        //printArray(arr);
-    }
 
 }
 

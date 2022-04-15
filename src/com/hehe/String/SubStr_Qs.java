@@ -58,7 +58,7 @@ public class SubStr_Qs {
         System.out.println(leftCycleMoveStrings("helloword", 5));
         System.out.println(leftCycleMoveStrings("helloword", 6));
 
-        System.out.println("+========================LongestSerialString===============");
+        System.out.println("+========================最长连续子串 ： LongestSerialString===============");
         System.out.println(LongestSerialString("abxyz"));
 
     }
@@ -264,6 +264,11 @@ public class SubStr_Qs {
     }
 
 
+    /**
+     * 最长连续子串
+     * @param string
+     * @return
+     */
     public static int LongestSerialString(String string) {
         if (string == null)
             return 0;

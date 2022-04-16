@@ -2,8 +2,8 @@ package com.hehe.ArrayAndList;
 
 import java.util.Scanner;
 /*找出输入的字符串中能够组合表示的最大的时间
-*
-* */
+ *
+ * */
 
 /* 输入{9，9，9，9，9，9}
  * 输出 invalid
@@ -17,17 +17,17 @@ public class MaxTime {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] strs = sc.nextLine().split(",");
+        String[] strs = sc.nextLine().split("，");
         //输入的数组，接收时是字符串，需要处理
 
-//            strs[0] = strs[0].substring(1);
-//            strs[strs.length - 1] = strs[strs.length - 1].substring(0, 1);
-            int[] nums = new int[strs.length];
-            for (int i = 0; i < strs.length; i++) {
-                nums[i] = Integer.parseInt(strs[i]);
-                //System.out.println(nums[i]);
-            }
-            happy_2_day(nums);
+        strs[0] = strs[0].substring(1);
+        strs[strs.length - 1] = strs[strs.length - 1].substring(0, 1);
+        int[] nums = new int[strs.length];
+        for (int i = 0; i < strs.length; i++) {
+            nums[i] = Integer.parseInt(strs[i]);
+            //System.out.println(nums[i]);
+        }
+        happy_2_day(nums);
     }
 
     public static void happy_2_day(int[] nums) {

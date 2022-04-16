@@ -14,34 +14,34 @@ public class BiArray_Lands {
             }
         }
 
-        int res = countIsLands(arr,m,n);
+        int res = countIsLands(arr, m, n);
         System.out.println(res);
     }
 
 
-    private static int countIsLands(int[][] arr,int m,int n) {
-        if(arr == null && arr[0] == null)
+    private static int countIsLands(int[][] arr, int m, int n) {
+        if (arr == null && arr[0] == null)
             return 0;
         int res = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if(arr[i][j] == 1)
+                if (arr[i][j] == 1)
                     res++;
-                infect(arr,i,j,m,n);
+                infect(arr, i, j, m, n);
             }
         }
         return res;
     }
 
     private static void infect(int[][] arr, int i, int j, int m, int n) {
-        if(i < 0 || i >= m || j < 0 || j >= n || arr[i][j] != 1){
+        if (i < 0 || i >= m || j < 0 || j >= n || arr[i][j] != 1) {
             return;
         }
         arr[i][j] = 2;
 
-        infect(arr,i+1,j,m,n);
-        infect(arr,i-1,j,m,n);
-        infect(arr,i,j+1,m,n);
-        infect(arr,i,j-1,m,n);
+        infect(arr, i + 1, j, m, n);
+        infect(arr, i - 1, j, m, n);
+        infect(arr, i, j + 1, m, n);
+        infect(arr, i, j - 1, m, n);
     }
 }

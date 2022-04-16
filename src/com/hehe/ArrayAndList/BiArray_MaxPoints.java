@@ -23,6 +23,19 @@ case通过率为70.00%
 //        3 4
 
 public class BiArray_MaxPoints {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        sc.nextLine();
+        Point[] points = new Point[num];
+        for (int i = 0; i < num; i++){
+            points[i] = new Point(sc.nextInt(), sc.nextInt());
+        }
+        //
+        findMaxPoints(num,points);
+
+    }
     //功能：找出一组点的所有的最大点，在坐标中若右上方无其他点则为
     //最大点定义：在坐标中若右上方无其他点则为
     public static void findMaxPoints(int num,Point[] points){
@@ -50,17 +63,7 @@ public class BiArray_MaxPoints {
     }
 
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        Point[] points = new Point[num];
-        for (int i = 0; i < num; i++){
-            points[i] = new Point(sc.nextInt(), sc.nextInt());
-        }
-        //
-        findMaxPoints(num,points);
 
-    }
 
     //坐标点的类
     public static class Point{

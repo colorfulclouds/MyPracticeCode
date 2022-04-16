@@ -10,7 +10,7 @@ public class SortCodePra {
         System.out.println("排列前的顺序为：");
         printArray(arr);
 
-        Insertsort(arr);
+//        Insertsort(arr);
 //        BubbleSort(arr);
 //        QuikSort(arr, 0, arr.length - 1);
 //        mergeSort(arr, 0, arr.length - 1);
@@ -25,18 +25,19 @@ public class SortCodePra {
         int[] arr1 = {7,5,6,4};
         int[] arr2 = {1,2,3,4};
         int[] arr3 = {1,2,3,4,5,6,0};
-        System.out.println(mergeSortInINversion(arr,0,arr.length-1));
-        System.out.println(mergeSortInINversion(arr1,0,arr1.length-1));
-        System.out.println(mergeSortInINversion(arr2,0,arr2.length-1));
-        System.out.println(mergeSortInINversion(arr3,0,arr3.length-1));
+//        System.out.println(mergeSortInINversion(arr,0,arr.length-1));
+//        System.out.println(mergeSortInINversion(arr1,0,arr1.length-1));
+//        System.out.println(mergeSortInINversion(arr2,0,arr2.length-1));
+//        System.out.println(mergeSortInINversion(arr3,0,arr3.length-1));
+//        System.out.println("=====================================================");
 //        printArray(arr);
 //        printArray(arr1);
 //        printArray(arr2);
 //        printArray(arr3);
-//        System.out.println("=====================================================");
-//        System.out.println(mergeSortInSmallSort(arr1,0,arr1.length-1));
-//        System.out.println(mergeSortInSmallSort(arr2,0,arr1.length-1));
-//        System.out.println(mergeSortInSmallSort(arr3,0,arr1.length-1));
+        System.out.println("========================小和=============================");
+        System.out.println(mergeSortInSmallSort(arr1,0,arr1.length-1));
+        System.out.println(mergeSortInSmallSort(arr2,0,arr1.length-1));
+        System.out.println(mergeSortInSmallSort(arr3,0,arr1.length-1));
 
     }
 
@@ -49,19 +50,19 @@ public class SortCodePra {
      * @param high
      * @return
      */
-    public static int recursionBinarySearch(int[] arr, int key, int low, int high) {
-        if (key < arr[low] || key > arr[high] || low > high) {
-            return -1;
-        }
-        int mid = (low + high) / 2;
-        if (key > arr[mid]) {
-            return recursionBinarySearch(arr, key, mid + 1, high);
-        } else if (key < arr[mid]) {
-            return recursionBinarySearch(arr, key, low, mid - 1);
-        } else {
-            return mid;
-        }
-    }
+//    public static int recursionBinarySearch(int[] arr, int key, int low, int high) {
+//        if (key < arr[low] || key > arr[high] || low > high) {
+//            return -1;
+//        }
+//        int mid = (low + high) / 2;
+//        if (key > arr[mid]) {
+//            return recursionBinarySearch(arr, key, mid + 1, high);
+//        } else if (key < arr[mid]) {
+//            return recursionBinarySearch(arr, key, low, mid - 1);
+//        } else {
+//            return mid;
+//        }
+//    }
 
     /**
      * 非递归二分查找
@@ -70,23 +71,23 @@ public class SortCodePra {
      * @param key
      * @return
      */
-    public static int commonBinarySearch(int[] arr, int key) {
-        int low = 0, high = arr.length - 1, mid = 0;
-        if (key < arr[low] || key > arr[high] || low > high) {
-            return -1;
-        }
-        while (low <= high) {
-            mid = (high + low) / 2;
-            if (key < arr[mid]) {
-                high = mid - 1;
-            } else if (key > arr[mid]) {
-                low = mid + 1;
-            } else {
-                return mid;
-            }
-        }
-        return -1;
-    }
+//    public static int commonBinarySearch(int[] arr, int key) {
+//        int low = 0, high = arr.length - 1, mid = 0;
+//        if (key < arr[low] || key > arr[high] || low > high) {
+//            return -1;
+//        }
+//        while (low <= high) {
+//            mid = (high + low) / 2;
+//            if (key < arr[mid]) {
+//                high = mid - 1;
+//            } else if (key > arr[mid]) {
+//                low = mid + 1;
+//            } else {
+//                return mid;
+//            }
+//        }
+//        return -1;
+//    }
 
     /**
      * 小和问题 求解
@@ -220,7 +221,6 @@ public class SortCodePra {
         for (int j = 0; j < help.length; j++) {
             arr[left + j] = help[j++];
         }
-
     }
 
 
@@ -234,41 +234,41 @@ public class SortCodePra {
         }
     }
 
-    public static void BubbleSort(int[] arr) {
-        int tmp;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    tmp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j] = tmp;
-                }
-            }
-        }
-    }
+//    public static void BubbleSort(int[] arr) {
+//        int tmp;
+//        for (int i = 0; i < arr.length-1; i++) {
+//            for (int j = 0; j < arr.length - i - 1; j++) {
+//                if (arr[j] > arr[j + 1]) {
+//                    tmp = arr[j];
+//                    arr[j] = arr[j + 1];
+//                    arr[j] = tmp;
+//                }
+//            }
+//        }
+//    }
 
-    public static void QuikSort(int[] arr, int l, int r) { //递归方法 注意参数
-        if (l < r) {
-            int p = onePartition(arr, l, r);
-            QuikSort(arr, l, p - 1);
-            QuikSort(arr, p + 1, r);
-        }
+//    public static void QuikSort(int[] arr, int l, int r) { //递归方法 注意参数
+//        if (l < r) {
+//            int p = onePartition(arr, l, r);
+//            QuikSort(arr, l, p - 1);
+//            QuikSort(arr, p + 1, r);
+//        }
+//
+//    }
 
-    }
-
-    private static int onePartition(int[] arr, int l, int r) {
-        int provit = arr[l];
-        while (l < r && arr[r] >= provit)
-            r--;
-        if (l < r)
-            arr[l++] = arr[r];
-        while (l < r && arr[l] <= provit)
-            l++;
-        if (l < r)
-            arr[r++] = arr[l];
-        arr[l] = provit;
-        return l;
-    }
+//    private static int onePartition(int[] arr, int l, int r) {
+//        int provit = arr[l];
+//        while (l < r && arr[r] >= provit)
+//            r--;
+//        if (l < r)
+//            arr[l++] = arr[r];
+//        while (l < r && arr[l] < provit)
+//            l++;
+//        if (l < r)
+//            arr[r++] = arr[l];
+//        arr[l] = provit;
+//        return l;
+//    }
 
 
     public static int[] generateRandomArray(int size, int value) {

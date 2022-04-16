@@ -21,9 +21,15 @@ public class LowestLexicography_zs {
         System.out.println(PrintMinNumber01(arr)); //【错误的】
 
         List<Integer> integers = lexicalOrder(10);
-        for(int i : integers){
+        for (int i : integers) {
             System.out.print(i + " ");
         }
+
+
+        System.out.println("+++++++++++++++++++++");
+        System.out.println(minSeqString("aadc"));
+        System.out.println(minSeqString("adc"));
+        System.out.println(minSeqString("abc"));
 
     }
 
@@ -52,6 +58,42 @@ public class LowestLexicography_zs {
         }
     }
 
+    /**
+     * 字符串变换最小字符串 要求：仅交换一个字符的最小字典序
+     * <p>
+     * <p>
+     * aadc
+     * aacd
+     * <p>
+     * abc
+     * abc
+     *
+     * @param str
+     * @return
+     */
+    public static String minSeqString(String str) {
+        List<String> list = new ArrayList<>();
+        list.add(str);
+        for (int i = 0; i < str.length() - 1; i++) {
+            for (int j = i + 1; j < str.length(); j++) {
+                String res = swap(str, i, j);
+                list.add(res);
+            }
+        }
+        Collections.sort(list);
+        return list.get(0);
+
+    }
+
+    private static String swap(String str, int a, int b) {
+        char[] chars = str.toCharArray();
+        char tmp = chars[a];
+        chars[a] = chars[b];
+        chars[b] = tmp;
+        return String.valueOf(chars);
+    }
+
+
     //===============================================================
 
 
@@ -60,6 +102,7 @@ public class LowestLexicography_zs {
     /**
      * 2-1 数组组成的最小的数字（int数组转化为字符串进行比较器排序）
      * 网友
+     *
      * @param numbers
      * @return
      */
@@ -87,6 +130,7 @@ public class LowestLexicography_zs {
     /**
      * 2-2 【错误的】数组组成的最小的数字（int数组中的数字比较大小 从而字典序排序）
      * 网友
+     *
      * @param numbers
      * @return
      */

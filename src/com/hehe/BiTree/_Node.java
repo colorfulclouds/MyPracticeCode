@@ -1,11 +1,11 @@
 package com.hehe.BiTree;
 
-public class Node {
+public class _Node {
     private int data;
-    private Node leftNode;
-    private Node rightNode;
+    private _Node leftNode;
+    private _Node rightNode;
 
-    public Node(int data, Node leftNode, Node rightNode){
+    public _Node(int data, _Node leftNode, _Node rightNode){
         this.data = data;
         this.leftNode = leftNode;
         this.rightNode = rightNode;
@@ -17,16 +17,16 @@ public class Node {
     public void setData(int data) {
         this.data = data;
     }
-    public Node getLeftNode() {
+    public _Node getLeftNode() {
         return leftNode;
     }
-    public void setLeftNode(Node leftNode) {
+    public void setLeftNode(_Node leftNode) {
         this.leftNode = leftNode;
     }
-    public Node getRightNode() {
+    public _Node getRightNode() {
         return rightNode;
     }
-    public void setRightNode(Node rightNode) {
+    public void setRightNode(_Node rightNode) {
         this.rightNode = rightNode;
     }
 }

@@ -11,7 +11,7 @@ package com.hehe.String;
  * s = "axc", t = "ahbgdc"
  * 返回 false.
  */
-public class SubSeq_IsSubSeq {
+public class SubStr_IsSubSeq {
 
     public static void main(String[] args) {
         String s = "abcde";

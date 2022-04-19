@@ -1,9 +1,9 @@
 package com.hehe.String;
 
 /**
- *判断串(N)中是否包含模式串（m）暴力(N>=m): O(N*m)
+ * 判断串(N)中是否包含模式串（m）暴力(N>=m): O(N*m)
  */
-public class KMP {
+public class SubStr_KMP {
     public static void main(String[] args) {
         String str = "abcabcababaccc";
         String match = "ababa";
@@ -11,12 +11,29 @@ public class KMP {
         String s = "aabaaba";
         int[] arr = getNextArray(s.toCharArray());
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.print(arr[i] + " ");
         }
 
+        System.out.println();
+        System.out.println("===================================");
+//        System.out.println(indexOf("abc", "bc"));
+        System.out.println(indexOf(str, match));
+
+        //反转在子串中的运用
+//        String a = "abc";
+//        String b = "bc";
+//        StringBuilder sb = new StringBuilder(a);
+//        System.out.println(sb.indexOf(b));
+//
+//        for (int i = 0; i < a.length() - 1; i++) {
+//            if(a.substring(i, i + 2).equals(b))
+//                System.out.println(i);
+
     }
+
     /**
-     *返回子串在串中的起始下标
+     * KMP   返回子串在串中的起始下标
+     *
      * @param s
      * @param p
      * @return
@@ -45,7 +62,7 @@ public class KMP {
 
     public static int[] getNextArray(char[] ms) {
         if (ms.length == 1) {
-            return new int[] { -1 };
+            return new int[]{-1};
         }
         int[] next = new int[ms.length];
         next[0] = -1;
@@ -64,6 +81,35 @@ public class KMP {
         return next;
     }
 
+    /**
+     * 暴力 子串索引位置
+     *
+     * @param s
+     * @param pattern
+     * @return
+     */
+    public static int indexOf(String s, String pattern) {
+        int index = -1;
+        int lim = s.length() - pattern.length();
+        int k = 0;
+        while (k <= lim) {
+            for (int j = 0; j < pattern.length(); j++) {
+                boolean isEqual = s.charAt(k + j) == pattern.charAt(j);
+
+                if (isEqual && j == 0) {
+                    index = k + j;
+                }
+                if (!isEqual) {
+                    index = -1;
+                    break;
+                }
+                if (j == pattern.length() - 1 && isEqual)
+                    return index;
+            }
+            k++;
+        }
+        return index;
+    }
 
 }
 

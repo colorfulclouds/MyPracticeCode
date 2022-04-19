@@ -36,7 +36,7 @@ public class BestArrange_zs {
      * @return
      */
     public static int BestArrange(Program[] programs) {
-        Arrays.sort(programs, new ProgramComparator());
+        Arrays.sort(programs, (v1, v2) -> v1.end - v2.end); //new ProgramComparator()
         int count = 0, currentTime = 0;
         for (int i = 0; i < programs.length; i++) {
             if (currentTime <= programs[i].start) {

@@ -1,10 +1,20 @@
 package com.hehe.String;
 
+/**
+ *判断串(N)中是否包含模式串（m）暴力(N>=m): O(N*m)
+ */
 public class KMP {
-    /**
-     *判断串(N)中是否包含模式串（m）暴力(N>=m): O(N*m)
-     */
+    public static void main(String[] args) {
+        String str = "abcabcababaccc";
+        String match = "ababa";
+        System.out.println(getIndexOf(str, match));
+        String s = "aabaaba";
+        int[] arr = getNextArray(s.toCharArray());
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
 
+    }
     /**
      *返回子串在串中的起始下标
      * @param s
@@ -54,17 +64,6 @@ public class KMP {
         return next;
     }
 
-    public static void main(String[] args) {
-//        String str = "abcabcababaccc";
-//        String match = "ababa";
-//        System.out.println(getIndexOf(str, match));
-        String s = "aabaaba";
-        int[] arr = getNextArray(s.toCharArray());
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-
-    }
 
 }
 

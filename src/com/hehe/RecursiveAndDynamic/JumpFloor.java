@@ -18,9 +18,15 @@ public class JumpFloor {
         System.out.println("=========================================");
 
         System.out.println(jumpFloorII(3));
-
-        System.out.println(jumpFloorIII(10));
+        System.out.println("==================III=======================");
+        System.out.println(jumpFloorIII_1(10));
+        System.out.println(jumpFloorIII_2(10));
+        System.out.println(jumpFloorIII_3(10));
+        System.out.println("===================III======================");
+        System.out.println("===================IIII======================");
         System.out.println(jumpFloorIIII(10));
+        System.out.println("===================IIII======================");
+        System.out.println(jumpFloorV(10));
 
     }
 
@@ -78,11 +84,11 @@ public class JumpFloor {
      * @param n
      * @return
      */
-    public static int jumpFloorIII(int n) {
+    public static int jumpFloorIII_1(int n) {
         if (n <= 4)
             return n;
         int[] arr = {1, 2, 3, 4};
-        while (n > 0) {
+        while (n > 4) {
             int tmp = arr[0] + arr[1] + arr[2];
             arr[0] = arr[1];
             arr[1] = arr[2];
@@ -93,13 +99,74 @@ public class JumpFloor {
         return arr[3];
     }
 
+    public static int jumpFloorIII_2(int n) {
+
+        if(n==0 || n==1) return 1;
+        if(n==2) return 2;
+        if(n==3) return 3;
+
+        int dp[] = new int[n+1];
+        dp[0]=1;dp[1]=1;dp[2]=2;dp[3]=3;
+
+        for(int i=4;i<=n;i++) {
+            dp[i] = dp[i-1]+dp[i-3];
+        }
+        return dp[n];
+    }
+
+    public static int jumpFloorIII_3(int n) {
+        if (n <= 3)
+            return n;
+
+        // first total methods number
+        // second last step is one step methods number
+        int[][] dp = new int[n][2];
+
+        dp[0][0] = 1;
+        dp[0][1] = 1;
+        dp[1][0] = 2;
+        dp[1][1] = 1;
+        dp[2][0] = 3;
+        dp[2][1] = 2;
+
+        for (int i = 3; i < n; i++) {
+            dp[i][0] = dp[i-1][0] + dp[i-2][1];
+            dp[i][1] = dp[i-1][0];
+        }
+        return dp[dp.length-1][0];
+    }
+
+    /**
+     * 【猴子爬山】一天一只顽猴想去从山脚爬到山顶，途中经过一个有个N个台阶的阶梯，但是这猴子有一个习惯： 每一次只能跳1步或跳3步，试问猴子通过这个阶梯
+     *  有多少种不同的跳跃方式？
+     * @param n
+     * @return
+     */
+    public static long jumpFloorIIII(int n) {
+        if (n == 0)
+            return 0;
+        if(n < 2)
+            return 1;
+        if(n == 3)
+            return 2;
+
+        long[] f = {1, 1, 2, 0};
+        for (int i = 4; i <= n; i++) {
+            f[3] = f[2] + f[0];
+            f[0] = f[1];
+            f[1] = f[2];
+            f[2] = f[3];
+        }
+        return f[3];
+    }
+
     /**
      * 复杂度高 没通过字节的笔试
      *
      * @param n
      * @return
      */
-    public static int jumpFloorIIII(int n) {
+    public static int jumpFloorV(int n) {
         if (n <= 4)
             return n;
         ArrayList<Integer> list = new ArrayList<>();

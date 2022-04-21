@@ -29,7 +29,7 @@ public class SumToTarget_Get2_3_4Num {
                     return new int[]{i, j};
             }
         }
-        return null;
+        return null;//   return new int[0];
     }
 
     /**

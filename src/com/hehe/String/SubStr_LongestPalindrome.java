@@ -1,24 +1,34 @@
 package com.hehe.String;
 
-public class LongestPalindrome {
+public class SubStr_LongestPalindrome {
     public static void main(String[] args) {
-//        System.out.println("=============最长回文子串 Manacher==============");
-//        System.out.println(longestPalindrome01("abccccdd"));
-//        System.out.println(longestPalindrome02("abccccdd"));
-//
-//
-//        System.out.println("==============回文子串的个数和最长回文子串=================");
-//        int[] res = numOfPalindrome("abccdccc");
-//        System.out.println(res[0] + " " + res[1]);
+
+        System.out.println("=============中心扩展法==============");
+        String s = "abbbaacd";
+//        String s = "abad";
+        System.out.println("回文串的个数：" + numOfPalindrome(s)[0]);
+        System.out.println("回文串的长度：" + numOfPalindrome(s)[1]);
+        System.out.println("最长回文串是：" + longestPalindrome(s));
+
+        System.out.println("=============暴 力 法==============");
+        System.out.println(LongeastPalindrome01(s));
+        System.out.println(LongeastPalindrome02(s));
+
+        System.out.println("=============最长回文子串 Manacher==============");
+        System.out.println(LongeastPalindrome03("abccccdd"));
+        System.out.println(LongeastPalindrome03(s));
 
 
-        System.out.println(longestPalindrome03("babad"));
-
+        System.out.println("==============未看=================");
+        System.out.println(longestPalindromeX(s));
+        String str1 = "abc1234321ab";
+        System.out.println(maxLcpsLength(str1));
     }
 
     /**
-     * 1、回文串的个数和最长回文子串
-     * zf 中心扩展法
+     * 1、zf 中心扩展法
+     * 回文串的个数和最长回文子串
+     *
      * @param s
      * @return
      */
@@ -47,42 +57,64 @@ public class LongestPalindrome {
     }
 
     /**
-     * 最长的回文子串本串
+     * 最长的回文子串，只返回 回文串
      *
      * @param s
      * @return
      */
-    public static String longestPalindrome03(String s) {
-        int n = 2 * s.length() - 1;
+    public static String longestPalindrome(String s) {
+        int n = 2 * s.length() - 1; //遍历时 需要中心扩展的次数，即所有的中心点（两个或者一个字符都可以作为中心点）
         int maxLen = 0;
         String res = "";
+
         for (int i = 0; i < n; i++) {
             int left = i / 2;
             int right = left + i % 2;
-            while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
-                if((right - left + 1) > maxLen){
-                    res = s.substring(left,right +1);
+
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                if ((right - left + 1) > maxLen) {
+                    res = s.substring(left, right + 1);
                     maxLen = right - left + 1;
                 }
-                left --;
+                left--;
                 right++;
             }
         }
+
         return res;
-
-
     }
 
 
+    /**
+     * 2 、最长回文子串 --暴力
+     *
+     * @param s
+     * @return
+     */
+    public static String LongeastPalindrome01(String s) {
+        String res = "";
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j <= s.length(); j++) {
+                String t = s.substring(i, j);
+                String rt = new StringBuffer(t).reverse().toString();
+                if (t.equals(rt) && t.length() > res.length()) {
+                    res = t;
+                }
+            }
+        }
+        return res;
+    }
+
 
     /**
-     * 2、最长回文子串 暴力
+     * 最长回文子串 暴力
      * O（n^3）
      *
      * @param s
      * @return
      */
-    public static String longestPalindrome01(String s) {
+    public static String LongeastPalindrome02(String s) {
 //        if (s == null || s.length() <= 0)
 //            return null;
         if (s.length() < 2) {
@@ -117,14 +149,14 @@ public class LongestPalindrome {
     }
 
 
-
     /**
      * 3、最长回文子串 Manacher
      * O（N^2）
+     *
      * @param s
      * @return
      */
-    public static String longestPalindrome02(String s) {
+    public static String LongeastPalindrome03(String s) {
         int len = s.length();
         if (len < 2) {
             return s;
@@ -146,6 +178,7 @@ public class LongestPalindrome {
 
     /**
      * 中心扩散求长度
+     *
      * @param s
      * @param center
      * @return
@@ -190,13 +223,15 @@ public class LongestPalindrome {
 
 
     //===============================================未看============================================================
+
     /**
      * 4、最长回文子串 Manacher
      * O（N）
+     *
      * @param s
      * @return
      */
-    public String longestPalindrome(String s) {
+    public static String longestPalindromeX(String s) {
         // 特判
         int len = s.length();
         if (len < 2) {
@@ -255,4 +290,42 @@ public class LongestPalindrome {
         return s.substring(start, start + maxLen);
     }
 
+
+    //======================================================================================================
+    public static char[] manacherString(String str) {
+        char[] charArr = str.toCharArray();
+        char[] res = new char[str.length() * 2 + 1];
+        int index = 0;
+        for (int i = 0; i != res.length; i++) {
+            res[i] = (i & 1) == 0 ? '#' : charArr[index++];
+        }
+        return res;
+    }
+
+    public static int maxLcpsLength(String str) {
+        if (str == null || str.length() == 0) {
+            return 0;
+        }
+        char[] charArr = manacherString(str);
+        int[] pArr = new int[charArr.length]; //回文半径数组
+        int index = -1;
+        int pR = -1;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i != charArr.length; i++) {
+            pArr[i] = pR > i ? Math.min(pArr[2 * index - i], pR - i) : 1;
+            while (i + pArr[i] < charArr.length && i - pArr[i] > -1) {
+                if (charArr[i + pArr[i]] == charArr[i - pArr[i]])
+                    pArr[i]++;
+                else {
+                    break;
+                }
+            }
+            if (i + pArr[i] > pR) {
+                pR = i + pArr[i];
+                index = i;
+            }
+            max = Math.max(max, pArr[i]);
+        }
+        return max - 1;
+    }
 }

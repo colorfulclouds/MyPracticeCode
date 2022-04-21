@@ -6,7 +6,7 @@ package com.hehe.String;
  * 示例 1:
  * s = "abc", t = "ahbgdc"
  * 返回 true.
- *
+ * <p>
  * 示例 2:
  * s = "axc", t = "ahbgdc"
  * 返回 false.
@@ -30,17 +30,19 @@ public class SubStr_IsSubSeq {
 
     /**
      * 是否是子序列 (最简单好理解的做法)
+     *
      * @param s
      * @param t
      * @return
      */
     public static boolean isSubsequence(String s, String t) { //s 长 t 短
-        if(t.length() == 0) //空串是任何串的子序列
+        if (t.length() == 0) //空串是任何串的子序列
             return true;
+
         int i = 0;
         int j = 0;
-        while(i < s.length() && j < t.length()){
-            if(s.charAt(i) == t.charAt(j))
+        while (i < s.length() && j < t.length()) {
+            if (s.charAt(i) == t.charAt(j))
                 j++;
             i++;
         }
@@ -50,6 +52,7 @@ public class SubStr_IsSubSeq {
 
     /**
      * 判断是否是子序列（递归）
+     *
      * @param s
      * @param t
      * @return
@@ -70,9 +73,11 @@ public class SubStr_IsSubSeq {
             return false;
 
     }
+
     /**
      * 是否是子序列（动态规划）
      * 如果仅依赖前一个状态 可改为一维数组
+     *
      * @param s
      * @param t
      * @return

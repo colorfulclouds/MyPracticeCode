@@ -47,8 +47,15 @@ public class FindPath2Sum {
 
     }
 
+    /**
+     * fei 2022.4.21
+     *
+     * @param node
+     * @param list
+     * @param number
+     */
     public static void Method(TreeNode node, List<Integer> list, int number) {
-        if(null == node)
+        if (null == node)
             return;
         list.add(node.val);
         if (node.left == null && node.right == null) {
@@ -64,7 +71,7 @@ public class FindPath2Sum {
         }
         Method(node.left, list, number);
         list.remove(list.size() - 1);
-        
+
         Method(node.right, list, number);
         list.remove(list.size() - 1);
 
@@ -77,6 +84,7 @@ public class FindPath2Sum {
     public static LinkedList<List<Integer>> findPath01(TreeNode head, int target) {
         if (head == null)
             return res;
+
         path.add(head.val);
         target -= head.val;
         if (target == 0 && head.left == null && head.right == null)

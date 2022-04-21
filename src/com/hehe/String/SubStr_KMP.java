@@ -122,6 +122,7 @@ public class SubStr_KMP {
 
     /**
      * 暴力 简单
+     *
      * @param s
      * @param pattern
      * @return
@@ -131,12 +132,12 @@ public class SubStr_KMP {
             int tmp = i;
             int j = 0;
             for (; j < pattern.length(); j++) {
-                if(s.charAt(i) != pattern.charAt(j))
+                if (s.charAt(i) != pattern.charAt(j))
                     break;
-                if(i+1 < s.length())
+                if (i + 1 < s.length())
                     i++;
             }
-            if(j == pattern.length())
+            if (j == pattern.length())
                 return tmp;
             i = tmp;
         }

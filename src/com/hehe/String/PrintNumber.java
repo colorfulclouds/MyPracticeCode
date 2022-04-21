@@ -9,21 +9,46 @@ package com.hehe.String;
 public class PrintNumber {
 
     public static void main(String[] args) {
-        int n = 1;
-        int[] res = printNumbers(n);
+        System.out.println("================溢出判断的大数打印===============");
+        int[] res = printNumbers(1);
 
         for (int x : res)
             System.out.print(x + " ");
-
-
+        System.out.println();
 
         //==============================递归回溯法  ======================================
-        int[] dfs = printNumbers01(2);
-        for(int r : dfs){
-            System.out.print(r+ " ");
+//        int[] dfs = printNumbers01(2);
+//        for (int r : dfs) {
+//            System.out.print(r + " ");
+//        }
+//        System.out.println();
+        //==============================暴力 简单大数打印 ======================================
+        int[] print = printNumbers02(2);
+        for (int r : print) {
+            System.out.print(r + " ");
         }
     }
 
+    /**
+     * 简单大数打印
+     *
+     * @param n
+     * @return
+     */
+    public static int[] printNumbers02(int n) {
+        int end = (int) Math.pow(10, n) - 1;
+        int[] res = new int[end];
+        for (int i = 0; i < end; i++)
+            res[i] = i + 1;
+        return res;
+    }
+
+    /**
+     * 溢出判断的大数打印
+     *
+     * @param n
+     * @return
+     */
     public static int[] printNumbers(int n) {
         if (n <= 0) {
             return new int[]{-1};
@@ -70,13 +95,15 @@ public class PrintNumber {
         return isOverflow;
     }
 
-//===============================================================================================================
+
+    //===============================================================================================================
     static int[] res;
     static int nine = 0, count = 0, start;
     static char[] num, loop = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     /**
      * 递归回溯法  【不懂！！！】
+     *
      * @param n
      * @return
      */
@@ -106,7 +133,6 @@ public class PrintNumber {
         }
         nine--;
     }
-
 
 
 }

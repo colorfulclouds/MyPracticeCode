@@ -2,37 +2,32 @@ package com.hehe.String;
 
 public class AddBinaryStrSeq {
     public static void main(String[] args) {
-        System.out.println(addBinary("11","1"));
-        System.out.println(addBinary("1010","1011"));
+        System.out.println(addBinary("11", "1"));
+        System.out.println(addBinary("1010", "1011"));
+        System.out.println(addBinary("0", "0"));
     }
 
     /**
      * 二进制字符串相加
+     * package com.hehe.LinkedList.AddTowNum 类似
+     *
      * @param a
      * @param b
      * @return
      */
     public static String addBinary(String a, String b) {
-        //有位数限制 不能直接用整型
-//        int aa = Integer.parseInt(a,2);
-//        int bb = Integer.parseInt(b,2);
-//        String s = Integer.toString(aa+bb,2);
-//        return s;
-
         int carry = 0;
         int sum = 0;
         StringBuilder sb = new StringBuilder();
-//        String[] tmp = new String[6];  短串填零
-//        Arrays.fill(tmp,"0");
-//        sb.append(tmp);
-        for (int i = a.length()-1,j = b.length()-1; i >= 0 || j >= 0; i--,j--) {
+        for (int i = a.length() - 1, j = b.length() - 1; i >= 0 || j >= 0; i--, j--) {
             sum = carry;
             sum += i >= 0 ? a.charAt(i) - '0' : 0;
             sum += j >= 0 ? b.charAt(j) - '0' : 0;
             sb.append(sum % 2);
             carry = sum / 2;
         }
-        sb.append(carry == 1 ? carry : 0);
+        if (carry == 1)
+            sb.append(carry);
         return sb.reverse().toString();
 
     }

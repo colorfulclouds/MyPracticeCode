@@ -8,8 +8,22 @@ import java.util.List;
  * 输出 n 对 括号的所有有效序列
  */
 public class GenerateParenthesis {
+    public static void main(String[] args) {
+        List<String> strings = generateParenthesis(3);
+        for (String s : strings) {
+            System.out.println(s);
+        }
 
-    public List<String> generateParenthesis(int n) {
+
+    }
+
+    /**
+     * 递归 generateCore
+     *
+     * @param n
+     * @return
+     */
+    public static List<String> generateParenthesis(int n) {
         List<String> list = new ArrayList<>();
         if (n == 0)
             return list;
@@ -18,7 +32,7 @@ public class GenerateParenthesis {
         return list;
     }
 
-    private void generateCore(List<String> list, int left, int right, String curStr) {
+    private static void generateCore(List<String> list, int left, int right, String curStr) {
         if (left > right)  //已经有的字符串序列 左括号剩余一定要比右括号少 否则不是有效括号序列
             return;
         if (left == 0 && right == 0) {
@@ -34,6 +48,7 @@ public class GenerateParenthesis {
 
     /**
      * 另一种思路
+     *
      * @param n
      * @return
      */

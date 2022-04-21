@@ -3,13 +3,17 @@ package com.hehe.String;
 /**
  * "+1230"
  * 1230
- *
+ * <p>
  * "-12"
  * -12
  */
 public class StrToInt {
     public static void main(String[] args) {
         System.out.println(StrToInt("+123"));
+        System.out.println(StrToInt("123"));
+        System.out.println(StrToInt("0"));
+        System.out.println(StrToInt(""));
+        System.out.println(StrToInt("-1"));
     }
 
     public static int StrToInt(String str) {

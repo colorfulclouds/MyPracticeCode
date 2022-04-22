@@ -25,7 +25,7 @@ import java.util.Scanner;
  *
  * 3+2*{1+2*[-4/(8-6)+7]}
  */
-public class GetResultFromExpression {
+public class GetResultFromExpression_difficult {
 
 //    public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);

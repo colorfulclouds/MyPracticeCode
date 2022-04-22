@@ -28,6 +28,11 @@ public class SumToTarget {
 //            System.out.println();
 //        }
 
+        System.out.println("==========getArraysToTarget==========");
+        int[] oneArr = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+        System.out.println(getArraysToTarget(oneArr, 9));
+        System.out.println("====================");
+
         System.out.println("sum");
         int[] arr = {1, 2, 3, 4, 5};
         System.out.println(is(arr, 7));
@@ -90,6 +95,36 @@ public class SumToTarget {
             }
         }
         return list;
+    }
+
+
+    /**
+     * 连续递增数列的 和为某一target值的 连续子序列
+     *
+     * @param arr
+     * @param target
+     * @return
+     */
+    public static int getArraysToTarget(int[] arr, int target) {
+        int res = 0;
+        int len = arr.length;
+        int i = 0, j = 1;
+        int sum = arr[i] + arr[j];
+        while (i < (1 + arr.length) / 2) {
+            if (sum == target) {
+                res++;
+                j++;
+                sum += arr[j];
+            } else if (sum < target) {
+                j++;
+                sum += arr[j];
+            } else {
+                sum -= arr[i];
+                i++;
+            }
+        }
+
+        return res;
     }
 
     public static boolean is(int[] a, int tar) {

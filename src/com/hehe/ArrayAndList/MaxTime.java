@@ -17,7 +17,7 @@ public class MaxTime {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] strs = sc.nextLine().split("，");
+        String[] strs = sc.nextLine().split(",");
         //输入的数组，接收时是字符串，需要处理
 
         strs[0] = strs[0].substring(1);
